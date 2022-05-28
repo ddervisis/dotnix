@@ -1,0 +1,5 @@
+
+[
+  ./alacritty.nix
+  ./gh.nix
+]
