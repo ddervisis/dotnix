@@ -24,15 +24,15 @@ wipefs -f -a ${DATA_DISK}
 parted --script $BOOT_DISK -- \
   mklabel gpt \
   mkpart primary 512MiB -${RAM_SIZE}GiB \
-  mkpart ESP fat32 1MiB 512MiB \
   mkpart primary linux-swap -${RAM_SIZE}GiB 100% \
+  mkpart ESP fat32 1MiB 512MiB \
   set 1 esp on
 
 # bios
-parted --script $BOOT_DISK -- \
-  mklabel msdos \
-  mkpart primary 1MiB -${RAM_SIZE}GiB \
-  mkpart primary linux-swap -${RAM_SIZE}GiB 100%
+# parted --script $BOOT_DISK -- \
+#   mklabel msdos \
+#   mkpart primary 1MiB -${RAM_SIZE}GiB \
+#   mkpart primary linux-swap -${RAM_SIZE}GiB 100%
 
 mkfs.vfat -F 32 -n boot ${BOOT_DISK}3
 mkswap -L swap ${BOOT_DISK}2
