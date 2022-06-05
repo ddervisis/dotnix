@@ -107,6 +107,7 @@
     ensureDatabases = [
       "nextcloud"
       "vaultwarden"
+      "gitea"
     ];
     ensureUsers = [
       {
@@ -122,6 +123,12 @@
         };
       }
       {
+        name = "gitea";
+        ensurePermissions = {
+          "DATABASE gitea" = "ALL PRIVILEGES";
+        };
+      }
+      {
         name = user;
         ensurePermissions = {
           "ALL TABLES IN SCHEMA public" = "ALL PRIVILEGES";
@@ -131,3 +138,14 @@
     dataDir = "/var/lib/postgresql/${config.services.postgresql.package.psqlSchema}";
   };
 }
+
+# TODO: run as NixOS container instead of bare metal
+# containers.postgresql = {
+#   config =
+#     { config, pkgs, user, ... }:
+#     {
+#       services.postgresql = {
+#         enable = true;
+#       };
+#     }
+# };

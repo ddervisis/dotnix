@@ -2,9 +2,19 @@
 
 {
   services.jellyfin = {
-    # dataDir = "/data/media";
+    enable = false;
     user = user;
-    enable = true;
     openFirewall = true;
   };
 }
+
+# TODO: run as NixOS container instead of bare metal
+# containers.jellyfin = {
+#   config =
+#     { config, pkgs, user, ... }:
+#     {
+#       services.jellyfin = {
+#         enable = true;
+#       };
+#     }
+# };

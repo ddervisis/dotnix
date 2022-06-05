@@ -19,3 +19,14 @@
     configDir = "var/lib/minio/config";
   };
 }
+
+# TODO: run as NixOS container instead of bare metal
+# containers.minio = {
+#   config =
+#     { config, pkgs, ... }:
+#     {
+#       services.minio = {
+#         enable = true;
+#       };
+#     }
+# };

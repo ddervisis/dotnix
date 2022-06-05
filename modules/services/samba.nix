@@ -42,3 +42,14 @@
     openFirewall = true;
   };
 }
+
+# TODO: run as NixOS container instead of bare metal
+# containers.samba = {
+#   config =
+#     { config, pkgs, ... }:
+#     {
+#       services.samba = {
+#         enable = true;
+#       };
+#     }
+# };

@@ -15,8 +15,19 @@
         localAnnounceEnabled = false;
       };
     };
-    dataDir = "/var/lib/syncthing";
-    configDir = "/var/lib/syncthing/.config/syncthing";
+    dataDir = "/data/services/syncthing";
+    configDir = "/data/services/syncthing/.config/syncthing";
     openDefaultPorts = true;
   };
 }
+
+# TODO: run as NixOS container instead of bare metal
+# containers.syncthing = {
+#   config =
+#     { config, pkgs, user, ... }:
+#     {
+#       services.syncthing = {
+#         enable = false;
+#       };
+#     }
+# };

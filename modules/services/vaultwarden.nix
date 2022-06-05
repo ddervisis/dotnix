@@ -5,7 +5,7 @@
     enable = true;
     package = pkgs.vaultwarden-postgresql;
     dbBackend = "postgresql";
-    backupDir = "/backup/vaultwarden";
+    backupDir = "/storage/backup/vaultwarden";
     webVaultPackage = pkgs.vaultwarden-vault;
     config = {
       ## Vaultwarden Configuration File
@@ -340,3 +340,14 @@
     };
   };
 }
+
+# TODO: run as NixOS container instead of bare metal
+# containers.vaultwarden = {
+#   config =
+#     { config, pkgs, ... }:
+#     {
+#       services.vaultwarden = {
+#         enable = true;
+#       };
+#     }
+# };

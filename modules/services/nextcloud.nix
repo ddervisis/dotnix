@@ -3,7 +3,8 @@
 {
   services.nextcloud = {
     enable = true;
-    datadir = "/cloud";
+    home = "/data/services/nextcloud";
+    datadir = "/storage/cloud";
     hostName = "";
     config = {
       dbuser = "nextcloud";
@@ -21,3 +22,14 @@
     maxUploadSize = "5G";
   };
 }
+
+# TODO: run as NixOS container instead of bare metal
+# containers.nextcloud = {
+#   config =
+#     { config, pkgs, ... }:
+#     {
+#       services.nextcloud = {
+#         enable = true;
+#       };
+#     }
+# };
