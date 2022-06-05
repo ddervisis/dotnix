@@ -2,16 +2,24 @@
 
 set -eux
 
+export RAM_SIZE=8
+export BOOT_DISK=/dev/sda
+export STORAGE_DISK_1=/dev/sdb
+export STORAGE_DISK_2=/dev/sdc
+export STORAGE_DISK_3=/dev/sdd
+export STORAGE_DISK_4=/dev/sde
+export DATA_DISK=/dev/sdf
+
 # wipe partitions
-wipefs -f -a /dev/sda
-wipefs -f -a /dev/sdb
-wipefs -f -a /dev/sdc
-wipefs -f -a /dev/sdd
-wipefs -f -a /dev/sde
-wipefs -f -a /dev/sdf
+wipefs -f -a ${BOOT_DISK}
+wipefs -f -a ${STORAGE_DISK_1}
+wipefs -f -a ${STORAGE_DISK_2}
+wipefs -f -a ${STORAGE_DISK_3}
+wipefs -f -a ${STORAGE_DISK_4}
+wipefs -f -a ${DATA_DISK}
 
 # boot disk
-parted -f --script $BOOT_DISK -- \
+parted --script $BOOT_DISK -- \
   mklabel gpt \
   mkpart ESP fat32 1MiB 512MiB \
   mkpart primary linux-swap -${RAM_SIZE}GiB 100% \
@@ -63,7 +71,7 @@ zpool create \
 zpool create \
   -o ashift=12 \
   -o autotrim=on \
-  -R /mnt \
+  -R /mnt/data \
   -O canmount=off \
   -O mountpoint=none \
   -O acltype=posixacl \
@@ -108,7 +116,7 @@ mount /dev/disk/by-label/boot /mnt/boot
 
 # storage partitions
 export STORAGE_PATH=/mnt/storage
-mkdir -p ${STORAGE_PATH}/{media,downloads,cloud,games,iso}
+mkdir -p ${STORAGE_PATH}/{media,downloads,cloud,games,iso,backup}
 mount -t zfs -o zfsutil storage/media ${STORAGE_PATH}/media
 mount -t zfs -o zfsutil storage/downloads ${STORAGE_PATH}/downloads
 mount -t zfs -o zfsutil storage/cloud ${STORAGE_PATH}/cloud
@@ -118,7 +126,7 @@ mount -t zfs -o zfsutil storage/backup ${STORAGE_PATH}/backup
 
 # data partitions
 export DATA_PATH=/mnt/data
-mkdir -p ${DATA_PATH}/{backup,vms,containers}
+mkdir -p ${DATA_PATH}/{vms,containers,services}
 mount -t zfs -o zfsutil data/vms ${DATA_PATH}/vms
 mount -t zfs -o zfsutil data/containers ${DATA_PATH}/containers
 mount -t zfs -o zfsutil data/services ${DATA_PATH}/services

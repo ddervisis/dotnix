@@ -1,5 +1,9 @@
 { config, lib, pkgs, modulesPath, ... }:
 
+let
+  storageRoot = "/storage";
+  dataRoot = "/data";
+in
 {
   imports =
     [ (modulesPath + "/installer/scan/not-detected.nix")
@@ -23,49 +27,49 @@
     options = [ "zfsutil" ];
   };
 
-  fileSystems."/media" = {
+  fileSystems."${storageRoot}/media" = {
     device = "storage/media";
     fsType = "zfs";
     options = [ "zfsutil" ];
   };
 
-  fileSystems."/downloads" = {
+  fileSystems."${storageRoot}/downloads" = {
     device = "storage/downloads";
     fsType = "zfs";
     options = [ "zfsutil" ];
   };
 
-  fileSystems."/cloud" = {
+  fileSystems."${storageRoot}/cloud" = {
     device = "storage/cloud";
     fsType = "zfs";
     options = [ "zfsutil" ];
   };
 
-  fileSystems."/games" = {
+  fileSystems."${storageRoot}/games" = {
     device = "storage/games";
     fsType = "zfs";
     options = [ "zfsutil" ];
   };
 
-  fileSystems."/iso" = {
+  fileSystems."${storageRoot}/iso" = {
     device = "storage/iso";
     fsType = "zfs";
     options = [ "zfsutil" ];
   };
 
-  fileSystems."/backup" = {
+  fileSystems."${storageRoot}/backup" = {
     device = "storage/backup";
     fsType = "zfs";
     options = [ "zfsutil" ];
   };
 
-  fileSystems."/vms" = {
+  fileSystems."${dataRoot}/vms" = {
     device = "data/vms";
     fsType = "zfs";
     options = [ "zfsutil" ];
   };
 
-  fileSystems."/containers" = {
+  fileSystems."${dataRoot}/containers" = {
     device = "data/containers";
     fsType = "zfs";
     options = [ "zfsutil" ];

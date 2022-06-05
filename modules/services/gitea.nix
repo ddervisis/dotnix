@@ -19,7 +19,7 @@ in
     log = {
       level = "Info";
       rootPath = "${rootDir}/log";
-    }
+    };
     lfs = {
       enable = false;
       contentDir = "${rootDir}/data/lfs";
@@ -30,7 +30,7 @@ in
       enable = true;
       interval = "04:31";
       backupDir = "${rootDir}/dump";
-    }
+    };
     disableRegistration = true;
     database = {
       user = "gitea";

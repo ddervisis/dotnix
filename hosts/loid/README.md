@@ -140,7 +140,7 @@ mount /dev/disk/by-label/boot /mnt/boot
 
 # storage partitions
 export STORAGE_PATH=/mnt/storage
-mkdir -p ${STORAGE_PATH}/{media,downloads,cloud,games,iso}
+mkdir -p ${STORAGE_PATH}/{media,downloads,cloud,games,iso,backup}
 mount -t zfs -o zfsutil storage/media ${STORAGE_PATH}/media
 mount -t zfs -o zfsutil storage/downloads ${STORAGE_PATH}/downloads
 mount -t zfs -o zfsutil storage/cloud ${STORAGE_PATH}/cloud
@@ -150,7 +150,7 @@ mount -t zfs -o zfsutil storage/backup ${STORAGE_PATH}/backup
 
 # data partitions
 export DATA_PATH=/mnt/data
-mkdir -p ${DATA_PATH}/{backup,vms,containers}
+mkdir -p ${DATA_PATH}/{vms,containers,services}
 mount -t zfs -o zfsutil data/vms ${DATA_PATH}/vms
 mount -t zfs -o zfsutil data/containers ${DATA_PATH}/containers
 mount -t zfs -o zfsutil data/services ${DATA_PATH}/services
