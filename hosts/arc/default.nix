@@ -1,14 +1,16 @@
-{ config, pkgs, lib, user, ... }:
+{ config, pkgs, lib, user, hostName, system, ... }:
 
 let
-
+  pkgs = import nixpkgs {
+    inherit system;
+    config.allowUnfree = true;
+  };
 in
 {
   imports =
     [(import ./hardware-configuration.nix)] ++
     [(import ../../modules/desktop/sway/sway.nix)] ++
-    # [(import ../../modules/desktop/steam.nix)] ++
-    # (import ../../modules/virtualisation) ++
+    (import ../../modules/virtualisation) ++
     (import ../../modules/hardware);
 
   boot = {
@@ -28,7 +30,7 @@ in
 
   networking = {
     useDHCP = false; # deprecated
-    hostName = "arc";
+    hostName = hostName;
     interfaces.enp4s0.useDHCP = true;
     networkmanager.enable = true;
     firewall = {

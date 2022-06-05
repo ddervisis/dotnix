@@ -30,8 +30,8 @@ in
   networking = {
     useDHCP = false; # deprecated
     hostName = hostName;
-    hostId = "bd33f6e1";
-    interfaces.enp4s0.useDHCP = true;
+    hostId = "c21aa421";
+    interfaces.eth0.useDHCP = true;
     networkmanager.enable = true;
     firewall = {
       enable = true;

@@ -52,7 +52,6 @@
       VISUAL = "nvim";
     };
     systemPackages = with pkgs; [
-      git
       killall
       nano
       pciutils
@@ -96,7 +95,6 @@
     '';
     trustedUsers = [ user ];
   };
-  nixpkgs.config.allowUnfree = true;
 
   system = {
     # autoUpgrade = {

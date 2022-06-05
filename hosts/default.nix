@@ -30,41 +30,4 @@ in
     hostName = "loid";
     system = "x86_64-linux";
   };
-
-  # arc = nixpkgs.lib.nixosSystem {
-  #   inherit system;
-  #   specialArgs = { inherit inputs user location; };
-  #   modules = [
-  #     ./arc
-  #     ./configuration.nix
-
-  #     home-manager.nixosModules.home-manager {
-  #       home-manager.useGlobalPkgs = true;
-  #       home-manager.useUserPackages = true;
-  #       home-manager.extraSpecialArgs = { inherit user; };
-  #       home-manager.users.${user} = {
-  #         imports = [(import ./home.nix)] ++ [(import ./arc/home.nix)];
-  #       };
-  #     }
-  #   ];
-  # };
-
-  # loid = nixpkgs.lib.nixosSystem {
-  #   inherit system;
-  #   specialArgs = { inherit inputs user location; };
-  #   modules = [
-  #     ./loid
-  #     ./configuration.nix
-
-  #     home-manager.nixosModules.home-manager {
-  #       home-manager.useGlobalPkgs = true;
-  #       home-manager.useUserPackages = true;
-  #       home-manager.extraSpecialArgs = { inherit user; };
-  #       home-manager.users.${user} = {
-  #         imports = [(import ./home.nix)] ++ [(import ./loid/home.nix)];
-  #       };
-  #     }
-  #   ];
-  # };
-
 }
