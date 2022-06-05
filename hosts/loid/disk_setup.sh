@@ -19,14 +19,22 @@ wipefs -f -a ${STORAGE_DISK_4}
 wipefs -f -a ${DATA_DISK}
 
 # boot disk
+
+# uefi
 parted --script $BOOT_DISK -- \
   mklabel gpt \
+  mkpart primary 512MiB -${RAM_SIZE}GiB \
   mkpart ESP fat32 1MiB 512MiB \
   mkpart primary linux-swap -${RAM_SIZE}GiB 100% \
-  mkpart primary 512MiB -${RAM_SIZE}GiB
   set 1 esp on
 
-mkfs.vfat -F 32 -n boot ${BOOT_DISK}1
+# bios
+parted --script $BOOT_DISK -- \
+  mklabel msdos \
+  mkpart primary 1MiB -${RAM_SIZE}GiB \
+  mkpart primary linux-swap -${RAM_SIZE}GiB 100%
+
+mkfs.vfat -F 32 -n boot ${BOOT_DISK}3
 mkswap -L swap ${BOOT_DISK}2
 swapon ${BOOT_DISK}2
 
@@ -45,7 +53,7 @@ zpool create \
   -O relatime=on \
   -O xattr=sa \
   rpool \
-  ${BOOT_DISK}3 -f
+  ${BOOT_DISK}1 -f
 
 # storage pool
 zpool create \
@@ -93,6 +101,12 @@ zfs create -o refreservation=1G -o mountpoint=none data/reserved
 zfs create -o mountpoint=none rpool/nixos
 zfs create rpool/nixos/nix
 
+# no data disk
+# zfs create -o mountpoint=none rpool/data
+# zfs create -o mountpoint=none rpool/data/vms
+# zfs create -o mountpoint=none rpool/data/containers
+# zfs create -o mountpoint=none rpool/data/services
+
 # storage pool datasets
 # compression off for obvious reasons: media/downloads/games/iso are video or iso files.
 zfs create -o mountpoint=none -o compression=off storage/media
@@ -113,6 +127,14 @@ mount -t zfs -o zfsutil rpool/nixos /mnt
 mkdir -p /mnt/{nix,boot}
 mount -t zfs -o zfsutil rpool/nixos/nix /mnt/nix
 mount /dev/disk/by-label/boot /mnt/boot
+
+# no data disk
+# export DATA_PATH=/mnt/data
+# mount -t zfs -o zfsutil rpool/data ${DATA_PATH}
+# mkdir -p ${DATA_PATH}/{vms,containers,services}
+# mount -t zfs -o zfsutil rpool/data/vms ${DATA_PATH}/vms
+# mount -t zfs -o zfsutil rpool/data/containers ${DATA_PATH}/containers
+# mount -t zfs -o zfsutil rpool/data/services ${DATA_PATH}/services
 
 # storage partitions
 export STORAGE_PATH=/mnt/storage

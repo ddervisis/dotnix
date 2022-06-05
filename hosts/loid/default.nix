@@ -18,11 +18,16 @@ in
     zfs.devNodes = "/dev/disk/by-path";
 
     loader = {
-      systemd-boot = {
+      # systemd-boot = {
+      #   enable = true;
+      #   configurationLimit = 5;
+      # };
+      grub = {
         enable = true;
-        configurationLimit = 5;
+        version = 2;
+        device = "/dev/sdd";
       };
-      efi.canTouchEfiVariables = true;
+      # efi.canTouchEfiVariables = true;
       timeout = 3;
     };
   };
