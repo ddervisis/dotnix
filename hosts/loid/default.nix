@@ -28,10 +28,10 @@ in
   };
 
   networking = {
-    useDHCP = false; # deprecated
+    useDHCP = lib.mkDefault true;
     hostName = hostName;
     hostId = "c21aa421";
-    interfaces.eth0.useDHCP = true;
+    # interfaces.eth0.useDHCP = true;
     networkmanager.enable = true;
     firewall = {
       enable = true;

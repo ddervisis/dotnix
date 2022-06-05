@@ -1,4 +1,4 @@
-{ config, pkgs, lib, user, hostName, system, ... }:
+{ nixpkgs, config, pkgs, lib, user, hostName, system, ... }:
 
 let
   pkgs = import nixpkgs {
@@ -29,9 +29,9 @@ in
   };
 
   networking = {
-    useDHCP = false; # deprecated
+    useDHCP = lib.mkDefault true;
     hostName = hostName;
-    interfaces.enp4s0.useDHCP = true;
+    # interfaces.enp4s0.useDHCP = true;
     networkmanager.enable = true;
     firewall = {
       enable = true;
