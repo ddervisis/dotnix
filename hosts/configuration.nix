@@ -95,6 +95,7 @@
     '';
     trustedUsers = [ user ];
   };
+  nixpkgs.config.allowUnfree = true;
 
   system = {
     # autoUpgrade = {
