@@ -15,19 +15,21 @@ in
   boot = {
     kernelPackages = config.boot.zfs.package.latestCompatibleLinuxPackages;
     supportedFilesystems = [ "zfs" ];
-    zfs.devNodes = "/dev/";
+    zfs.devNodes = "/dev/disk/by-id";
 
     loader = {
-      systemd-boot = {
-        enable = true;
-        configurationLimit = 5;
-      };
-      # grub = {
+      # systemd-boot = {
       #   enable = true;
-      #   version = 2;
-      #   device = "/dev/sdd";
+      #   configurationLimit = 5;
       # };
-      efi.canTouchEfiVariables = true;
+      grub = {
+        enable = true;
+        version = 2;
+        device = "/dev/disk/by-id/ata-SanDisk_Ultra_II_250GB_170672422903";
+        # efiSupport = true;
+        copyKernels = true;
+      };
+      # efi.canTouchEfiVariables = true;
       timeout = 3;
     };
   };
