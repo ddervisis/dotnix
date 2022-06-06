@@ -26,7 +26,7 @@ parted --script $BOOT_DISK -- \
   mkpart primary 512MiB -${RAM_SIZE}GiB \
   mkpart primary linux-swap -${RAM_SIZE}GiB 100% \
   mkpart ESP fat32 1MiB 512MiB \
-  set 1 esp on
+  set 3 esp on
 
 # bios
 # parted --script $BOOT_DISK -- \

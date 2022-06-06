@@ -15,7 +15,7 @@ in
   boot = {
     kernelPackages = config.boot.zfs.package.latestCompatibleLinuxPackages;
     supportedFilesystems = [ "zfs" ];
-    zfs.devNodes = "/dev/disk/by-path";
+    zfs.devNodes = "/dev/";
 
     loader = {
       systemd-boot = {

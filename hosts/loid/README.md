@@ -32,10 +32,10 @@ export RAM_SIZE=32
 # boot disk
 parted --script $BOOT_DISK -- \
   mklabel gpt \
-  mkpart ESP fat32 1MiB 512MiB \
+  mkpart primary 512MiB -${RAM_SIZE}GiB \
   mkpart primary linux-swap -${RAM_SIZE}GiB 100% \
-  mkpart primary 512MiB -${RAM_SIZE}GiB
-  set 1 esp on
+  mkpart ESP fat32 1MiB 512MiB \
+  set 3 esp on
 ```
 
 ## Formatting
@@ -43,9 +43,9 @@ parted --script $BOOT_DISK -- \
 ### UEFI
 
 ```bash
-mkfs.vfat -F 32 -n boot ${BOOT_DISK}-part1
-mkswap -L swap ${BOOT_DISK}-part2
-swapon ${BOOT_DISK}-part2
+mkfs.vfat -F 32 -n boot ${BOOT_DISK}3
+mkswap -L swap ${BOOT_DISK}2
+swapon ${BOOT_DISK}2
 ```
 
 ### Zfs pool creation
@@ -65,7 +65,7 @@ zpool create \
   -O relatime=on \
   -O xattr=sa \
   rpool \
-  ${BOOT_DISK}-part3 -f
+  ${BOOT_DISK}1 -f
 
 # storage pool
 zpool create \
@@ -85,7 +85,7 @@ zpool create \
   ${STORAGE_DISK_1} \
   ${STORAGE_DISK_2} \
   ${STORAGE_DISK_3} \
-  ${STORAGE_DISK_4}
+  ${STORAGE_DISK_4} -f
 
 # data pool
 zpool create \
