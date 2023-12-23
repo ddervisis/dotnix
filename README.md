@@ -49,4 +49,3 @@ passwd $USER
 mkdir -p ~/.ssh
 curl https://github.com/${USER}.keys | tee -a ~/.ssh/authorized_keys
 ```
-
