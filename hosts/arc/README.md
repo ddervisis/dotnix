@@ -4,10 +4,10 @@
 
 | Type | Value |
 | --- | --- |
-| CPU | 8c/16t |
+| CPU | 6c/8t |
 | RAM | 32GB |
 | boot disk | 512 GB |
-| data disk | 4 TB |
+| data disk | 1 TB |
 
 ## Partitioning
 
@@ -16,8 +16,8 @@
 
 sudo -i
 
-export DISK=/dev/sda
-# export DATA_DISK=/dev/nvmexxx
+export DISK=/dev/disk/by-id/ata-TS512GMTS430S_I007800665
+export DATA_DISK=/dev/disk/by-id/nvme-Samsung_SSD_980_PRO_1TB_S5GXNF0W514426W
 
 parted ${DISK} -- mklabel gpt
 parted ${DISK} -- mkpart ESP fat32 1MiB 512MiB
@@ -31,12 +31,12 @@ parted ${DISK} -- set 1 esp on
 ### UEFI
 
 ```bash
-mkfs.vfat -F 32 -n boot ${DISK}1
+mkfs.vfat -F 32 -n boot ${DISK}-part1
 
-mkswap -L swap ${DISK}2
-swapon ${DISK}2
+mkswap -L swap ${DISK}-part2
+swapon ${DISK}-part2
 
-mkfs.btrfs -f -L root ${DISK}3
+mkfs.btrfs -f -L root ${DISK}-part3
 ```
 
 
@@ -45,7 +45,7 @@ mkfs.btrfs -f -L root ${DISK}3
 ### Btrfs subvolume creation
 
 ```bash
-mount ${DISK}3 /mnt
+mount ${DISK}-part3 /mnt
 btrfs subvolume create /mnt/root
 btrfs subvolume create /mnt/home
 btrfs subvolume create /mnt/nix
@@ -58,15 +58,14 @@ umount /mnt
 ### Mount btrfs subvolumes
 
 ```bash
-mount -o subvol=root,compress=zstd,noatime,nodiratime ${DISK}3 /mnt
+mount -o subvol=root,compress=zstd,noatime,nodiratime ${DISK}-part3 /mnt
 mkdir -p /mnt/{boot,home,nix,var/log}
-mount -o subvol=home,compress=zstd,noatime,nodiratime ${DISK}3 /mnt/home
-mount -o subvol=nix,compress=zstd,noatime,nodiratime ${DISK}3 /mnt/nix
-mount -o subvol=log,compress=zstd,noatime,nodiratime ${DISK}3 /mnt/var/log
+mount -o subvol=home,compress=zstd,noatime,nodiratime ${DISK}-part3 /mnt/home
+mount -o subvol=nix,compress=zstd,noatime,nodiratime ${DISK}-part3 /mnt/nix
+mount -o subvol=log,compress=zstd,noatime,nodiratime ${DISK}-part3 /mnt/var/log
 mount /dev/disk/by-label/boot /mnt/boot
 ```
 
 ---
 
 # Continue with the main [README](../../README.md) steps
-
