@@ -29,7 +29,6 @@
       name = "Papirus-Dark";
       package = pkgs.papirus-icon-theme;
     };
-    # font = { name = "JetBrains Mono Medium"; };
   };
 
 }

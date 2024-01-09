@@ -6,13 +6,12 @@
 
   home = {
     username = "${vars.user}";
-    homeDirectory = "/home/${vars.user}";
+    homeDirectory = "/Users/${vars.user}";
 
     packages = with pkgs; [
       # Terminal
       btop
       pfetch
-      ranger
 
       # General configuration
       # gnupg
