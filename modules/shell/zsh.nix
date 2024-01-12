@@ -50,7 +50,6 @@
           "ssh-agent"
           "term_tab"
           "themes"
-          "vscode"
           "zsh-interactive-cd"
           "zsh-navigation-tools"
         ];
@@ -61,18 +60,14 @@
       };
 
       initExtra = ''
-        [ "$(tty)" = "/dev/tty1" ] && exec Hyprland
         [[ ! -f ~/.config/zsh/plugins/powerlevel10k-config/p10k.sh ]] || source ~/.config/zsh/plugins/powerlevel10k-config/p10k.sh
-
-        # Spaceship prompt
-        # source ${pkgs.spaceship-prompt}/share/zsh/site-functions/prompt_spaceship_setup
-        # autoload -U promptinit; promptinit
-
+        GPG_TTY=$(tty)
+        export GPG_TTY
         alias gs="gst"
       '';
 
-      # shellAliases.fixstore =
-      #   "sudo nix-store --verify --check-contents --repair";
+      shellAliases.fixstore =
+        "sudo nix-store --verify --check-contents --repair";
     };
   };
 }

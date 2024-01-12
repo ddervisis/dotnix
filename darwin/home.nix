@@ -1,27 +1,27 @@
 { config, lib, pkgs, vars, stateVersion, ... }:
 
 {
-  imports = (import ../modules/editors) ++ (import ../modules/programs)
-    ++ (import ../modules/shell);
+  imports = (import ../modules/editors) ++ (import ../modules/shell);
 
   home = {
     username = "${vars.user}";
-    homeDirectory = "/Users/${vars.user}";
+    homeDirectory = lib.mkForce "/Users/${vars.user}";
 
-    packages = with pkgs; [
-      # Terminal
-      btop
-      pfetch
+    packages = with pkgs;
+      [
 
-      # General configuration
-      # gnupg
-
-      # Nix language server
-      nixd
-    ];
+           ];
     stateVersion = stateVersion;
   };
 
-  programs = { home-manager.enable = true; };
+  programs = {
+    home-manager.enable = true;
+    zsh = {
+      initExtra = ''
+        eval "$(/opt/homebrew/bin/brew shellenv)"
+      '';
+    };
+    htop.enable = true;
+  };
 
 }

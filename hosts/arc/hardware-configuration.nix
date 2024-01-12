@@ -4,47 +4,53 @@
 { config, lib, pkgs, modulesPath, ... }:
 
 {
-  imports =
-    [ (modulesPath + "/installer/scan/not-detected.nix")
-    ];
+  imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
 
-  boot.initrd.availableKernelModules = [ "xhci_pci" "thunderbolt" "ahci" "nvme" "usb_storage" "uas" "usbhid" "sd_mod" ];
+  boot.initrd.availableKernelModules = [
+    "xhci_pci"
+    "thunderbolt"
+    "ahci"
+    "nvme"
+    "usb_storage"
+    "uas"
+    "usbhid"
+    "sd_mod"
+  ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
 
-  fileSystems."/" =
-    { device = "/dev/disk/by-id/ata-TS512GMTS430S_I007800665-part3";
-      fsType = "btrfs";
-      options = [ "subvol=root" ];
-    };
+  fileSystems."/" = {
+    device = "/dev/disk/by-id/ata-TS512GMTS430S_I007800665-part3";
+    fsType = "btrfs";
+    options = [ "subvol=root" ];
+  };
 
-  fileSystems."/home" =
-    { device = "/dev/disk/by-id/ata-TS512GMTS430S_I007800665-part3";
-      fsType = "btrfs";
-      options = [ "subvol=home" ];
-    };
+  fileSystems."/home" = {
+    device = "/dev/disk/by-id/ata-TS512GMTS430S_I007800665-part3";
+    fsType = "btrfs";
+    options = [ "subvol=home" ];
+  };
 
-  fileSystems."/nix" =
-    { device = "/dev/disk/by-id/ata-TS512GMTS430S_I007800665-part3";
-      fsType = "btrfs";
-      options = [ "subvol=nix" ];
-    };
+  fileSystems."/nix" = {
+    device = "/dev/disk/by-id/ata-TS512GMTS430S_I007800665-part3";
+    fsType = "btrfs";
+    options = [ "subvol=nix" ];
+  };
 
-  fileSystems."/var/log" =
-    { device = "/dev/disk/by-id/ata-TS512GMTS430S_I007800665-part3";
-      fsType = "btrfs";
-      options = [ "subvol=log" ];
-    };
+  fileSystems."/var/log" = {
+    device = "/dev/disk/by-id/ata-TS512GMTS430S_I007800665-part3";
+    fsType = "btrfs";
+    options = [ "subvol=log" ];
+  };
 
-  fileSystems."/boot" =
-    { device = "/dev/disk/by-id/ata-TS512GMTS430S_I007800665-part1";
-      fsType = "vfat";
-    };
+  fileSystems."/boot" = {
+    device = "/dev/disk/by-id/ata-TS512GMTS430S_I007800665-part1";
+    fsType = "vfat";
+  };
 
   swapDevices =
-    [ { device = "/dev/disk/by-id/ata-TS512GMTS430S_I007800665-part2"; }
-    ];
+    [{ device = "/dev/disk/by-id/ata-TS512GMTS430S_I007800665-part2"; }];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's
@@ -55,5 +61,6 @@
   # networking.interfaces.wlo1.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-  hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+  hardware.cpu.intel.updateMicrocode =
+    lib.mkDefault config.hardware.enableRedistributableFirmware;
 }

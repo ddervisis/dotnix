@@ -23,6 +23,13 @@
     stateVersion = stateVersion;
   };
 
-  programs = { home-manager.enable = true; };
+  programs = {
+    home-manager.enable = true;
+    zsh = {
+      initExtra = ''
+        [ "$(tty)" = "/dev/tty1" ] && exec Hyprland
+      '';
+    };
+  };
 
 }

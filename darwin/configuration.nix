@@ -1,27 +1,23 @@
-{ config, pkgs, inputs, vars, stateVersion, ... }:
+{ lib, config, pkgs, inputs, system, vars, hostName, ... }:
 
-{
-  users.users.${vars.user} = {
-    home = "/Users/${vars.user}";
-    shell = pkgs.zsh;
+with lib; {
+#  users.users.${vars.user} = {
+#    home = "/Users/${vars.user}";
+#    shell = pkgs.zsh;
+#  };
+
+  networking = {
+    computerName = hostName;
+    hostName = hostName;
   };
-
-  # networking = {
-  #   computerName = "MacBook";
-  #   hostName = "MacBook";
-  # };
 
   fonts = {
     fontDir.enable = true;
     fonts = with pkgs; [
-      carlito
       corefonts
       font-awesome
-      ibm-plex
       (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" ]; })
       roboto
-      source-code-pro
-      vegur
     ];
   };
 
@@ -33,22 +29,25 @@
     };
     systemPackages = with pkgs; [
       ansible
-      git
-      pfetch
-      # ranger
-
+      btop
       fd
+      git
+      nixd
+      pinentry
+      pfetch
+      rectangle
       ripgrep
+      stats
     ];
+
+    # For shell debugging purposes:
+
+    # etc."zshenv".text = mkBefore ''
+    #   set -x
+    # '';
   };
 
-  programs = {
-    zsh.enable = true;
-  };
-
-  services = {
-    nix-daemon.enable = true;
-  };
+  services = { nix-daemon.enable = true; };
 
   homebrew = {
     enable = true;
@@ -57,8 +56,9 @@
       upgrade = false;
       cleanup = "zap";
     };
-    brews = [];
-    casks = [];
+    brews = [ "direnv" "fzf" "gpg" ];
+    casks =
+      [ "arc" "bitwarden" "logitech-options" "postman" "yubico-authenticator" ];
   };
 
   nix = {
@@ -74,6 +74,11 @@
     '';
   };
 
+  nixpkgs = {
+    hostPlatform = system;
+    config.allowUnfree = true;
+  };
+
   system = {
     defaults = {
       NSGlobalDomain = {
@@ -85,18 +90,16 @@
         autohide = false;
         orientation = "bottom";
         showhidden = true;
-        tilesize = 40;
+        tilesize = 60;
       };
-      finder = {
-        QuitMenuItem = false;
-      };
+      finder = { QuitMenuItem = false; };
       trackpad = {
         Clicking = true;
         TrackpadRightClick = true;
       };
     };
-    activationScripts.postActivation.text = ''sudo chsh -s ${pkgs.zsh}/bin/zsh'';
-    stateVersion = stateVersion;
+    activationScripts.postActivation.text = "sudo chsh -s ${pkgs.zsh}/bin/zsh";
+    stateVersion = 4;
   };
 }
 

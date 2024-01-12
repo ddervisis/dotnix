@@ -18,8 +18,9 @@
   outputs = inputs@{ self, nixpkgs, home-manager, darwin, nur, nixvim, ... }:
     let
       vars = {
-        user = "dennis.dervisis";
+        user = "dennis";
         terminal = "kitty";
+        editor = "nvim";
       };
     in {
       nixosConfigurations = (import ./hosts {
@@ -32,11 +33,9 @@
         inherit inputs nixpkgs home-manager darwin nur nixvim vars;
       });
 
-      homeConfigurations = (
-        import ./nix {
-          inherit (nixpkgs) lib;
-          inherit inputs nixpkgs home-manager nur nixvim vars;
-        }
-      );
+      homeConfigurations = (import ./nix {
+        inherit (nixpkgs) lib;
+        inherit inputs nixpkgs home-manager nur nixvim vars;
+      });
     };
 }

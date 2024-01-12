@@ -2,9 +2,7 @@
 
 {
 
-  home = {
-    stateVersion = stateVersion;
-  };
+  home = { stateVersion = stateVersion; };
 
   # programs = {
   #   zsh = {
