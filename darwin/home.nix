@@ -10,7 +10,7 @@
     packages = with pkgs;
       [
 
-           ];
+      ];
     stateVersion = stateVersion;
   };
 
@@ -21,7 +21,6 @@
         eval "$(/opt/homebrew/bin/brew shellenv)"
       '';
     };
-    htop.enable = true;
   };
 
 }

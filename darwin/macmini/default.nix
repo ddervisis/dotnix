@@ -1,7 +1,16 @@
 { pkgs, config, lib, vars, hostName, system, ... }:
 
 {
-  environment = { systemPackages = with pkgs; [ discord ]; };
+  environment = { systemPackages = with pkgs; [ age discord sops talosctl ]; };
 
-  homebrew = { casks = [ "jellyfin-media-player" "mullvadvpn" "vlc" ]; };
+  homebrew = {
+    brews = [ "talhelper" ];
+    casks = [
+      "balenaetcher"
+      "jellyfin-media-player"
+      "mullvadvpn"
+      "vlc"
+      "yubico-authenticator"
+    ];
+  };
 }

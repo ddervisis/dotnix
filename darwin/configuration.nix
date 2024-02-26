@@ -1,10 +1,10 @@
 { lib, config, pkgs, inputs, system, vars, hostName, ... }:
 
 with lib; {
-#  users.users.${vars.user} = {
-#    home = "/Users/${vars.user}";
-#    shell = pkgs.zsh;
-#  };
+  users.users.${vars.user} = {
+    home = "/Users/${vars.user}";
+    shell = pkgs.zsh;
+  };
 
   networking = {
     computerName = hostName;
@@ -28,9 +28,12 @@ with lib; {
       VISUAL = "${vars.editor}";
     };
     systemPackages = with pkgs; [
+
       ansible
       btop
+      direnv
       fd
+      fzf
       git
       nixd
       pinentry
@@ -47,6 +50,9 @@ with lib; {
     # '';
   };
 
+  # needed to have /run/current-system/sw/bin added to the path automatically.
+  programs.zsh.enable = true;
+
   services = { nix-daemon.enable = true; };
 
   homebrew = {
@@ -56,9 +62,8 @@ with lib; {
       upgrade = false;
       cleanup = "zap";
     };
-    brews = [ "direnv" "fzf" "gpg" ];
-    casks =
-      [ "arc" "bitwarden" "logitech-options" "postman" "yubico-authenticator" ];
+    brews = [ "gpg" ];
+    casks = [ "arc" "bitwarden" "bruno" "logitech-options" ];
   };
 
   nix = {
