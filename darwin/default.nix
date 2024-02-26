@@ -1,15 +1,23 @@
-{ lib, inputs, nixpkgs, darwin, home-manager, nixvim, vars, ... }:
+{ lib, inputs, nixpkgs-unstable, darwin, home-manager-unstable, nixvim-unstable
+, vars, ... }:
 
 let
+  system = "aarch64-darwin";
+  pkgs = import nixpkgs-unstable {
+    inherit system;
+    config.allowUnfree = true;
+  };
+
   mkSystem = { hostName, system, stateVersion ? "23.11" }:
     darwin.lib.darwinSystem rec {
       inherit system;
-      specialArgs = { inherit inputs system vars hostName; };
+      specialArgs = { inherit inputs pkgs system vars; };
       modules = [
+        nixvim-unstable.nixDarwinModules.nixvim
         ./${hostName}
         ./configuration.nix
 
-        home-manager.darwinModules.home-manager
+        home-manager-unstable.darwinModules.home-manager
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
@@ -17,15 +25,15 @@ let
           home-manager.users.${vars.user} = {
             imports = [ (import ./home.nix) ]
               ++ [ (import ./${hostName}/home.nix) ]
-              ++ [ nixvim.homeManagerModules.nixvim ];
+              ++ [ nixvim-unstable.homeManagerModules.nixvim ];
           };
         }
       ];
     };
 in {
-  mbp2018 = mkSystem { # MacBookPro15,1 (2018)
-    hostName = "mbp2018";
-    system = "x86_64-darwin";
+  macbook = mkSystem { # Mac15,6 (2023)
+    hostName = "macbook";
+    system = "aarch64-darwin";
     stateVersion = "23.11";
   };
 

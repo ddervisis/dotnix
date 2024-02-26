@@ -1,14 +1,9 @@
-{ lib, config, pkgs, inputs, system, vars, hostName, ... }:
+{ lib, config, pkgs, inputs, system, vars, ... }:
 
 with lib; {
   users.users.${vars.user} = {
     home = "/Users/${vars.user}";
     shell = pkgs.zsh;
-  };
-
-  networking = {
-    computerName = hostName;
-    hostName = hostName;
   };
 
   fonts = {
@@ -28,18 +23,20 @@ with lib; {
       VISUAL = "${vars.editor}";
     };
     systemPackages = with pkgs; [
-
-      ansible
       btop
       direnv
       fd
       fzf
       git
+      iterm2
       nixd
       pinentry
       pfetch
+      podman
+      podman-tui
       rectangle
       ripgrep
+      spotify
       stats
     ];
 
@@ -63,7 +60,7 @@ with lib; {
       cleanup = "zap";
     };
     brews = [ "gpg" ];
-    casks = [ "arc" "bitwarden" "bruno" "logitech-options" ];
+    casks = [ "arc" "bitwarden" "bruno" "logitech-options" "sublime-text" ];
   };
 
   nix = {
