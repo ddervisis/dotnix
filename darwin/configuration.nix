@@ -1,11 +1,6 @@
 { lib, config, pkgs, inputs, system, vars, ... }:
 
 with lib; {
-  users.users.${vars.user} = {
-    home = "/Users/${vars.user}";
-    shell = pkgs.zsh;
-  };
-
   fonts = {
     fontDir.enable = true;
     fonts = with pkgs; [

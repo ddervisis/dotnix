@@ -32,7 +32,7 @@
       userSettings = {
         # Settings
         "workbench.settings.editor" = "json";
-        "workbench.colorTheme" = "Dracula";
+        "workbench.colorTheme" = "Nord";
         "workbench.iconTheme" = "material-icon-theme";
         "explorer.confirmDragAndDrop" = true;
         "explorer.confirmDelete" = false;
