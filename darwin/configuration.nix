@@ -1,6 +1,11 @@
 { lib, config, pkgs, inputs, system, vars, ... }:
 
 with lib; {
+  users.users.${vars.user} = {
+    home = "/Users/${vars.user}";
+    shell = pkgs.zsh;
+  };
+
   fonts = {
     fontDir.enable = true;
     fonts = with pkgs; [
@@ -55,7 +60,8 @@ with lib; {
       cleanup = "zap";
     };
     brews = [ "gpg" ];
-    casks = [ "arc" "bitwarden" "bruno" "logitech-options" "sublime-text" ];
+    casks =
+      [ "arc" "bitwarden" "bruno" "itsycal" "logitech-options" "sublime-text" ];
   };
 
   nix = {

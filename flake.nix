@@ -37,8 +37,8 @@
     , home-manager-unstable, darwin, nur, nixvim, nixvim-unstable, ... }:
     let
       vars = {
-        user = "dennis";
-        work_user = "dennis.dervisis";
+        # user = "dennis";
+        user = "dennis.dervisis";
         terminal = "kitty";
         editor = "nvim";
       };

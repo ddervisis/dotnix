@@ -4,6 +4,8 @@
   imports = (import ../modules/editors) ++ (import ../modules/shell);
 
   home = {
+    username = vars.user;
+    homeDirectory = lib.mkForce "/Users/${vars.user}";
     stateVersion = stateVersion;
   };
 
