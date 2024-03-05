@@ -6,7 +6,7 @@ let
     config.allowUnfree = true;
   };
 in {
-  imports = [ (import ./hardware-configuration.nix) ] ++
+  imports = [ (import ./hardware-configuration.nix) ]
   ++ (import ../../modules/virtualisation);
 
   boot = {
