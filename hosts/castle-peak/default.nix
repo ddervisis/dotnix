@@ -7,7 +7,7 @@ let
   };
 in {
   imports = [ (import ./hardware-configuration.nix) ]
-  ++ (import ../../modules/virtualisation);
+    ++ (import ../../modules/virtualisation);
 
   boot = {
     kernelPackages = pkgs.linuxPackages_latest;
@@ -31,9 +31,5 @@ in {
     };
   };
 
-  environment = {
-    systemPackages = with pkgs; [
-      ripgrep
-    ];
-  };
+  environment = { systemPackages = with pkgs; [ ripgrep ]; };
 }

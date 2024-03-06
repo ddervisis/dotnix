@@ -129,10 +129,10 @@
           servers = {
             clangd.enable = true;
             cmake.enable = true;
-            dockerls.enable = true;
+            # dockerls.enable = true;
             eslint.enable = true;
             gopls.enable = true;
-            graphql.enable = true;
+            # graphql.enable = true;
             html.enable = true;
             jsonls.enable = true;
             lua-ls.enable = true;
