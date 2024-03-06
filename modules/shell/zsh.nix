@@ -55,7 +55,7 @@
         ];
         custom = "$HOME/.config/zsh/custom";
         extraConfig = ''
-          zstyle :omz:plugins:ssh-agent agent-forwading on lifetime 1D
+          zstyle :omz:plugins:ssh-agent agent-forwading on lifetime 7D
         '';
       };
 

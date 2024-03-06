@@ -6,6 +6,7 @@
       enable = true;
       extensions = with pkgs.vscode-extensions;
         [
+          arcticicestudio.nord-visual-studio-code
           bbenoist.nix
           dracula-theme.theme-dracula
           eamodio.gitlens
@@ -15,6 +16,7 @@
           ms-python.python
           naumovs.color-highlight
           waderyan.gitblame
+          arrterian.nix-env-selector
         ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
           {
             name = "vscode-todo-highlight";
@@ -25,8 +27,14 @@
           {
             name = "material-icon-theme";
             publisher = "PKief";
-            version = "4.32.0";
-            sha256 = "sha256-6I9/nWv449PgO1tHJbLy/wxzG6BQF6X550l3Qx0IWpw=";
+            version = "4.34.0";
+            sha256 = "sha256-xxOEUvMjqJbl8lONB/So2NoIAVPOxysTq2YQY3iHGqo=";
+          }
+          {
+            name = "Go";
+            publisher = "golang";
+            version = "0.41.1";
+            sha256 = "sha256-tSt0IqRuE3nJgMYvdYUz5QDtzOsKKQqyW2KD1FEhkEQ=";
           }
         ];
       userSettings = {
@@ -95,7 +103,7 @@
           "editor.formatOnType" = true;
           "editor.formatOnSave" = true;
           "editor.formatOnSaveMode" = "modificationsIfAvailable";
-          "editor.wordBasedSuggestions" = false;
+          "editor.wordBasedSuggestions" = "off";
           "editor.defaultFormatter" = "ms-python.python";
         };
         # Other
