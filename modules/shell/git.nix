@@ -20,6 +20,7 @@
         pull = { rebase = true; };
         push.autoSetupRemote = true;
         init = { defaultbranch = "main"; };
+        merge = { conflictstyle = "zdiff3"; };
       };
     };
   };

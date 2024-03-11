@@ -4,6 +4,7 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/release-23.11";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixos-hardware.url = "github:nixos/nixos-hardware";
 
     home-manager = {
       url = "github:nix-community/home-manager/release-23.11";
@@ -33,8 +34,9 @@
     };
   };
 
-  outputs = inputs@{ self, nixpkgs, nixpkgs-unstable, home-manager
-    , home-manager-unstable, darwin, nur, nixvim, nixvim-unstable, ... }:
+  outputs = inputs@{ self, nixpkgs, nixpkgs-unstable, nixos-hardware
+    , home-manager, home-manager-unstable, darwin, nur, nixvim, nixvim-unstable
+    , ... }:
     let
       vars = {
         user = "dennis";
@@ -42,7 +44,7 @@
         terminal = "kitty";
         editor = "nvim";
       };
-    in {
+    in rec {
       nixosConfigurations = (import ./hosts {
         inherit (nixpkgs) lib;
         inherit inputs nixpkgs home-manager nur nixvim vars;
@@ -54,9 +56,14 @@
           nixvim-unstable vars;
       });
 
-      homeConfigurations = (import ./nix {
+      # homeConfigurations = (import ./nix {
+      #   inherit (nixpkgs) lib;
+      #   inherit inputs nixpkgs home-manager nur nixvim vars;
+      # });
+
+      piConfigurations = (import ./pi {
         inherit (nixpkgs) lib;
-        inherit inputs nixpkgs home-manager nur nixvim vars;
+        inherit inputs nixpkgs nixos-hardware vars;
       });
     };
 }
