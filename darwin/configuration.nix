@@ -29,11 +29,15 @@ with lib; {
       fzf
       git
       iterm2
-      nixd
-      pinentry
+      jq
+      mkcert
+      nil
+      nixpkgs-fmt
+      # pinentry
       pfetch
       podman
       podman-tui
+      qemu
       rectangle
       ripgrep
       spotify
@@ -59,7 +63,7 @@ with lib; {
       upgrade = false;
       cleanup = "zap";
     };
-    brews = [ "gpg" ];
+    brews = [ "gpg" "pinentry" ];
     casks =
       [ "arc" "bitwarden" "bruno" "itsycal" "logitech-options" "sublime-text" ];
   };

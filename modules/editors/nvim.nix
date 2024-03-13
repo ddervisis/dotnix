@@ -54,8 +54,10 @@
 
       colorschemes.nord = {
         enable = true;
-        borders = true;
-        contrast = true;
+        settings = {
+          borders = true;
+          contrast = true;
+        };
       };
 
       # clipboard = {
@@ -136,7 +138,7 @@
             html.enable = true;
             jsonls.enable = true;
             lua-ls.enable = true;
-            nixd.enable = true;
+            nil_ls.enable = true;
             pyright.enable = true;
             rust-analyzer = {
               enable = true;
@@ -218,19 +220,19 @@
         nix.enable = true;
         nix-develop.enable = true;
         nvim-colorizer.enable = true;
-        nvim-cmp = {
-          enable = true;
-          autoEnableSources = true;
-          sources = [{ name = "nvim_lsp"; }];
-          mappingPresets = [ "insert" ];
-          mapping = {
-            "<C-Space>" = "cmp.mapping.complete()";
-            "<CR>" = "cmp.mapping.confirm({ select = true })";
-            "<C-p>" = "cmp.mapping.select_prev_item()";
-            "<C-n>" = "cmp.mapping.select_next_item()";
-          };
-          formatting.fields = [ "kind" "abbr" "menu" ];
-        };
+        # nvim-cmp = {
+        #   enable = true;
+        #   autoEnableSources = true;
+        #   sources = [{ name = "nvim_lsp"; }];
+        #   mappingPresets = [ "insert" ];
+        #   mapping = {
+        #     "<C-Space>" = "cmp.mapping.complete()";
+        #     "<CR>" = "cmp.mapping.confirm({ select = true })";
+        #     "<C-p>" = "cmp.mapping.select_prev_item()";
+        #     "<C-n>" = "cmp.mapping.select_next_item()";
+        #   };
+        #   formatting.fields = [ "kind" "abbr" "menu" ];
+        # };
         nvim-autopairs.enable = true;
         # persistence.enable = true;
         project-nvim.enable = true;

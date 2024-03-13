@@ -44,7 +44,7 @@
         terminal = "kitty";
         editor = "nvim";
       };
-    in rec {
+    in {
       nixosConfigurations = (import ./hosts {
         inherit (nixpkgs) lib;
         inherit inputs nixpkgs home-manager nur nixvim vars;

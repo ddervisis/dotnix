@@ -18,7 +18,8 @@
       # gnupg
 
       # Nix language server
-      nixd
+      nil
+      nixpkgs-fmt
     ];
     stateVersion = stateVersion;
   };

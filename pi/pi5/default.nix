@@ -1,4 +1,6 @@
 { pkgs, config, lib, hostName, vars, ... }: {
+  imports = (import ../../modules/services);
+
   environment.systemPackages = with pkgs; [ vim ];
   services.openssh.enable = true;
   networking.hostName = hostName;

@@ -64,6 +64,7 @@
         GPG_TTY=$(tty)
         export GPG_TTY
         alias gs="gst"
+        alias docker="podman"
       '';
 
       shellAliases.fixstore =

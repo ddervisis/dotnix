@@ -93,8 +93,11 @@
         "editor.emptySelectionClipboard" = true;
         # Nix
         "nix.enableLanguageServer" = true;
-        "nix.serverPath" = "nixd";
+        "nix.serverPath" = "nil";
         "nix.formatterPath" = "nixpkgs-fmt";
+        "nix.serverSettings" = {
+          "nil" = { "formatting" = { "command" = [ "nixpkgs-fmt" ]; }; };
+        };
         # Python
         "[python]" = {
           "diffEditor.ignoreTrimWhitespace" = false;
