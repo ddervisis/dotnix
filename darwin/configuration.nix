@@ -41,7 +41,7 @@ with lib; {
       rectangle
       ripgrep
       spotify
-      stats
+      # stats
     ];
 
     # For shell debugging purposes:
@@ -64,8 +64,19 @@ with lib; {
       cleanup = "zap";
     };
     brews = [ "gpg" "pinentry" ];
-    casks =
-      [ "arc" "bitwarden" "bruno" "itsycal" "logitech-options" "sublime-text" ];
+    casks = [
+      "arc"
+      "bitwarden"
+      "bruno"
+      "itsycal"
+      "logitech-options"
+      "stats"
+      "sublime-text"
+    ];
+    masApps = {
+      "Amphetamine" = 937984704;
+      "Microsoft Remote Desktop" = 1295203466;
+    };
   };
 
   nix = {
@@ -83,7 +94,7 @@ with lib; {
 
   nixpkgs = {
     hostPlatform = system;
-    config.allowUnfree = true;
+    config = { allowUnfree = true; };
   };
 
   system = {
