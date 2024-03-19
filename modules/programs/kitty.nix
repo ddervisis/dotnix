@@ -9,7 +9,7 @@ in {
       font = {
         package = (pkgs.nerdfonts.override { fonts = [ "FiraCode" ]; });
         name = "FiraCode Nerd Font";
-        size = 13;
+        size = 12;
       };
       shellIntegration = { enableZshIntegration = true; };
       settings = {
@@ -23,7 +23,7 @@ in {
         "ctrl+c" = "copy_or_interrupt";
         "ctrl+f>2" = "set_font_size 20";
       };
-      environment = { "LS_COLORS" = "1"; };
+      # environment = { "LS_COLORS" = "1"; };
       darwinLaunchOptions = [ "--single-instance" ];
     };
   };

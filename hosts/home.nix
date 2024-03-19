@@ -15,7 +15,8 @@
       ranger
 
       # General configuration
-      # gnupg
+      gnupg
+      pinentry
 
       # Nix language server
       nil

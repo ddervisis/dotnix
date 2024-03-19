@@ -39,7 +39,7 @@
     , ... }:
     let
       vars = {
-        user = "dennis";
+        user = "gr4pe";
         # user = "dennis.dervisis";
         terminal = "kitty";
         editor = "nvim";

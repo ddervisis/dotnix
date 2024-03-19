@@ -56,6 +56,17 @@
     pathsToLink = [ "/share/zsh" ];
   };
 
+  programs = {
+    ssh.startAgent = false;
+    gnupg = {
+      agent = {
+        enable = true;
+        enableSSHSupport = true;
+        pinentryFlavor = "tty";
+      };
+    };
+  };
+
   services = {
     # pipewire = {
     #   enable = true;

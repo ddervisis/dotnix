@@ -2,7 +2,7 @@
 
 let
   mkSystem = { hostName, system, stateVersion ? "23.11", monitors ? { } }:
-    nixpkgs.lib.nixosSystem rec {
+    nixpkgs.lib.nixosSystem {
       specialArgs = {
         inherit inputs nixpkgs vars hostName system stateVersion;
       };
@@ -33,14 +33,21 @@ in {
     stateVersion = "23.11";
     monitors = {
       primary = {
-        output = "HDMI-A-2"; # $ swaymsg -t get_outputs
+        output = "DP-2"; # $ swaymsg -t get_outputs
         resolution = {
           width = "2560";
           height = "1440";
         };
       };
       secondary = {
-        output = "DP-1";
+        output = "HDMI-A-1";
+        resolution = {
+          width = "2560";
+          height = "1440";
+        };
+      };
+      tertiary = {
+        output = "DP-3";
         resolution = {
           width = "2560";
           height = "1440";

@@ -1,10 +1,19 @@
 { config, lib, pkgs, ... }:
 
 {
-  hardware.opengl = {
-    enable = true;
-    driSupport = true;
-    # nvidia.modesettings.enable = true;
+  hardware = {
+    opengl = {
+      enable = true;
+      driSupport = true;
+      # nvidia.modesettings.enable = true;
+    };
+    nvidia = {
+      modesetting.enable = true;
+      powerManagement.enable = false;
+      powerManagement.finegrained = false;
+      open = false;
+      nvidiaSettings = true;
+    };
   };
 
   environment.systemPackages = with pkgs; [
@@ -20,7 +29,7 @@
     hyprland = {
       enable = true;
       xwayland.enable = true;
-      # enableNvidiaPatches = true;
+      enableNvidiaPatches = true;
     };
   };
 

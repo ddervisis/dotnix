@@ -54,10 +54,10 @@
 
       colorschemes.nord = {
         enable = true;
-        settings = {
-          borders = true;
-          contrast = true;
-        };
+        #settings = {
+        borders = true;
+        contrast = true;
+        #};
       };
 
       # clipboard = {

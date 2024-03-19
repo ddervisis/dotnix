@@ -83,6 +83,13 @@
             "${monitors.secondary.resolution.width}x${monitors.secondary.resolution.height}";
           pos = "${monitors.primary.resolution.width} 0";
         };
+        "${monitors.tertiary.output}" = {
+          mode =
+            "${monitors.tertiary.resolution.width}x${monitors.tertiary.resolution.height}";
+          pos = "${
+              monitors.primary.resolution.width / 2
+            } -${monitors.primary.resolution.height}";
+        };
       };
 
       keybindings = {

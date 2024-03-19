@@ -33,6 +33,7 @@
       #cpu,
       #disk,
       #temperature,
+      #custom-fanspeed,
       #battery,
       #tray {
         background-color: #252734;
@@ -73,6 +74,9 @@
       #temperature.critical {
         color: #d3343a;
       }
+      #custom-fanspeed {
+        color: #7aa2f7;
+      }
       #clock {
         color: #7aa2f7;
       }
@@ -108,20 +112,24 @@
     settings = [{
       layer = "top";
       position = "top";
-      height = 30;
-      output = [ monitors.primary.output monitors.secondary.output ];
+      height = 32;
+      output = [
+        monitors.primary.output
+        monitors.secondary.output
+        monitors.tertiary.output
+      ];
       tray = { spacing = 10; };
       modules-center = [ "clock" ];
-      modules-left =
-        [ "hyprland/workspaces" "hyprland/window" "hyprland/mode" ];
+      modules-left = [ "hyprland/workspaces" "hyprland/window" ];
       modules-right = [
         "cpu"
         "memory"
         "disk"
         "temperature"
+        "custom/fanspeed"
         "pulseaudio"
-        "battery"
-        "bluetooth"
+        # "battery"
+        # "bluetooth"
         "network"
         "tray"
       ];
@@ -136,7 +144,7 @@
           "5" = "";
         };
         all-outputs = true;
-        persistent_workspaces = {
+        persistent-workspaces = {
           "1" = [ ];
           "2" = [ ];
           "3" = [ ];
@@ -174,11 +182,20 @@
 
       temperature = {
         tooltip = false;
-        thermal-zone = 1;
-        critical-threshold = 80;
+        # thermal-zone = 1;
+        hwmon-path = "/sys/class/hwmon/hwmon4/temp1_input";
+        critical-threshold = 50;
         format = "{temperatureC}󰔄 {icon}";
         format-critical = "🔥 {temperatureC}󰔄 {icon}";
         format-icons = [ "" "" "" "" "" ];
+      };
+
+      "custom/fanspeed" = {
+        tooltip = false;
+        interval = 10;
+        exec =
+          "/run/current-system/sw/bin/cat /sys/class/hwmon/hwmon4/fan1_input";
+        format = "{}rpm ✇";
       };
 
       battery = {

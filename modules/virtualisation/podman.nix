@@ -4,7 +4,7 @@
   virtualisation = {
     podman = {
       enable = true;
-      enableNvidia = false;
+      enableNvidia = true;
       dockerCompat = true;
       dockerSocket.enable = false;
     };
