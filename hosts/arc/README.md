@@ -4,7 +4,7 @@
 
 | Type | Value |
 | --- | --- |
-| CPU | 6c/8t |
+| CPU | 8c/16t |
 | RAM | 32GB |
 | boot disk | 512 GB |
 | data disk | 1 TB |
@@ -16,8 +16,8 @@
 
 sudo -i
 
-export DISK=/dev/disk/by-id/ata-TS512GMTS430S_I007800665
-export DATA_DISK=/dev/disk/by-id/nvme-Samsung_SSD_980_PRO_1TB_S5GXNF0W514426W
+export DISK=/dev/disk/by-id/nvme-Samsung_SSD_970_EVO_Plus_500GB_S4EVNX1R908208R
+export DATA_DISK=/dev/disk/by-id/nvme-CT4000P3PSSD8_2242E67C5466
 
 parted ${DISK} -- mklabel gpt
 parted ${DISK} -- mkpart ESP fat32 1MiB 512MiB

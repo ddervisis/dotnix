@@ -12,30 +12,45 @@
   fileSystems."/" = {
     device = "/dev/disk/by-label/root";
     fsType = "btrfs";
-    options = [ "subvol=root" ];
+    options = [ "subvol=root" "compress=zstd" "noatime" "nodiratime" ];
   };
 
   fileSystems."/home" = {
     device = "/dev/disk/by-label/root";
     fsType = "btrfs";
-    options = [ "subvol=home" ];
+    options = [ "subvol=home" "compress=zstd" "noatime" "nodiratime" ];
   };
 
   fileSystems."/nix" = {
     device = "/dev/disk/by-label/root";
     fsType = "btrfs";
-    options = [ "subvol=nix" ];
+    options = [ "subvol=nix" "compress=zstd" "noatime" "nodiratime" ];
   };
 
   fileSystems."/var/log" = {
     device = "/dev/disk/by-label/root";
     fsType = "btrfs";
-    options = [ "subvol=log" ];
+    options = [ "subvol=log" "compress=zstd" "noatime" "nodiratime" ];
   };
 
   fileSystems."/boot" = {
     device = "/dev/disk/by-label/boot";
     fsType = "vfat";
+  };
+
+  fileSystems."/data" = {
+    device = "/dev/disk/by-label/data";
+    fsType = "btrfs";
+    options = [
+      "subvol=data"
+      "compress=zstd"
+      "noatime"
+      "nodiratime"
+      # "defaults"
+      # "user"
+      # "uid=1000"
+      # "exec"
+    ];
   };
 
   swapDevices = [{ device = "/dev/disk/by-label/swap"; }];

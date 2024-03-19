@@ -23,6 +23,8 @@ in {
     };
   };
 
+  systemd.enableEmergencyMode = false;
+
   hardware = {
     opengl = {
       enable = true;
@@ -75,6 +77,8 @@ in {
       lm_sensors
     ];
   };
+
+  programs = { steam.enable = true; };
 
   services = {
     udev.packages = with pkgs; [ yubikey-personalization ];
