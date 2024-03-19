@@ -65,9 +65,11 @@ in {
 
   environment = {
     systemPackages = with pkgs; [
-      # bitwarden
+      bitwarden
+      mullvad-vpn
       spotify
-      yubioath-flutter
+      # yubioath-flutter
+      # yubikey-manager-qt
       ripgrep
 
       lm_sensors
