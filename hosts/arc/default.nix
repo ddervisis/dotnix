@@ -68,13 +68,12 @@ in {
   environment = {
     systemPackages = with pkgs; [
       bitwarden
-      mullvad-vpn
-      spotify
-      # yubioath-flutter
-      # yubikey-manager-qt
-      ripgrep
-
+      jellyfin-media-player
       lm_sensors
+      lutris
+      mullvad-vpn
+      ripgrep
+      spotify
     ];
   };
 
@@ -84,4 +83,6 @@ in {
     udev.packages = with pkgs; [ yubikey-personalization ];
     pcscd.enable = true;
   };
+
+  security.pam.services.swaylock = { };
 }

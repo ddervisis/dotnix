@@ -97,7 +97,7 @@ in {
         "$mod, R, forcerendererreload"
         "$mod, SPACE, exec, ${pkgs.rofi}/bin/rofi -show drun -show-icons"
         "$mod, E, exec, ${pkgs.pcmanfm}/bin/pcmanfm"
-        # "$mod, L, exec, ${pkgs.swaylock-fancy}/bin/swaylock-fancy"
+        "$mod, L, exec, ${pkgs.swaylock-fancy}/bin/swaylock-fancy"
         "$mod, F, exec, ${pkgs.firefox}"
 
         "$mod CTRL, M, togglespecialworkspace, minimized"
@@ -172,6 +172,14 @@ in {
         # Move/resize windows with $mod + LMB/RMB and dragging
         "$mod, mouse:272, movewindow"
         "$mod, mouse:273, resizewindow"
+      ];
+
+      windowrule = [
+        "float,title:(Spotify)"
+        "float,steam"
+      ];
+      windowrulev2 = [
+        "float,class:(lutris),title:(Lutris)"
       ];
     };
   };
