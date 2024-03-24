@@ -174,12 +174,10 @@ in {
         "$mod, mouse:273, resizewindow"
       ];
 
-      windowrule = [
-        "float,title:(Spotify)"
-        "float,steam"
-      ];
+      windowrule = [ "float,title:(Spotify)" "float,steam" ];
       windowrulev2 = [
         "float,class:(lutris),title:(Lutris)"
+        "float,class:(Bitwarden),title:(Bitwarden)"
       ];
     };
   };

@@ -324,7 +324,7 @@ in {
         ];
       ExtensionUpdate = false;
       "3rdparty".Extensions = {
-        "@testpilot-containers".adminSettings = {};
+        # "@testpilot-containers".adminSettings = { };
         "uBlock0@raymondhill.net".adminSettings = {
           userSettings = rec {
             uiTheme = "dark";

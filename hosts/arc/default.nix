@@ -1,9 +1,16 @@
-{ nixpkgs, nur, config, lib, vars, hostName, system, ... }:
+{ nixpkgs, config, lib, vars, hostName, system, ... }:
 
 let
   pkgs = import nixpkgs {
     inherit system;
     config.allowUnfree = true;
+  };
+  hwmon = {
+    name = "hwmon4";
+    mintemp = "15";
+    maxtemp = "40";
+    minstart = "130";
+    minstop = "90";
   };
 in {
   imports = [ (import ./hardware-configuration.nix) ] ++ [
@@ -43,14 +50,14 @@ in {
       enable = true;
       config = ''
         INTERVAL=10
-        DEVPATH=hwmon4=devices/pci0000:00/0000:00:01.2/0000:02:00.0/0000:03:08.0/0000:06:00.3/usb3/3-1/3-1:1.1/0003:0C70:F011.0001
-        DEVNAME=hwmon4=octo
-        FCTEMPS=hwmon4/pwm1=hwmon4/temp1_input hwmon4/pwm3=hwmon4/temp1_input hwmon4/pwm5=hwmon4/temp1_input hwmon4/pwm7=hwmon4/temp1_input
-        FCFANS=hwmon4/pwm1=hwmon4/fan1_input hwmon4/pwm3=hwmon4/fan3_input hwmon4/pwm5=hwmon4/fan5_input hwmon4/pwm7=hwmon4/fan7_input
-        MINTEMP=hwmon4/pwm1=15 hwmon4/pwm3=15 hwmon4/pwm5=15 hwmon4/pwm7=15
-        MAXTEMP=hwmon4/pwm1=40 hwmon4/pwm3=40 hwmon4/pwm5=40 hwmon4/pwm7=40
-        MINSTART=hwmon4/pwm1=130 hwmon4/pwm3=130 hwmon4/pwm5=130 hwmon4/pwm7=130
-        MINSTOP=hwmon4/pwm1=90 hwmon4/pwm3=90 hwmon4/pwm5=90 hwmon4/pwm7=90
+        DEVPATH=${hwmon.name}=devices/pci0000:00/0000:00:01.2/0000:02:00.0/0000:03:08.0/0000:06:00.3/usb3/3-1/3-1:1.1/0003:0C70:F011.0004
+        DEVNAME=${hwmon.name}=octo
+        FCTEMPS=${hwmon.name}/pwm1=${hwmon.name}/temp1_input ${hwmon.name}/pwm3=${hwmon.name}/temp1_input ${hwmon.name}/pwm5=${hwmon.name}/temp1_input ${hwmon.name}/pwm7=${hwmon.name}/temp1_input
+        FCFANS=${hwmon.name}/pwm1=${hwmon.name}/fan1_input ${hwmon.name}/pwm3=${hwmon.name}/fan3_input ${hwmon.name}/pwm5=${hwmon.name}/fan5_input ${hwmon.name}/pwm7=${hwmon.name}/fan7_input
+        MINTEMP=${hwmon.name}/pwm1=${hwmon.mintemp} ${hwmon.name}/pwm3=${hwmon.mintemp} ${hwmon.name}/pwm5=${hwmon.mintemp} ${hwmon.name}/pwm7=${hwmon.mintemp}
+        MAXTEMP=${hwmon.name}/pwm1=${hwmon.maxtemp} ${hwmon.name}/pwm3=${hwmon.maxtemp} ${hwmon.name}/pwm5=${hwmon.maxtemp} ${hwmon.name}/pwm7=${hwmon.maxtemp}
+        MINSTART=${hwmon.name}/pwm1=${hwmon.minstart} ${hwmon.name}/pwm3=${hwmon.minstart} ${hwmon.name}/pwm5=${hwmon.minstart} ${hwmon.name}/pwm7=${hwmon.minstart}
+        MINSTOP=${hwmon.name}/pwm1=${hwmon.minstop} ${hwmon.name}/pwm3=${hwmon.minstop} ${hwmon.name}/pwm5=${hwmon.minstop} ${hwmon.name}/pwm7=${hwmon.minstop}
       '';
     };
   };

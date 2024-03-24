@@ -1,6 +1,6 @@
 { config, lib, pkgs, vars, monitors, ... }:
-
-{
+let hwmon = "hwmon4";
+in {
   programs.waybar = {
     enable = true;
     systemd.enable = true;
@@ -183,7 +183,7 @@
       temperature = {
         tooltip = false;
         # thermal-zone = 1;
-        hwmon-path = "/sys/class/hwmon/hwmon4/temp1_input";
+        hwmon-path = "/sys/class/hwmon/${hwmon}/temp1_input";
         critical-threshold = 50;
         format = "{temperatureC}󰔄 {icon}";
         format-critical = "🔥 {temperatureC}󰔄 {icon}";
@@ -194,7 +194,7 @@
         tooltip = false;
         interval = 10;
         exec =
-          "/run/current-system/sw/bin/cat /sys/class/hwmon/hwmon4/fan1_input";
+          "/run/current-system/sw/bin/cat /sys/class/hwmon/${hwmon}/fan1_input";
         format = "{}rpm ✇";
       };
 

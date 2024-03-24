@@ -99,7 +99,7 @@
               "1" = "<C-j>";
               "2" = "<C-k>";
               "3" = "<C-l>";
-              "4" = "<C-m>";
+              "4" = "<C-;>";
             };
             navNext = "<C-Tab>";
             navPrev = "<C-S-Tab>";
@@ -347,6 +347,16 @@
         {
           key = "<leader>t";
           action = ":ToggleTerm<CR>";
+          options = { silent = true; };
+        }
+        {
+          key = ''<leader>q"'';
+          action = ''ciw""<Esc>P'';
+          options = { silent = true; };
+        }
+        {
+          key = "<leader>q'";
+          action = "ciw''<Esc>P";
           options = { silent = true; };
         }
       ];
