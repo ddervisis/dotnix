@@ -54,10 +54,10 @@
 
       colorschemes.nord = {
         enable = true;
-        #settings = {
-        borders = true;
-        contrast = true;
-        #};
+        settings = {
+          borders = true;
+          contrast = true;
+        };
       };
 
       # clipboard = {
@@ -81,7 +81,7 @@
         cmp-nvim-lsp.enable = true;
         cmp-nvim-lsp-signature-help.enable = true;
         cmp-nvim-lua.enable = true;
-        comment-nvim.enable = true;
+        comment.enable = true;
         fugitive = { enable = true; };
         gitblame.enable = true;
         gitsigns.enable = true;

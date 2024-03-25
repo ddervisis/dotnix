@@ -2,41 +2,34 @@
   description = "NixOS config";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/release-23.11";
-    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixos-hardware.url = "github:nixos/nixos-hardware";
 
     home-manager = {
-      url = "github:nix-community/home-manager/release-23.11";
+      url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
     home-manager-unstable = {
       url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     darwin = {
       url = "github:lnl7/nix-darwin/master";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     nur = { url = "github:nix-community/NUR"; };
 
     nixvim = {
-      url = "github:nix-community/nixvim/nixos-23.11";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    nixvim-unstable = {
       url = "github:nix-community/nixvim";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = inputs@{ self, nixpkgs, nixpkgs-unstable, nixos-hardware
-    , home-manager, home-manager-unstable, darwin, nur, nixvim, nixvim-unstable
-    , ... }:
+  outputs = inputs@{ self, nixpkgs, nixos-hardware, home-manager
+    , home-manager-unstable, darwin, nur, nixvim, ... }:
     let
       vars = {
         user = "gr4pe";
@@ -52,8 +45,7 @@
 
       darwinConfigurations = (import ./darwin {
         inherit (nixpkgs) lib;
-        inherit inputs nixpkgs-unstable home-manager-unstable darwin
-          nixvim-unstable vars;
+        inherit inputs nixpkgs home-manager-unstable darwin vars;
       });
 
       # homeConfigurations = (import ./nix {

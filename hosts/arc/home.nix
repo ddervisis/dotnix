@@ -10,8 +10,8 @@
 
   home = {
     packages = with pkgs; [ mako feh vlc fzf ];
-    file.".config/wall".source =
-      config.lib.file.mkOutOfStoreSymlink ../../modules/themes/wall;
+    file.".config/wall.png".source =
+      config.lib.file.mkOutOfStoreSymlink ../../modules/themes/wall.png;
   };
 
   gtk = {

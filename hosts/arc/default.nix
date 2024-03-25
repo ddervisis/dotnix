@@ -1,4 +1,4 @@
-{ nixpkgs, config, lib, vars, hostName, system, ... }:
+{ nixpkgs, lib, hostName, system, ... }:
 
 let
   pkgs = import nixpkgs {
@@ -20,6 +20,7 @@ in {
 
   boot = {
     kernelPackages = pkgs.linuxPackages_latest;
+    binfmt.emulatedSystems = [ "aarch64-linux" ];
     loader = {
       systemd-boot = {
         enable = true;
@@ -81,15 +82,22 @@ in {
       mullvad-vpn
       ripgrep
       spotify
+      teamspeak5_client
     ];
   };
 
-  programs = { steam.enable = true; };
+  programs = {
+    steam = {
+      enable = true;
+      gamescopeSession.enable = true;
+    };
+    gamescope.enable = true;
+  };
 
   services = {
     udev.packages = with pkgs; [ yubikey-personalization ];
     pcscd.enable = true;
   };
 
-  security.pam.services.swaylock = { };
+  security.pam.services.hyprlock = { };
 }

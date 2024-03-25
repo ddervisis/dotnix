@@ -58,8 +58,9 @@
   services.xserver.videoDrivers = [ "nvidia" ];
 
   environment.systemPackages = with pkgs; [
-    swayidle
-    swaylock
+    hypridle
+    hyprlock
+    hyprpaper
     xdg-user-dirs
     xdg-utils
   ];
@@ -77,7 +78,6 @@
     hyprland = {
       enable = true;
       xwayland.enable = true;
-      enableNvidiaPatches = true;
     };
   };
 

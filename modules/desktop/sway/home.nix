@@ -20,13 +20,12 @@
           command = "${pkgs.autotiling}/bin/autotiling";
           always = true;
         }
-        {
-          command = ''
-            ${pkgs.swayidle}/bin/swayidle -w \
-                before-sleep '${pkgs.swaylock-fancy}/bin/swaylock-fancy'
-          '';
-          always = true;
-        }
+        # {
+        #   command = ''
+        #     ${pkgs.swayidle}/bin/swayidle -w before-sleep '${pkgs.swaylock-fancy}/bin/swaylock-fancy'
+        #   '';
+        #   always = true;
+        # }
         #{command = ''
         #  ${pkgs.swayidle}/bin/swayidle \
         #    timeout 120 '${pkgs.swaylock-fancy}/bin/swaylock-fancy' \
