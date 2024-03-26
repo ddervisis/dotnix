@@ -1,14 +1,5 @@
-{ pkgs, config, lib, ... }:
-let
-  kernelSource = {
-    url = "https://gitlab.com/vriska/nix-rpi5/-/archive/main.tar.gz";
-    sha256 = "12110c0sbycpr5sm0sqyb76aq214s2lyc0a5yiyjkjhrabghgdcb";
-  };
-in {
+{ pkgs, config, lib, rpi5kernel, ... }: {
   sdImage.compressImage = false;
-
-  # This causes an overlay which causes a lot of rebuilding
-  # environment.noXlibs = lib.mkForce false;
 
   # "${nixpkgs}/nixos/modules/installer/sd-card/sd-image-aarch64.nix" creates a
   # disk with this label on first boot. Therefore, we need to keep it. It is the
@@ -18,9 +9,7 @@ in {
     fsType = "ext4";
   };
   boot = {
-    kernelPackages = lib.mkForce pkgs.linuxPackages_latest;
-    # kernelPackages = (import (builtins.fetchTarball
-    #   kernelSource)).legacyPackages.aarch64-linux.linuxPackages_rpi5;
+    kernelPackages = rpi5kernel.legacyPackages.aarch64-linux.linuxPackages_rpi5;
     loader = {
       generic-extlinux-compatible.enable = lib.mkDefault true;
       grub.enable = lib.mkDefault false;

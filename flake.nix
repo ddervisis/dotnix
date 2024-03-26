@@ -21,10 +21,15 @@
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    rpi5kernel = {
+      url = "gitlab:vriska/nix-rpi5";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs@{ self, nixpkgs, nixos-hardware, home-manager
-    , darwin, nur, nixvim, ... }:
+    , darwin, nur, nixvim, rpi5kernel, ... }:
     let
       vars = {
         user = "gr4pe";
@@ -43,14 +48,9 @@
         inherit inputs nixpkgs home-manager nixvim darwin vars;
       });
 
-      # homeConfigurations = (import ./nix {
-      #   inherit (nixpkgs) lib;
-      #   inherit inputs nixpkgs home-manager nur nixvim vars;
-      # });
-
       piConfigurations = (import ./pi {
         inherit (nixpkgs) lib;
-        inherit inputs nixpkgs nixos-hardware vars;
+        inherit inputs nixpkgs nixos-hardware rpi5kernel vars;
       });
     };
 }

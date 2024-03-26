@@ -1,11 +1,11 @@
-{ inputs, nixpkgs, nixos-hardware, vars, ... }:
+{ inputs, nixpkgs, nixos-hardware, rpi5kernel, vars, ... }:
 
 let
   system = "aarch64-linux";
   mkSystem = { hostName, stateVersion ? "23.11", extraModules ? [ ] }:
-    nixpkgs.lib.nixosSystem rec {
+    nixpkgs.lib.nixosSystem {
       specialArgs = {
-        inherit inputs nixpkgs vars hostName system stateVersion;
+        inherit inputs nixpkgs rpi5kernel vars hostName system stateVersion;
       };
       modules = [
         nixos-hardware.nixosModules.raspberry-pi-4

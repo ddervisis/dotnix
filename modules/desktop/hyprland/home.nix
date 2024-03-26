@@ -1,6 +1,6 @@
 { config, lib, pkgs, vars, monitors, ... }:
 
-let 
+let
   colors = import ../../themes/colors.nix;
   wallpaper = "/home/${vars.user}/.config/wall.png";
 in {
@@ -54,8 +54,8 @@ in {
         "col.shadow" = "${teal}";
         "col.shadow_inactive" = "${base}";
 
-        active_opacity = 0.95;
-        inactive_opacity = 0.95;
+        active_opacity = 1.0;
+        inactive_opacity = 1.0;
         fullscreen_opacity = 1.0;
       };
 
@@ -183,8 +183,8 @@ in {
         "$mod, mouse:273, resizewindow"
       ];
 
-      windowrule = [ 
-        "float,title:(Spotify)" 
+      windowrule = [
+        "float,title:(Spotify)"
         # "float,steam" 
       ];
       windowrulev2 = [
@@ -248,7 +248,7 @@ in {
 
     input-field {
       monitor =
-      size = 200, 50
+      size = 300, 50
       outline_thickness = 3
       dots_size = 0.33 # Scale of input-field height, 0.2 - 0.8
       dots_spacing = 0.15 # Scale of dots' absolute size, 0.0 - 1.0
@@ -276,11 +276,11 @@ in {
       halign = center
       valign = center
     }
-    '';
+  '';
 
-    home.file.".config/hypr/hyprpaper.conf".text = ''
-      preload = ${wallpaper} 
-      wallpaper = ,${wallpaper}
-      splash = false
-    '';
+  home.file.".config/hypr/hyprpaper.conf".text = ''
+    preload = ${wallpaper} 
+    wallpaper = ,${wallpaper}
+    splash = false
+  '';
 }
