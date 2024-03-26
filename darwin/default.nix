@@ -1,9 +1,9 @@
-{ lib, inputs, nixpkgs-unstable, darwin, home-manager-unstable, nixvim-unstable
+{ lib, inputs, nixpkgs, darwin, home-manager, nixvim
 , vars, ... }:
 
 let
   system = "aarch64-darwin";
-  pkgs = import nixpkgs-unstable {
+  pkgs = import nixpkgs {
     inherit system;
     config.allowUnfree = true;
   };
@@ -13,11 +13,11 @@ let
       inherit system;
       specialArgs = { inherit inputs pkgs system vars; };
       modules = [
-        nixvim-unstable.nixDarwinModules.nixvim
+        nixvim.nixDarwinModules.nixvim
         ./${hostName}
         ./configuration.nix
 
-        home-manager-unstable.darwinModules.home-manager
+        home-manager.darwinModules.home-manager
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
@@ -25,7 +25,7 @@ let
           home-manager.users.${vars.user} = {
             imports = [ (import ./home.nix) ]
               ++ [ (import ./${hostName}/home.nix) ]
-              ++ [ nixvim-unstable.homeManagerModules.nixvim ];
+              ++ [ nixvim.homeManagerModules.nixvim ];
           };
         }
       ];

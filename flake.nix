@@ -10,11 +10,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    home-manager-unstable = {
-      url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     darwin = {
       url = "github:lnl7/nix-darwin/master";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -29,7 +24,7 @@
   };
 
   outputs = inputs@{ self, nixpkgs, nixos-hardware, home-manager
-    , home-manager-unstable, darwin, nur, nixvim, ... }:
+    , darwin, nur, nixvim, ... }:
     let
       vars = {
         user = "gr4pe";
@@ -45,7 +40,7 @@
 
       darwinConfigurations = (import ./darwin {
         inherit (nixpkgs) lib;
-        inherit inputs nixpkgs home-manager-unstable darwin vars;
+        inherit inputs nixpkgs home-manager nixvim darwin vars;
       });
 
       # homeConfigurations = (import ./nix {
