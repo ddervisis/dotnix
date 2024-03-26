@@ -1,5 +1,4 @@
-{ lib, inputs, nixpkgs, darwin, home-manager, nixvim
-, vars, ... }:
+{ lib, inputs, nixpkgs, darwin, home-manager, nixvim, vars, ... }:
 
 let
   system = "aarch64-darwin";

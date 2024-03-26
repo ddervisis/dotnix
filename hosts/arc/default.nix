@@ -15,6 +15,7 @@ let
 in {
   imports = [ (import ./hardware-configuration.nix) ] ++ [
     (import ../../modules/desktop/hyprland/hyprland.nix)
+    (import ../../modules/services/syncthing.nix)
     (import ../../modules/desktop/greetd.nix)
   ] ++ (import ../../modules/virtualisation) ++ (import ../../modules/hardware);
 
@@ -75,8 +76,10 @@ in {
 
   environment = {
     systemPackages = with pkgs; [
+      awscli
       bitwarden
       jellyfin-media-player
+      jq
       lm_sensors
       lutris
       mullvad-vpn

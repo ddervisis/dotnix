@@ -28,8 +28,8 @@
     };
   };
 
-  outputs = inputs@{ self, nixpkgs, nixos-hardware, home-manager
-    , darwin, nur, nixvim, rpi5kernel, ... }:
+  outputs = inputs@{ self, nixpkgs, nixos-hardware, home-manager, darwin, nur
+    , nixvim, rpi5kernel, ... }:
     let
       vars = {
         user = "gr4pe";
