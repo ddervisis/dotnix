@@ -3,15 +3,17 @@
 {
   services.syncthing = {
     enable = true;
-    user = vars.user;
+    user = "syncthing";
     group = "syncthing";
     systemService = true;
     guiAddress = "127.0.0.1:8384";
+    overrideFolders = false;
     settings = {
       gui = { theme = "dark"; };
-      options = { localAnnounceEnabled = false; };
+      options = {
+        localAnnounceEnabled = false;
+        urAccepted = -1;
+      };
     };
-    dataDir = "/data/services/syncthing";
-    configDir = "/data/services/syncthing/.config/";
   };
 }
