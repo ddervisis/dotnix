@@ -4,6 +4,9 @@
   imports = [
     ../../modules/desktop/hyprland/home.nix
     ../../modules/desktop/waybar.nix
+    ../../modules/desktop/eww
+    ../../modules/desktop/wlogout
+    ../../modules/desktop/dunst.nix
     ../../modules/desktop/firefox.nix
     ../../modules/desktop/rofi.nix
   ];

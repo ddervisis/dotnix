@@ -77,6 +77,7 @@ in {
   environment = {
     systemPackages = with pkgs; [
       awscli
+      bc
       bitwarden
       jellyfin-media-player
       jq
@@ -86,6 +87,7 @@ in {
       ripgrep
       spotify
       teamspeak5_client
+      unzip
     ];
   };
 

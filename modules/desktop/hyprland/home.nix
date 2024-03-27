@@ -270,7 +270,6 @@ in {
       numlock_color = -1
       bothlock_color = -1 # when both locks are active. -1 means don't change outer color (same for above)
       invert_numlock = false # change color if numlock is off
-      swap_font_color = false # see below
 
       position = 0, -280
       halign = center
