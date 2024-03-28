@@ -85,6 +85,7 @@ in {
       mullvad-vpn
       ripgrep
       spotify
+      teamviewer
       teamspeak5_client
     ];
   };
@@ -119,6 +120,7 @@ in {
   services = {
     udev.packages = with pkgs; [ yubikey-personalization ];
     pcscd.enable = true;
+    teamviewer.enable = true;
   };
 
   security.pam.services.hyprlock = { };

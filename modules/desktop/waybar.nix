@@ -50,7 +50,7 @@ in {
       #workspaces button:hover {
         background-color: rgba(0, 0, 0, 0.2);
       }
-      #workspaces button.focused {
+      #workspaces button.active {
         color: #c678dd;
       }
       #workspaces button.urgent {
@@ -151,6 +151,9 @@ in {
           "4" = [ ];
           "5" = [ ];
         };
+        on-scroll-up = "/etc/profiles/per-user/${vars.user}/bin/hyprctl dispatch workspace e+1";
+        on-scroll-down = "/etc/profiles/per-user/${vars.user}/bin/hyprctl dispatch workspace e-1";
+        on-click = "activate";
       };
 
       clock = {

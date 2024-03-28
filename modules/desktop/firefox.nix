@@ -151,7 +151,7 @@ let
     "datareporting.policy.dataSubmissionEnabled" = false;
     "devtools.selfxss.count" = 5; # Allow pasting into console
     "dom.battery.enabled" = false;
-    "dom.security.https_only_mode" = true;
+    "dom.security.https_only_mode" = false;
     "experiments.activeExperiment" = false;
     "experiments.enabled" = false;
     "experiments.supported" = false;
@@ -280,7 +280,7 @@ in {
       DisableProfileRefresh = true;
       DisableSafeMode = true;
       DisableSecurityBypass = {
-        InvalidCertificate = true;
+        InvalidCertificate = false;
         SafeBrowsing = true;
       };
       DisableSetDesktopBackground = true;
