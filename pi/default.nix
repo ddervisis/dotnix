@@ -1,4 +1,4 @@
-{ inputs, nixpkgs, nixos-hardware, rpi5kernel, vars, ... }:
+{ inputs, nixpkgs, rpi5kernel, vars, ... }:
 
 let
   system = "aarch64-linux";
@@ -8,10 +8,8 @@ let
         inherit inputs nixpkgs rpi5kernel vars hostName system stateVersion;
       };
       modules = [
-        nixos-hardware.nixosModules.raspberry-pi-4
-        "${nixpkgs}/nixos/modules/profiles/minimal.nix"
-        ./${hostName}
-        ./configuration.nix
+        # "${nixpkgs}/nixos/modules/profiles/minimal.nix"
+        ./${hostName}/configuration.nix
       ] ++ extraModules;
     };
 

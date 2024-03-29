@@ -151,8 +151,10 @@ in {
           "4" = [ ];
           "5" = [ ];
         };
-        on-scroll-up = "/etc/profiles/per-user/${vars.user}/bin/hyprctl dispatch workspace e+1";
-        on-scroll-down = "/etc/profiles/per-user/${vars.user}/bin/hyprctl dispatch workspace e-1";
+        on-scroll-up =
+          "/etc/profiles/per-user/${vars.user}/bin/hyprctl dispatch workspace e+1";
+        on-scroll-down =
+          "/etc/profiles/per-user/${vars.user}/bin/hyprctl dispatch workspace e-1";
         on-click = "activate";
       };
 

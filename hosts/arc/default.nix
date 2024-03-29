@@ -83,10 +83,12 @@ in {
       lm_sensors
       lutris
       mullvad-vpn
+      parted
       ripgrep
       spotify
       teamviewer
       teamspeak5_client
+      unzip
     ];
   };
 

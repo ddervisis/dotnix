@@ -7,7 +7,6 @@ let
         inherit inputs nixpkgs vars hostName system stateVersion;
       };
       modules = [
-        #nur.nixosModules.nur
         ./${hostName}
         ./configuration.nix
 
