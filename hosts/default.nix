@@ -1,4 +1,4 @@
-{ inputs, nixpkgs, home-manager, nur, nixvim, vars, ... }:
+{ inputs, nixpkgs, home-manager, nur, nixvim, rpi5kernel, vars, ... }:
 
 let
   mkSystem = { hostName, system, stateVersion ? "23.11", monitors ? { } }:
@@ -25,6 +25,25 @@ let
         }
       ];
     };
+
+  mkPi = { hostName, system, stateVersion ? "23.11", extraModules ? [ ] }:
+    nixpkgs.lib.nixosSystem {
+      specialArgs = {
+        inherit inputs nixpkgs rpi5kernel vars hostName system stateVersion;
+      };
+      modules = [ ./${hostName} ] ++ extraModules;
+    };
+
+  mkPiImage = { hostName, system, stateVersion ? "23.11" }:
+    (mkPi {
+      hostName = hostName;
+      system = system;
+      stateVersion = stateVersion;
+      extraModules = [
+        "${nixpkgs}/nixos/modules/installer/sd-card/sd-image-aarch64.nix"
+        { disabledModules = [ "profiles/base.nix" ]; }
+      ];
+    }).config.system.build.sdImage;
 in {
   arc = mkSystem {
     hostName = "arc";
@@ -58,6 +77,18 @@ in {
   castle-peak = mkSystem {
     hostName = "castle-peak";
     system = "x86_64-linux";
+    stateVersion = "23.11";
+  };
+
+  pi5 = mkPi {
+    hostName = "pi5";
+    system = "aarch64-linux";
+    stateVersion = "23.11";
+  };
+
+  pi5Image = mkPiImage {
+    hostName = "pi5";
+    system = "aarch64-linux";
     stateVersion = "23.11";
   };
 }

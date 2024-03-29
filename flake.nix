@@ -22,10 +22,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    rpi5kernel = {
-      url = "gitlab:vriska/nix-rpi5";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    rpi5kernel.url = "gitlab:vriska/nix-rpi5";
   };
 
   outputs = inputs@{ self, nixpkgs, nixos-hardware, home-manager, darwin, nur
@@ -40,17 +37,12 @@
     in {
       nixosConfigurations = (import ./hosts {
         inherit (nixpkgs) lib;
-        inherit inputs nixpkgs home-manager nur nixvim vars;
+        inherit inputs nixpkgs home-manager nur nixvim rpi5kernel vars;
       });
 
       darwinConfigurations = (import ./darwin {
         inherit (nixpkgs) lib;
         inherit inputs nixpkgs home-manager nixvim darwin vars;
-      });
-
-      piConfigurations = (import ./pi {
-        inherit (nixpkgs) lib;
-        inherit inputs nixpkgs nixos-hardware rpi5kernel vars;
       });
     };
 }
