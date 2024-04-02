@@ -13,11 +13,17 @@
         autoindent = true;
         backup = false;
         colorcolumn = "80";
-        completeopt = [ "menu" "menuone" "noselect" ];
+        completeopt = [
+          "menu"
+          "menuone"
+          "noselect"
+        ];
         conceallevel = 3;
         expandtab = true;
         fileencoding = "utf-8";
-        fillchars = { eob = " "; };
+        fillchars = {
+          eob = " ";
+        };
         foldlevel = 99;
 
         guicursor = "";
@@ -50,7 +56,9 @@
         wrap = false;
       };
 
-      globals = { mapleader = " "; };
+      globals = {
+        mapleader = " ";
+      };
 
       colorschemes.nord = {
         enable = true;
@@ -82,14 +90,18 @@
         cmp-nvim-lsp-signature-help.enable = true;
         cmp-nvim-lua.enable = true;
         comment.enable = true;
-        fugitive = { enable = true; };
+        fugitive = {
+          enable = true;
+        };
         gitblame.enable = true;
         gitsigns.enable = true;
         hardtime = {
           enable = true;
           disableMouse = true;
         };
-        hmts = { enable = true; };
+        hmts = {
+          enable = true;
+        };
         harpoon = {
           enable = true;
           keymaps = {
@@ -107,7 +119,9 @@
         };
         illuminate.enable = true;
         inc-rename.enable = true;
-        indent-blankline = { enable = true; };
+        indent-blankline = {
+          enable = true;
+        };
         intellitab.enable = true;
         lastplace.enable = true;
         # lint = {
@@ -161,7 +175,6 @@
               gd = "definition";
               gi = "implementation";
               gt = "type_definition";
-
             };
           };
         };
@@ -208,7 +221,10 @@
           };
           sections = {
             lualine_a = [ "mode" ];
-            lualine_b = [ "filename" "branch" ];
+            lualine_b = [
+              "filename"
+              "branch"
+            ];
             lualine_c = [ "fileformat" ];
             lualine_x = [ "progress" ];
             lualine_y = [ "filetype" ];
@@ -262,7 +278,9 @@
         };
         treesitter-context.enable = true;
         trouble.enable = true;
-        undotree = { enable = true; };
+        undotree = {
+          enable = true;
+        };
         which-key.enable = true;
         wilder.enable = true;
       };
@@ -270,22 +288,30 @@
         {
           key = "<Tab>";
           action = ":bnext<CR>";
-          options = { silent = true; };
+          options = {
+            silent = true;
+          };
         }
         {
           key = "<S-Tab>";
           action = ":bprev<CR>";
-          options = { silent = true; };
+          options = {
+            silent = true;
+          };
         }
         {
           key = "<C-s>";
           action = ":w<CR>";
-          options = { silent = true; };
+          options = {
+            silent = true;
+          };
         }
         {
           key = "<C-q>";
           action = ":q<CR>";
-          options = { silent = true; };
+          options = {
+            silent = true;
+          };
         }
         # {
         #   key = "<C-h>";
@@ -306,18 +332,24 @@
           key = "<";
           action = "< gv";
           mode = [ "v" ];
-          options = { silent = true; };
+          options = {
+            silent = true;
+          };
         }
         {
           key = ">";
           action = "> gv";
           mode = [ "v" ];
-          options = { silent = true; };
+          options = {
+            silent = true;
+          };
         }
         {
           key = "<Esc>";
           action = ":noh<CR>";
-          options = { silent = true; };
+          options = {
+            silent = true;
+          };
         }
         {
           key = "<leader>rn";
@@ -327,37 +359,51 @@
         {
           key = "<leader>pv";
           action = ":Ex<CR>";
-          options = { silent = true; };
+          options = {
+            silent = true;
+          };
         }
         {
           key = "<leader>u";
           action = ":UndotreeToggle<CR>";
-          options = { silent = true; };
+          options = {
+            silent = true;
+          };
         }
         {
           key = "<leader>gs";
           action = ":Git<CR>";
-          options = { silent = true; };
+          options = {
+            silent = true;
+          };
         }
         {
           key = "<leader>fp";
           action = ":Telescope projects<CR>";
-          options = { silent = true; };
+          options = {
+            silent = true;
+          };
         }
         {
           key = "<leader>t";
           action = ":ToggleTerm<CR>";
-          options = { silent = true; };
+          options = {
+            silent = true;
+          };
         }
         {
           key = ''<leader>q"'';
           action = ''ciw""<Esc>P'';
-          options = { silent = true; };
+          options = {
+            silent = true;
+          };
         }
         {
           key = "<leader>q'";
           action = "ciw''<Esc>P";
-          options = { silent = true; };
+          options = {
+            silent = true;
+          };
         }
       ];
     };

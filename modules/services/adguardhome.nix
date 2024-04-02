@@ -1,4 +1,9 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 {
   services.adguardhome = {
@@ -8,15 +13,18 @@
     settings = {
       bind_host = "127.0.0.1";
       bind_port = 3000;
-      users = [{
-        name = "test";
-        password =
-          "$2y$10$nZ8Nzu.zpn8CX/RWwgWmqu34MBA9v3Ai8Iybmw2hVLzMZMPEK.sMq";
-      }];
+      users = [
+        {
+          name = "test";
+          password = "$2y$10$nZ8Nzu.zpn8CX/RWwgWmqu34MBA9v3Ai8Iybmw2hVLzMZMPEK.sMq";
+        }
+      ];
       dns = {
         bind_hosts = [ "127.0.0.1" ];
         anonymize_client_ip = true;
-        blocked_services = { ids = [ "tiktok" ]; };
+        blocked_services = {
+          ids = [ "tiktok" ];
+        };
         protection_enabled = true;
         filtering_enabled = true;
         blocking_mode = "nxdomain";
@@ -34,14 +42,18 @@
           "https://family.dns.mullvad.net/dns-query"
           "https://1.1.1.3/dns-query"
         ];
-        fallback_dns =
-          [ "https://dns.mullvad.net/dns-query" "https://1.1.1.1/dns-query" ];
+        fallback_dns = [
+          "https://dns.mullvad.net/dns-query"
+          "https://1.1.1.1/dns-query"
+        ];
         upstream_mode = "load_balance";
         use_http3_upstreams = true;
-        rewrites = [{
-          domain = "*.domain.com";
-          answer = "1.1.1.1";
-        }];
+        rewrites = [
+          {
+            domain = "*.domain.com";
+            answer = "1.1.1.1";
+          }
+        ];
       };
       filtering = {
         protection_enabled = true;

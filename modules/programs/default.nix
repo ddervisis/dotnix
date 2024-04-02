@@ -1,1 +1,4 @@
-[ ./kitty.nix ./gh.nix ]
+[
+  ./kitty.nix
+  ./gh.nix
+]

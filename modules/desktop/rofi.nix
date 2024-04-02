@@ -1,7 +1,15 @@
-{ config, lib, pkgs, vars, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  vars,
+  ...
+}:
 
-let inherit (config.lib.formats.rasi) mkLiteral;
-in {
+let
+  inherit (config.lib.formats.rasi) mkLiteral;
+in
+{
   programs = {
     rofi = {
       package = pkgs.rofi-wayland;
@@ -39,7 +47,9 @@ in {
           background-color = mkLiteral "@bg0";
         };
 
-        "mainbox" = { padding = mkLiteral "12px"; };
+        "mainbox" = {
+          padding = mkLiteral "12px";
+        };
 
         "inputbar" = {
           background-color = mkLiteral "@bg1";
@@ -53,7 +63,9 @@ in {
           children = mkLiteral "[icon-search, entry, case-indicator]";
         };
 
-        "prompt" = { text-color = mkLiteral "@fg2"; };
+        "prompt" = {
+          text-color = mkLiteral "@fg2";
+        };
 
         "icon-search" = {
           expand = false;
@@ -83,7 +95,9 @@ in {
           background-color = mkLiteral "@bg2";
         };
 
-        "textbox" = { padding = mkLiteral "8px 24px"; };
+        "textbox" = {
+          padding = mkLiteral "8px 24px";
+        };
 
         "listview" = {
           background-color = mkLiteral "transparent";
@@ -101,20 +115,26 @@ in {
           border-radius = mkLiteral "16px";
         };
 
-        "element normal active" = { text-color = mkLiteral "@bg3"; };
+        "element normal active" = {
+          text-color = mkLiteral "@bg3";
+        };
 
         "element selected normal, element selected active" = {
           background-color = mkLiteral "@bg3";
         };
 
-        "element selected" = { text-color = mkLiteral "@bg1"; };
+        "element selected" = {
+          text-color = mkLiteral "@bg1";
+        };
 
         "element-icon" = {
           size = mkLiteral "1em";
           vertical-align = mkLiteral "0.5";
         };
 
-        "element-text" = { text-color = mkLiteral "inherit"; };
+        "element-text" = {
+          text-color = mkLiteral "inherit";
+        };
       };
     };
   };

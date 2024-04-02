@@ -1,7 +1,9 @@
 { pkgs, ... }:
 
-let colors = import ../themes/colors.nix;
-in {
+let
+  colors = import ../themes/colors.nix;
+in
+{
   programs = {
     kitty = {
       enable = true;
@@ -11,7 +13,9 @@ in {
         name = "FiraCode Nerd Font";
         size = 12;
       };
-      shellIntegration = { enableZshIntegration = true; };
+      shellIntegration = {
+        enableZshIntegration = true;
+      };
       settings = {
         confirm_os_window_close = 0;
         scrollback_lines = 10000;

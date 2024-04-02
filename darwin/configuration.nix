@@ -1,6 +1,15 @@
-{ lib, config, pkgs, inputs, system, vars, ... }:
+{
+  lib,
+  config,
+  pkgs,
+  inputs,
+  system,
+  vars,
+  ...
+}:
 
-with lib; {
+with lib;
+{
   users.users.${vars.user} = {
     home = "/Users/${vars.user}";
     shell = pkgs.zsh;
@@ -11,7 +20,12 @@ with lib; {
     fonts = with pkgs; [
       corefonts
       font-awesome
-      (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" ]; })
+      (nerdfonts.override {
+        fonts = [
+          "FiraCode"
+          "DroidSansMono"
+        ];
+      })
       roboto
     ];
   };
@@ -54,7 +68,9 @@ with lib; {
   # needed to have /run/current-system/sw/bin added to the path automatically.
   programs.zsh.enable = true;
 
-  services = { nix-daemon.enable = true; };
+  services = {
+    nix-daemon.enable = true;
+  };
 
   homebrew = {
     enable = true;
@@ -63,7 +79,10 @@ with lib; {
       upgrade = false;
       cleanup = "zap";
     };
-    brews = [ "gpg" "pinentry" ];
+    brews = [
+      "gpg"
+      "pinentry"
+    ];
     casks = [
       "arc"
       "bitwarden"
@@ -94,7 +113,9 @@ with lib; {
 
   nixpkgs = {
     hostPlatform = system;
-    config = { allowUnfree = true; };
+    config = {
+      allowUnfree = true;
+    };
   };
 
   system = {
@@ -110,7 +131,9 @@ with lib; {
         showhidden = true;
         tilesize = 60;
       };
-      finder = { QuitMenuItem = false; };
+      finder = {
+        QuitMenuItem = false;
+      };
       trackpad = {
         Clicking = true;
         TrackpadRightClick = true;
@@ -120,4 +143,3 @@ with lib; {
     stateVersion = 4;
   };
 }
-

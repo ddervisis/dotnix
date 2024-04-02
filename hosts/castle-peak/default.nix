@@ -1,13 +1,21 @@
-{ nixpkgs, config, lib, vars, hostName, system, ... }:
+{
+  nixpkgs,
+  config,
+  lib,
+  vars,
+  hostName,
+  system,
+  ...
+}:
 
 let
   pkgs = import nixpkgs {
     inherit system;
     config.allowUnfree = true;
   };
-in {
-  imports = [ (import ./hardware-configuration.nix) ]
-    ++ (import ../../modules/virtualisation);
+in
+{
+  imports = [ (import ./hardware-configuration.nix) ] ++ (import ../../modules/virtualisation);
 
   boot = {
     kernelPackages = pkgs.linuxPackages_latest;
@@ -31,5 +39,7 @@ in {
     };
   };
 
-  environment = { systemPackages = with pkgs; [ ripgrep ]; };
+  environment = {
+    systemPackages = with pkgs; [ ripgrep ];
+  };
 }

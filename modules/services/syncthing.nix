@@ -1,4 +1,10 @@
-{ config, pkgs, lib, vars, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  vars,
+  ...
+}:
 
 {
   services.syncthing = {
@@ -9,7 +15,9 @@
     guiAddress = "127.0.0.1:8384";
     overrideFolders = false;
     settings = {
-      gui = { theme = "dark"; };
+      gui = {
+        theme = "dark";
+      };
       options = {
         localAnnounceEnabled = false;
         urAccepted = -1;

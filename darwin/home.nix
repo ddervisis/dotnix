@@ -1,8 +1,14 @@
-{ config, lib, pkgs, vars, stateVersion, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  vars,
+  stateVersion,
+  ...
+}:
 
 {
-  imports = (import ../modules/editors) ++ (import ../modules/programs)
-    ++ (import ../modules/shell);
+  imports = (import ../modules/editors) ++ (import ../modules/programs) ++ (import ../modules/shell);
 
   home = {
     username = vars.user;
@@ -21,8 +27,7 @@
 
   targets = {
     darwin = {
-      currentHostDefaults."com.apple.controlcenter".BatteryShowPercentage =
-        true;
+      currentHostDefaults."com.apple.controlcenter".BatteryShowPercentage = true;
       defaults = {
         NSGlobalDomain = {
           AppleLanguages = [ "en" ];

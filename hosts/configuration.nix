@@ -1,9 +1,20 @@
-{ config, pkgs, inputs, vars, stateVersion, ... }:
+{
+  config,
+  pkgs,
+  inputs,
+  vars,
+  stateVersion,
+  ...
+}:
 
 {
   users.users.${vars.user} = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "sudo" "audio" ];
+    extraGroups = [
+      "wheel"
+      "sudo"
+      "audio"
+    ];
     shell = pkgs.zsh;
     initialPassword = vars.user;
     ignoreShellProgramCheck = true;
@@ -31,7 +42,9 @@
 
   sound = {
     enable = true;
-    mediaKeys = { enable = true; };
+    mediaKeys = {
+      enable = true;
+    };
   };
 
   fonts.packages = with pkgs; [
@@ -40,7 +53,12 @@
     font-awesome
     ibm-plex
     # jetbrains-mono
-    (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" ]; })
+    (nerdfonts.override {
+      fonts = [
+        "FiraCode"
+        "DroidSansMono"
+      ];
+    })
     roboto
     source-code-pro
     vegur
@@ -52,7 +70,13 @@
       EDITOR = "nvim";
       VISUAL = "nvim";
     };
-    systemPackages = with pkgs; [ killall pciutils usbutils vim wget ];
+    systemPackages = with pkgs; [
+      killall
+      pciutils
+      usbutils
+      vim
+      wget
+    ];
     pathsToLink = [ "/share/zsh" ];
   };
 
@@ -100,7 +124,6 @@
       keep-outputs          = true
       keep-derivations      = true
     '';
-
   };
   nixpkgs.config.allowUnfree = true;
 
@@ -112,4 +135,3 @@
     stateVersion = stateVersion;
   };
 }
-

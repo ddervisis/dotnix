@@ -1,4 +1,10 @@
-{ config, pkgs, vars, monitors, ... }:
+{
+  config,
+  pkgs,
+  vars,
+  monitors,
+  ...
+}:
 
 {
   imports = [
@@ -9,9 +15,13 @@
   ];
 
   home = {
-    packages = with pkgs; [ mako feh vlc fzf ];
-    file.".config/wall.png".source =
-      config.lib.file.mkOutOfStoreSymlink ../../modules/themes/wall.png;
+    packages = with pkgs; [
+      mako
+      feh
+      vlc
+      fzf
+    ];
+    file.".config/wall.png".source = config.lib.file.mkOutOfStoreSymlink ../../modules/themes/wall.png;
   };
 
   gtk = {
@@ -30,5 +40,4 @@
       package = pkgs.papirus-icon-theme;
     };
   };
-
 }

@@ -1,3 +1,11 @@
-{ config, lib, pkgs, vars, stateVersion, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  vars,
+  stateVersion,
+  ...
+}:
 
-{ }
+{
+}

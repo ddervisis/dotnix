@@ -1,4 +1,12 @@
-{ config, lib, pkgs, hostName, vars, rpi5kernel, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  hostName,
+  vars,
+  rpi5kernel,
+  ...
+}:
 
 {
   imports = [ ./hardware-configuration.nix ];
@@ -30,7 +38,11 @@
   time.timeZone = "Europe/Berlin";
   i18n.defaultLocale = "en_US.UTF-8";
 
-  environment.systemPackages = with pkgs; [ vim curl git ];
+  environment.systemPackages = with pkgs; [
+    vim
+    curl
+    git
+  ];
 
   services.openssh.enable = true;
 
@@ -38,9 +50,11 @@
 
   nix.settings = {
     experimental-features = lib.mkDefault "nix-command flakes";
-    trusted-users = [ "root" "@wheel" ];
+    trusted-users = [
+      "root"
+      "@wheel"
+    ];
   };
 
   system.stateVersion = "23.11";
-
 }

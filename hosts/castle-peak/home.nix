@@ -1,7 +1,15 @@
-{ config, pkgs, vars, monitors, ... }:
+{
+  config,
+  pkgs,
+  vars,
+  monitors,
+  ...
+}:
 
 {
   imports = [ ];
 
-  home = { packages = with pkgs; [ fzf ]; };
+  home = {
+    packages = with pkgs; [ fzf ];
+  };
 }

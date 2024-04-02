@@ -1,4 +1,10 @@
-{ nixpkgs, lib, hostName, system, ... }:
+{
+  nixpkgs,
+  lib,
+  hostName,
+  system,
+  ...
+}:
 
 let
   pkgs = import nixpkgs {
@@ -12,12 +18,17 @@ let
     minstart = "130";
     minstop = "90";
   };
-in {
-  imports = [ (import ./hardware-configuration.nix) ] ++ [
-    (import ../../modules/desktop/hyprland/hyprland.nix)
-    (import ../../modules/services/syncthing.nix)
-    (import ../../modules/desktop/greetd.nix)
-  ] ++ (import ../../modules/virtualisation) ++ (import ../../modules/hardware);
+in
+{
+  imports =
+    [ (import ./hardware-configuration.nix) ]
+    ++ [
+      (import ../../modules/desktop/hyprland/hyprland.nix)
+      (import ../../modules/services/syncthing.nix)
+      (import ../../modules/desktop/greetd.nix)
+    ]
+    ++ (import ../../modules/virtualisation)
+    ++ (import ../../modules/hardware);
 
   boot = {
     kernelPackages = pkgs.linuxPackages_latest;
@@ -102,7 +113,9 @@ in {
       enable = true;
       enableRenice = true;
       settings = {
-        general = { renice = 10; };
+        general = {
+          renice = 10;
+        };
 
         # Warning: GPU optimisations have the potential to damage hardware
         # gpu = {

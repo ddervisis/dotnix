@@ -10,17 +10,34 @@
         key = "8FE7059BD65CECFCFD1D26747B12776305F7CD12";
         signByDefault = true;
       };
-      ignores = [ "*~" ".DS_Store" ];
+      ignores = [
+        "*~"
+        ".DS_Store"
+      ];
       extraConfig = {
-        core = { editor = "nvim"; };
-        url = { "git@github.com:" = { insteadOf = "https://github.com/"; }; };
+        core = {
+          editor = "nvim";
+        };
+        url = {
+          "git@github.com:" = {
+            insteadOf = "https://github.com/";
+          };
+        };
         gpg.program = "${pkgs.gnupg}/bin/gpg2";
         tag.gpgsign = true;
-        commit = { gpgsign = true; };
-        pull = { rebase = true; };
+        commit = {
+          gpgsign = true;
+        };
+        pull = {
+          rebase = true;
+        };
         push.autoSetupRemote = true;
-        init = { defaultbranch = "main"; };
-        merge = { conflictstyle = "zdiff3"; };
+        init = {
+          defaultbranch = "main";
+        };
+        merge = {
+          conflictstyle = "zdiff3";
+        };
       };
     };
   };

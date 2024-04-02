@@ -1,10 +1,31 @@
-{ inputs, nixpkgs, home-manager, nixvim, rpi5kernel, vars, ... }:
+{
+  inputs,
+  nixpkgs,
+  home-manager,
+  nixvim,
+  rpi5kernel,
+  vars,
+  ...
+}:
 
 let
-  mkSystem = { hostName, system, stateVersion ? "23.11", monitors ? { } }:
+  mkSystem =
+    {
+      hostName,
+      system,
+      stateVersion ? "23.11",
+      monitors ? { },
+    }:
     nixpkgs.lib.nixosSystem {
       specialArgs = {
-        inherit inputs nixpkgs vars hostName system stateVersion;
+        inherit
+          inputs
+          nixpkgs
+          vars
+          hostName
+          system
+          stateVersion
+          ;
       };
       modules = [
         ./${hostName}
@@ -18,23 +39,42 @@ let
             inherit vars stateVersion monitors;
           };
           home-manager.users.${vars.user} = {
-            imports = [ (import ./home.nix) ]
-              ++ [ (import ./${hostName}/home.nix) ]
-              ++ [ nixvim.homeManagerModules.nixvim ];
+            imports = [
+              (import ./home.nix)
+            ] ++ [ (import ./${hostName}/home.nix) ] ++ [ nixvim.homeManagerModules.nixvim ];
           };
         }
       ];
     };
 
-  mkPi = { hostName, system, stateVersion ? "23.11", extraModules ? [ ] }:
+  mkPi =
+    {
+      hostName,
+      system,
+      stateVersion ? "23.11",
+      extraModules ? [ ],
+    }:
     nixpkgs.lib.nixosSystem {
       specialArgs = {
-        inherit inputs nixpkgs rpi5kernel vars hostName system stateVersion;
+        inherit
+          inputs
+          nixpkgs
+          rpi5kernel
+          vars
+          hostName
+          system
+          stateVersion
+          ;
       };
       modules = [ ./${hostName} ] ++ extraModules;
     };
 
-  mkPiImage = { hostName, system, stateVersion ? "23.11" }:
+  mkPiImage =
+    {
+      hostName,
+      system,
+      stateVersion ? "23.11",
+    }:
     (mkPi {
       hostName = hostName;
       system = system;
@@ -44,7 +84,8 @@ let
         { disabledModules = [ "profiles/base.nix" ]; }
       ];
     }).config.system.build.sdImage;
-in {
+in
+{
   arc = mkSystem {
     hostName = "arc";
     system = "x86_64-linux";
@@ -92,4 +133,3 @@ in {
     stateVersion = "23.11";
   };
 }
-

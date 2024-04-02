@@ -25,8 +25,16 @@
     };
   };
 
-  outputs = inputs@{ self, nixpkgs, home-manager, darwin, nixvim
-    , rpi5kernel, ... }:
+  outputs =
+    inputs@{
+      self,
+      nixpkgs,
+      home-manager,
+      darwin,
+      nixvim,
+      rpi5kernel,
+      ...
+    }:
     let
       vars = {
         user = "gr4pe";
@@ -34,15 +42,34 @@
         terminal = "kitty";
         editor = "nvim";
       };
-    in {
-      nixosConfigurations = (import ./hosts {
-        inherit (nixpkgs) lib;
-        inherit inputs nixpkgs home-manager nixvim rpi5kernel vars;
-      });
+    in
+    {
+      nixosConfigurations = (
+        import ./hosts {
+          inherit (nixpkgs) lib;
+          inherit
+            inputs
+            nixpkgs
+            home-manager
+            nixvim
+            rpi5kernel
+            vars
+            ;
+        }
+      );
 
-      darwinConfigurations = (import ./darwin {
-        inherit (nixpkgs) lib;
-        inherit inputs nixpkgs home-manager nixvim darwin vars;
-      });
+      darwinConfigurations = (
+        import ./darwin {
+          inherit (nixpkgs) lib;
+          inherit
+            inputs
+            nixpkgs
+            home-manager
+            nixvim
+            darwin
+            vars
+            ;
+        }
+      );
     };
 }

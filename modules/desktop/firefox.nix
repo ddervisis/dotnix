@@ -1,11 +1,19 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 let
   search = {
     force = true;
     default = "DuckDuckGo";
     privateDefault = "DuckDuckGo";
-    order = [ "DuckDuckGo" "Google" ];
+    order = [
+      "DuckDuckGo"
+      "Google"
+    ];
     engines = {
       "Amazon".metaData.alias = "@a";
       "Bing".metaData.hidden = true;
@@ -13,13 +21,17 @@ let
       "Google".metaData.alias = "@g";
       "Wikipedia (en)".metaData.alias = "@w";
       "GitHub" = {
-        urls = [{
-          template = "https://github.com/search";
-          params = [{
-            name = "q";
-            value = "{searchTerms}";
-          }];
-        }];
+        urls = [
+          {
+            template = "https://github.com/search";
+            params = [
+              {
+                name = "q";
+                value = "{searchTerms}";
+              }
+            ];
+          }
+        ];
         icon = "${pkgs.fetchurl {
           url = "https://github.githubassets.com/favicons/favicon.svg";
           sha256 = "sha256-apV3zU9/prdb3hAlr4W5ROndE4g3O1XMum6fgKwurmA=";
@@ -27,70 +39,84 @@ let
         definedAliases = [ "@gh" ];
       };
       "Nix Packages" = {
-        urls = [{
-          template = "https://search.nixos.org/packages";
-          params = [
-            {
-              name = "channel";
-              value = "unstable";
-            }
-            {
-              name = "query";
-              value = "{searchTerms}";
-            }
-          ];
-        }];
-        icon =
-          "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
+        urls = [
+          {
+            template = "https://search.nixos.org/packages";
+            params = [
+              {
+                name = "channel";
+                value = "unstable";
+              }
+              {
+                name = "query";
+                value = "{searchTerms}";
+              }
+            ];
+          }
+        ];
+        icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
         definedAliases = [ "@np" ];
       };
       "NixOS Wiki" = {
-        urls = [{
-          template = "https://nixos.wiki/index.php";
-          params = [{
-            name = "search";
-            value = "{searchTerms}";
-          }];
-        }];
-        icon =
-          "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
+        urls = [
+          {
+            template = "https://nixos.wiki/index.php";
+            params = [
+              {
+                name = "search";
+                value = "{searchTerms}";
+              }
+            ];
+          }
+        ];
+        icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
         definedAliases = [ "@nw" ];
       };
       "Nixpkgs Issues" = {
-        urls = [{
-          template = "https://github.com/NixOS/nixpkgs/issues";
-          params = [{
-            name = "q";
-            value = "{searchTerms}";
-          }];
-        }];
-        icon =
-          "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
+        urls = [
+          {
+            template = "https://github.com/NixOS/nixpkgs/issues";
+            params = [
+              {
+                name = "q";
+                value = "{searchTerms}";
+              }
+            ];
+          }
+        ];
+        icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
         definedAliases = [ "@ni" ];
       };
       "Reddit" = {
-        urls = [{
-          template = "https://www.reddit.com/search";
-          params = [{
-            name = "q";
-            value = "{searchTerms}";
-          }];
-        }];
+        urls = [
+          {
+            template = "https://www.reddit.com/search";
+            params = [
+              {
+                name = "q";
+                value = "{searchTerms}";
+              }
+            ];
+          }
+        ];
         icon = "${pkgs.fetchurl {
-          url =
-            "https://www.redditstatic.com/accountmanager/favicon/favicon-512x512.png";
+          url = "https://www.redditstatic.com/accountmanager/favicon/favicon-512x512.png";
           sha256 = "sha256-4zWTcHuL1SEKk8KyVFsOKYPbM4rc7WNa9KrGhK4dJyg=";
         }}";
         definedAliases = [ "@r" ];
       };
       "Youtube" = {
-        urls = [{
-          template = "https://www.youtube.com/results";
-          params = [{
-            name = "search_query";
-            value = "{searchTerms}";
-          }];
-        }];
+        urls = [
+          {
+            template = "https://www.youtube.com/results";
+            params = [
+              {
+                name = "search_query";
+                value = "{searchTerms}";
+              }
+            ];
+          }
+        ];
         icon = "${pkgs.fetchurl {
           url = "www.youtube.com/s/desktop/8498231a/img/favicon_144x144.png";
           sha256 = "sha256-lQ5gbLyoWCH7cgoYcy+WlFDjHGbxwB8Xz0G7AZnr9vI=";
@@ -136,11 +162,19 @@ let
           "jid1-mnnxcxisbpnsxq_jetpack-browser-action" # Privacy Badger
         ];
         toolbar-menubar = [ "menubar-items" ];
-        TabsToolbar = [ "tabbrowser-tabs" "new-tab-button" "alltabs-button" ];
+        TabsToolbar = [
+          "tabbrowser-tabs"
+          "new-tab-button"
+          "alltabs-button"
+        ];
         PersonalToolbar = [ "personal-bookmarks" ];
       };
-      dirtyAreaCache =
-        [ "nav-bar" "toolbar-menubar" "TabsToolbar" "PersonalToolbar" ];
+      dirtyAreaCache = [
+        "nav-bar"
+        "toolbar-menubar"
+        "TabsToolbar"
+        "PersonalToolbar"
+      ];
       currentVersion = 17;
       newElementCount = 2;
     };
@@ -231,7 +265,8 @@ let
       id = 6;
     };
   };
-in {
+in
+{
   programs.firefox = {
     enable = true;
 
@@ -295,27 +330,26 @@ in {
         Cryptomining = true;
         Fingerprinting = true;
       };
-      ExtensionSettings = with builtins;
+      ExtensionSettings =
+        with builtins;
         let
           extension = shortId: uuid: {
             name = uuid;
             value = {
-              install_url =
-                "https://addons.mozilla.org/firefox/downloads/latest/${shortId}/latest.xpi";
+              install_url = "https://addons.mozilla.org/firefox/downloads/latest/${shortId}/latest.xpi";
               installation_mode = "normal_installed";
               updates_disabled = true;
               default_area = "menupanel";
             };
           };
-        in listToAttrs [
+        in
+        listToAttrs [
           (extension "multi-account-containers" "@testpilot-containers")
           (extension "ublock-origin" "uBlock0@raymondhill.net")
           (extension "darkreader" "addon@darkreader.org")
           (extension "privacy-badger17" "jid1-MnnxcxisBPnSXQ@jetpack")
-          (extension "bitwarden-password-manager"
-            "{446900e4-71c2-419f-a6a7-df9c091e268b}")
-          (extension "return-youtube-dislikes"
-            "{762f9885-5a13-4abd-9c77-433dcd38b8fd}")
+          (extension "bitwarden-password-manager" "{446900e4-71c2-419f-a6a7-df9c091e268b}")
+          (extension "return-youtube-dislikes" "{762f9885-5a13-4abd-9c77-433dcd38b8fd}")
           (extension "sponsorblock" "sponsorBlocker@ajay.app")
           # To add additional extensions, find it on addons.mozilla.org, find
           # the short ID in the url (like https://addons.mozilla.org/en-US/firefox/addon/!SHORT_ID!/)
@@ -390,7 +424,9 @@ in {
         ImproveSuggest = false;
         Locked = true;
       };
-      Handlers = { mimeTypes."application/pdf".action = "saveToDisk"; };
+      Handlers = {
+        mimeTypes."application/pdf".action = "saveToDisk";
+      };
       HardwareAcceleration = true;
       Homepage = {
         Locked = true;

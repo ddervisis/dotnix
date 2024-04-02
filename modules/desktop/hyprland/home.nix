@@ -1,9 +1,17 @@
-{ config, lib, pkgs, vars, monitors, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  vars,
+  monitors,
+  ...
+}:
 
 let
   colors = import ../../themes/colors.nix;
   wallpaper = "/home/${vars.user}/.config/wall.png";
-in {
+in
+{
   wayland.windowManager.hyprland = {
     enable = true;
     systemd.enable = true;
@@ -84,7 +92,9 @@ in {
         background_color = "0x24273a";
       };
 
-      binds = { workspace_back_and_forth = true; };
+      binds = {
+        workspace_back_and_forth = true;
+      };
 
       "$mod" = "SUPER";
 

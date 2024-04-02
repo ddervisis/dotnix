@@ -1,3 +1,12 @@
-{ pkgs, config, lib, vars, hostName, system, ... }:
+{
+  pkgs,
+  config,
+  lib,
+  vars,
+  hostName,
+  system,
+  ...
+}:
 
-{ }
+{
+}

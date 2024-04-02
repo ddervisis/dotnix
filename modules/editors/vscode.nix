@@ -4,7 +4,8 @@
   programs = {
     vscode = {
       enable = true;
-      extensions = with pkgs.vscode-extensions;
+      extensions =
+        with pkgs.vscode-extensions;
         [
           arcticicestudio.nord-visual-studio-code
           bbenoist.nix
@@ -17,7 +18,8 @@
           naumovs.color-highlight
           waderyan.gitblame
           arrterian.nix-env-selector
-        ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
+        ]
+        ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
           {
             name = "vscode-todo-highlight";
             publisher = "wayou";
@@ -47,8 +49,7 @@
         "window.titleBarStyle" = "custom";
         "update.mode" = "none";
         # Terminal
-        "terminal.integrated.fontFamily" =
-          "'FiraCode Nerd Font Mono', 'Fira Code', monospace";
+        "terminal.integrated.fontFamily" = "'FiraCode Nerd Font Mono', 'Fira Code', monospace";
         # Font
         "editor.fontFamily" = "'FiraCode Nerd Font', monospace";
         "editor.fontLigatures" = true;
@@ -84,7 +85,10 @@
         "editor.tabSize" = 2;
         "editor.insertSpaces" = true;
         "editor.renderWhitespace" = "all";
-        "editor.rulers" = [ 80 120 ];
+        "editor.rulers" = [
+          80
+          120
+        ];
         "editor.formatOnType" = true;
         "editor.formatOnPaste" = true;
         "editor.formatOnSave" = true;
@@ -96,7 +100,11 @@
         "nix.serverPath" = "nil";
         "nix.formatterPath" = "nixpkgs-fmt";
         "nix.serverSettings" = {
-          "nil" = { "formatting" = { "command" = [ "nixpkgs-fmt" ]; }; };
+          "nil" = {
+            "formatting" = {
+              "command" = [ "nixpkgs-fmt" ];
+            };
+          };
         };
         # Python
         "[python]" = {
@@ -111,7 +119,9 @@
         };
         # Other
         "typescript.updateImportsOnFileMove.enabled" = "always";
-        "[html]" = { "editor.defaultFormatter" = "esbenp.prettier-vscode"; };
+        "[html]" = {
+          "editor.defaultFormatter" = "esbenp.prettier-vscode";
+        };
         "[typescript]" = {
           "editor.defaultFormatter" = "esbenp.prettier-vscode";
         };
@@ -121,9 +131,15 @@
         # "[svelte]" = {
         #   "editor.defaultFormatter" = "svelte.svelte-vscode";
         # };
-        "[css]" = { "editor.defaultFormatter" = "esbenp.prettier-vscode"; };
-        "[json]" = { "editor.defaultFormatter" = "esbenp.prettier-vscode"; };
-        "[jsonc]" = { "editor.defaultFormatter" = "esbenp.prettier-vscode"; };
+        "[css]" = {
+          "editor.defaultFormatter" = "esbenp.prettier-vscode";
+        };
+        "[json]" = {
+          "editor.defaultFormatter" = "esbenp.prettier-vscode";
+        };
+        "[jsonc]" = {
+          "editor.defaultFormatter" = "esbenp.prettier-vscode";
+        };
         "[yaml]" = {
           "editor.defaultFormatter" = "esbenp.prettier-vscode";
           "editor.formatOnPaste" = true;

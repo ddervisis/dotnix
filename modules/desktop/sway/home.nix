@@ -1,4 +1,11 @@
-{ config, lib, pkgs, vars, monitors, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  vars,
+  monitors,
+  ...
+}:
 
 # NOTE: Currently not in use
 
@@ -73,21 +80,16 @@
         "*".bg = "~/.config/wall fill";
         "*".scale = "1";
         "${monitors.primary.output}" = {
-          mode =
-            "${monitors.primary.resolution.width}x${monitors.primary.resolution.height}";
+          mode = "${monitors.primary.resolution.width}x${monitors.primary.resolution.height}";
           pos = "0 0";
         };
         "${monitors.secondary.output}" = {
-          mode =
-            "${monitors.secondary.resolution.width}x${monitors.secondary.resolution.height}";
+          mode = "${monitors.secondary.resolution.width}x${monitors.secondary.resolution.height}";
           pos = "${monitors.primary.resolution.width} 0";
         };
         "${monitors.tertiary.output}" = {
-          mode =
-            "${monitors.tertiary.resolution.width}x${monitors.tertiary.resolution.height}";
-          pos = "${
-              monitors.primary.resolution.width / 2
-            } -${monitors.primary.resolution.height}";
+          mode = "${monitors.tertiary.resolution.width}x${monitors.tertiary.resolution.height}";
+          pos = "${monitors.primary.resolution.width / 2} -${monitors.primary.resolution.height}";
         };
       };
 
@@ -152,8 +154,7 @@
         "XF86AudioLowerVolume" = "exec ${pkgs.pamixer}/bin/pamixer -d 10";
         "XF86AudioRaiseVolume" = "exec ${pkgs.pamixer}/bin/pamixer -i 10";
         "XF86AudioMute" = "exec ${pkgs.pamixer}/bin/pamixer -t";
-        "XF86AudioMicMute" =
-          "exec ${pkgs.pamixer}/bin/pamixer --default-source -t";
+        "XF86AudioMicMute" = "exec ${pkgs.pamixer}/bin/pamixer --default-source -t";
         "XF86AudioPlay" = "exec ${pkgs.playerctl}/bin/playerctl play-pause";
         "XF86AudioNext" = "exec ${pkgs.playerctl}/bin/playerctl next";
         "XF86AudioPrev" = "exec ${pkgs.playerctl}/bin/playerctl previous";
