@@ -3,7 +3,6 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixos-hardware.url = "github:nixos/nixos-hardware";
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -20,11 +19,14 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    rpi5kernel.url = "gitlab:vriska/nix-rpi5";
+    rpi5kernel = {
+      url = "gitlab:vriska/nix-rpi5";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = inputs@{ self, nixpkgs, nixos-hardware, home-manager, darwin
-    , nixvim, rpi5kernel, ... }:
+  outputs = inputs@{ self, nixpkgs, home-manager, darwin, nixvim
+    , rpi5kernel, ... }:
     let
       vars = {
         user = "gr4pe";
