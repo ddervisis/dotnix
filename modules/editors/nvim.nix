@@ -9,7 +9,7 @@
       #vimdiffAlias = true;
       defaultEditor = true;
 
-      options = {
+      opts = {
         autoindent = true;
         backup = false;
         colorcolumn = "80";

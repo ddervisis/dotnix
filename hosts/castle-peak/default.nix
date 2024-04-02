@@ -1,4 +1,4 @@
-{ nixpkgs, nur, config, lib, vars, hostName, system, ... }:
+{ nixpkgs, config, lib, vars, hostName, system, ... }:
 
 let
   pkgs = import nixpkgs {

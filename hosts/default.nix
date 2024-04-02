@@ -1,4 +1,4 @@
-{ inputs, nixpkgs, home-manager, nur, nixvim, rpi5kernel, vars, ... }:
+{ inputs, nixpkgs, home-manager, nixvim, rpi5kernel, vars, ... }:
 
 let
   mkSystem = { hostName, system, stateVersion ? "23.11", monitors ? { } }:
@@ -15,7 +15,7 @@ let
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
           home-manager.extraSpecialArgs = {
-            inherit nur vars stateVersion monitors;
+            inherit vars stateVersion monitors;
           };
           home-manager.users.${vars.user} = {
             imports = [ (import ./home.nix) ]
