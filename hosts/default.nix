@@ -1,5 +1,4 @@
 {
-  inputs,
   nixpkgs,
   home-manager,
   nixvim,
@@ -19,7 +18,6 @@ let
     nixpkgs.lib.nixosSystem {
       specialArgs = {
         inherit
-          inputs
           nixpkgs
           vars
           hostName
@@ -57,7 +55,6 @@ let
     nixpkgs.lib.nixosSystem {
       specialArgs = {
         inherit
-          inputs
           nixpkgs
           rpi5kernel
           vars

@@ -1,6 +1,4 @@
 {
-  lib,
-  inputs,
   nixpkgs,
   darwin,
   home-manager,
@@ -25,12 +23,7 @@ let
     darwin.lib.darwinSystem rec {
       inherit system;
       specialArgs = {
-        inherit
-          inputs
-          pkgs
-          system
-          vars
-          ;
+        inherit pkgs system vars;
       };
       modules = [
         nixvim.nixDarwinModules.nixvim

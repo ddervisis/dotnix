@@ -288,122 +288,100 @@
         {
           key = "<Tab>";
           action = ":bnext<CR>";
-          options = {
-            silent = true;
-          };
+          options.silent = true;
         }
         {
           key = "<S-Tab>";
           action = ":bprev<CR>";
-          options = {
-            silent = true;
-          };
+          options.silent = true;
         }
         {
           key = "<C-s>";
           action = ":w<CR>";
-          options = {
-            silent = true;
-          };
+          options.silent = true;
         }
         {
           key = "<C-q>";
           action = ":q<CR>";
-          options = {
-            silent = true;
-          };
+          options.silent = true;
         }
-        # {
-        #   key = "<C-h>";
-        #   action = "<C-w>h";
-        #   options = { silent = true; };
-        # }
-        # {
-        #   key = "<C-j>";
-        #   action = "<C-w>j";
-        #   options = { silent = true; };
-        # }
-        # {
-        #   key = "<leader>x";
-        #   action = ":bd<CR>";
-        #   options = { silent = true; };
-        # }
         {
           key = "<";
           action = "< gv";
           mode = [ "v" ];
-          options = {
-            silent = true;
-          };
+          options.silent = true;
         }
         {
           key = ">";
           action = "> gv";
           mode = [ "v" ];
-          options = {
-            silent = true;
-          };
+          options.silent = true;
         }
         {
           key = "<Esc>";
           action = ":noh<CR>";
-          options = {
-            silent = true;
-          };
+          options.silent = true;
         }
         {
           key = "<leader>rn";
           action = ":IncRename ";
-          # options = { silent = true; };
         }
         {
           key = "<leader>pv";
           action = ":Ex<CR>";
-          options = {
-            silent = true;
-          };
+          options.silent = true;
         }
         {
           key = "<leader>u";
           action = ":UndotreeToggle<CR>";
-          options = {
-            silent = true;
-          };
+          options.silent = true;
         }
         {
           key = "<leader>gs";
           action = ":Git<CR>";
-          options = {
-            silent = true;
-          };
+          options.silent = true;
         }
         {
           key = "<leader>fp";
           action = ":Telescope projects<CR>";
-          options = {
-            silent = true;
-          };
+          options.silent = true;
         }
         {
           key = "<leader>t";
           action = ":ToggleTerm<CR>";
-          options = {
-            silent = true;
-          };
+          options.silent = true;
         }
         {
           key = ''<leader>q"'';
           action = ''ciw""<Esc>P'';
-          options = {
-            silent = true;
-          };
+          options.silent = true;
         }
         {
           key = "<leader>q'";
           action = "ciw''<Esc>P";
-          options = {
-            silent = true;
-          };
+          options.silent = true;
+        }
+        {
+          key = "<A-j>";
+          action = ":m .+1<CR>==";
+          options.silent = true;
+        }
+        {
+          key = "<A-k>";
+          action = ":m .-2<CR>==";
+          options.silent = true;
+        }
+        {
+          key = "<A-j>";
+          mode = [ "v" ];
+          action = ":m '>+1<CR>gv=gv";
+          options.silent = true;
+        }
+        {
+          key = "<C-k>";
+          mode = [ "v" ];
+          action = ":m '<-2<CR>gv==gv";
+          options.silent = true;
         }
       ];
     };

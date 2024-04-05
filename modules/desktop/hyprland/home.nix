@@ -104,6 +104,9 @@ in
         "$mod SHIFT, Q, killactive"
         "$mod, R, forcerendererreload"
         "$mod, SPACE, exec, ${pkgs.rofi}/bin/rofi -show drun -show-icons"
+        "$mod, P, exec, ${pkgs.rofi}/bin/rofi -show p -modi p:'${pkgs.rofi-power-menu}/bin/rofi-power-menu --choices=shutdown/reboot'"
+        "$mod SHIFT, S, exec, ${pkgs.rofi-screenshot}/bin/rofi-screenshot"
+        "$mod CTRL, S, exec, ${pkgs.rofi-screenshot}/bin/rofi-screenshot -s"
         "$mod, E, exec, ${pkgs.pcmanfm}/bin/pcmanfm"
         "$mod, L, exec, ${pkgs.hyprlock}/bin/hyprlock"
         "$mod, F, exec, ${pkgs.firefox}"
@@ -113,7 +116,7 @@ in
         "$mod CTRL, E, exec, pypr expose"
         "$mod, Z, exec, pypr zoom"
 
-        "$mod, S, exec, spotify"
+        # "$mod, S, exec, spotify"
         "$mod, C, exec, ${pkgs.hyprpicker}/bin/hyprpicker -a"
         "$mod SHIFT, F, togglefloating,"
         "$mod CTRL, F, fullscreen, 0"

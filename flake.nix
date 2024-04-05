@@ -26,8 +26,7 @@
   };
 
   outputs =
-    inputs@{
-      self,
+    {
       nixpkgs,
       home-manager,
       darwin,
@@ -48,7 +47,6 @@
         import ./hosts {
           inherit (nixpkgs) lib;
           inherit
-            inputs
             nixpkgs
             home-manager
             nixvim
@@ -62,7 +60,6 @@
         import ./darwin {
           inherit (nixpkgs) lib;
           inherit
-            inputs
             nixpkgs
             home-manager
             nixvim

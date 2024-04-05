@@ -1,7 +1,6 @@
 {
   config,
   pkgs,
-  inputs,
   vars,
   stateVersion,
   ...
@@ -118,7 +117,7 @@
       options = "--delete-older-than 7d";
     };
     package = pkgs.nixFlakes;
-    registry.nixpkgs.flake = inputs.nixpkgs;
+    # registry.nixpkgs.flake = inputs.nixpkgs;
     extraOptions = ''
       experimental-features = nix-command flakes
       keep-outputs          = true
