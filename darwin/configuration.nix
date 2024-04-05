@@ -41,12 +41,11 @@ with lib;
       fd
       fzf
       git
-      iterm2
       jq
       mkcert
       nil
       nixpkgs-fmt
-      # pinentry
+      pinentry_mac
       pfetch
       podman
       podman-tui
@@ -64,8 +63,16 @@ with lib;
     # '';
   };
 
-  # needed to have /run/current-system/sw/bin added to the path automatically.
-  programs.zsh.enable = true;
+  programs = {
+    # needed to have /run/current-system/sw/bin added to the path automatically.
+    zsh.enable = true;
+    gnupg = {
+      agent = {
+        enable = true;
+        enableSSHSupport = true;
+      };
+    };
+  };
 
   services = {
     nix-daemon.enable = true;
@@ -78,10 +85,7 @@ with lib;
       upgrade = false;
       cleanup = "zap";
     };
-    brews = [
-      "gpg"
-      "pinentry"
-    ];
+    brews = [ ];
     casks = [
       "arc"
       "bitwarden"

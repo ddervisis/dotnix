@@ -1,8 +1,5 @@
 { pkgs, ... }:
 
-let
-  colors = import ../themes/colors.nix;
-in
 {
   programs = {
     kitty = {

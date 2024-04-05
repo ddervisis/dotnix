@@ -61,10 +61,10 @@
 
       initExtra = ''
         [[ ! -f ~/.config/zsh/plugins/powerlevel10k-config/p10k.sh ]] || source ~/.config/zsh/plugins/powerlevel10k-config/p10k.sh
-        GPG_TTY=$(tty)
-        export GPG_TTY
-        gpg-connect-agent /bye
-        export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+        # GPG_TTY=$(tty)
+        # export GPG_TTY
+        # gpg-connect-agent /bye
+        # export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
         alias gs="gst"
         alias docker="podman"
       '';
