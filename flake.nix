@@ -41,6 +41,7 @@
         terminal = "kitty";
         editor = "nvim";
       };
+      nix.registry.nixpkgs.flake = nixpkgs;
     in
     {
       nixosConfigurations = (
