@@ -9,7 +9,7 @@
 }:
 
 {
-  imports = [ ./hardware-configuration.nix ];
+  imports = [ ./hardware-configuration.nix ] ++ [ ../../modules/virtualisation/docker.nix ];
 
   boot = {
     loader = {
