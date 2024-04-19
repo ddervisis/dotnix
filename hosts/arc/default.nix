@@ -73,6 +73,7 @@ in
         MINSTOP=${hwmon.name}/pwm1=${hwmon.minstop} ${hwmon.name}/pwm3=${hwmon.minstop} ${hwmon.name}/pwm5=${hwmon.minstop} ${hwmon.name}/pwm7=${hwmon.minstop}
       '';
     };
+    xone.enable = true;
   };
 
   networking = {
@@ -89,6 +90,7 @@ in
     systemPackages = with pkgs; [
       awscli
       bitwarden
+      discord
       jellyfin-media-player
       jq
       lm_sensors
