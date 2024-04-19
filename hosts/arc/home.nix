@@ -12,6 +12,7 @@
     ../../modules/desktop/waybar.nix
     ../../modules/desktop/firefox.nix
     ../../modules/desktop/rofi.nix
+    ../../modules/desktop/thunderbird.nix
   ];
 
   home = {
