@@ -25,19 +25,18 @@
           eob = " ";
         };
         foldlevel = 99;
-
         guicursor = "";
         hidden = true;
         hlsearch = false;
         incsearch = true;
         list = true;
-        # listchars = {
-        #   space = ".";
-        #   eol = "⏎";
-        #   tab = "..";
-        #   trail = "-";
-        #   nbsp = "⎵";
-        # };
+        listchars = {
+          space = "·";
+          eol = "⏎";
+          tab = "␉·";
+          trail = "·";
+          nbsp = "⎵";
+        };
         nu = true;
         number = true;
         pumheight = 15;
@@ -284,6 +283,9 @@
         which-key.enable = true;
         wilder.enable = true;
       };
+
+      extraPlugins = with pkgs.vimPlugins; [ cloak-nvim ];
+
       keymaps = [
         {
           key = "<Tab>";
