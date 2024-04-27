@@ -11,7 +11,8 @@
     ../../modules/desktop/hyprland/home.nix
     ../../modules/desktop/waybar.nix
     ../../modules/desktop/firefox.nix
-    ../../modules/desktop/rofi.nix
+    # ../../modules/desktop/rofi.nix
+    ../../modules/desktop/fuzzel.nix
     ../../modules/desktop/thunderbird.nix
   ];
 
