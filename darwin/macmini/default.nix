@@ -23,6 +23,7 @@
   homebrew = {
     brews = [ "talhelper" ];
     casks = [
+      "ace-link"
       "balenaetcher"
       "jellyfin-media-player"
       "mullvadvpn"
