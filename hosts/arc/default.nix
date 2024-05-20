@@ -25,6 +25,7 @@ in
     ++ [
       (import ../../modules/desktop/hyprland/hyprland.nix)
       (import ../../modules/services/syncthing.nix)
+      (import ../../modules/services/mullvad.nix)
       (import ../../modules/desktop/greetd.nix)
     ]
     ++ (import ../../modules/virtualisation)
@@ -95,13 +96,14 @@ in
       jq
       lm_sensors
       lutris
-      mullvad-vpn
       parted
       ripgrep
       spotify
       teamviewer
       teamspeak5_client
       unzip
+      wineWowPackages.waylandFull
+      zed-editor
     ];
   };
 

@@ -203,7 +203,7 @@ let
     "media.navigator.enabled" = false;
     "media.video_stats.enabled" = false;
     "network.allow-experiments" = false;
-    "network.dns.disablePrefetch" = true;
+    "network.dns.disablePrefetch" = false;
     "network.http.referer.trimmingPolicy" = 1;
     "network.http.referer.XOriginPolicy" = 1;
     "network.http.referer.XOriginTrimmingPolicy" = 1;
@@ -483,7 +483,7 @@ in
         History = false;
         Sessions = false;
         SiteSettings = false;
-        OfflineApps = true;
+        OfflineApps = false;
         Locked = true;
       };
       SearchBar = "unified";

@@ -7,9 +7,7 @@
       extensions =
         with pkgs.vscode-extensions;
         [
-          arcticicestudio.nord-visual-studio-code
           bbenoist.nix
-          dracula-theme.theme-dracula
           eamodio.gitlens
           esbenp.prettier-vscode
           foxundermoon.shell-format
@@ -18,6 +16,9 @@
           naumovs.color-highlight
           waderyan.gitblame
           arrterian.nix-env-selector
+          dart-code.flutter
+          catppuccin.catppuccin-vsc
+          catppuccin.catppuccin-vsc-icons
         ]
         ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
           {
@@ -25,12 +26,6 @@
             publisher = "wayou";
             version = "1.0.5";
             sha256 = "sha256-CQVtMdt/fZcNIbH/KybJixnLqCsz5iF1U0k+GfL65Ok=";
-          }
-          {
-            name = "material-icon-theme";
-            publisher = "PKief";
-            version = "4.34.0";
-            sha256 = "sha256-xxOEUvMjqJbl8lONB/So2NoIAVPOxysTq2YQY3iHGqo=";
           }
           {
             name = "Go";
@@ -42,8 +37,8 @@
       userSettings = {
         # Settings
         "workbench.settings.editor" = "json";
-        "workbench.colorTheme" = "Nord";
-        "workbench.iconTheme" = "material-icon-theme";
+        "workbench.colorTheme" = "Catppuccin Macchiato";
+        "workbench.iconTheme" = "catppuccin-macchiato";
         "explorer.confirmDragAndDrop" = true;
         "explorer.confirmDelete" = false;
         "window.titleBarStyle" = "custom";
@@ -146,7 +141,18 @@
           "editor.formatOnType" = true;
           "editor.formatOnSave" = true;
         };
+        "[dart]" = {
+          "editor.formatOnSave" = true;
+          "editor.formatOnType" = true;
+          "editor.rulers" = [ 80 ];
+          "editor.selectionHighlight" = false;
+          "editor.suggestSelection" = "first";
+          "editor.tabCompletion" = "onlySnippets";
+          "editor.wordBasedSuggestions" = "off";
+        };
+        "dart.checkForSdkUpdates"= false;
         "telemetry.telemetryLevel" = "off";
+        "extensions.ignoreRecommendations" = true;
       };
       keybindings = [
         {
