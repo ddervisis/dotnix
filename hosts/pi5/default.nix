@@ -9,7 +9,9 @@
 }:
 
 {
-  imports = [ ./hardware-configuration.nix ] ++ [ ../../modules/virtualisation/docker.nix ];
+  imports = [
+    ./hardware-configuration.nix
+  ] ++ [ ../../modules/services/keycloak.nix ] ++ [ ../../modules/virtualisation/docker.nix ];
 
   boot = {
     loader = {
@@ -42,6 +44,7 @@
     vim
     curl
     git
+    tmux
   ];
 
   services.openssh.enable = true;

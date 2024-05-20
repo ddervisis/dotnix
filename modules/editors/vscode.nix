@@ -150,7 +150,7 @@
           "editor.tabCompletion" = "onlySnippets";
           "editor.wordBasedSuggestions" = "off";
         };
-        "dart.checkForSdkUpdates"= false;
+        "dart.checkForSdkUpdates" = false;
         "telemetry.telemetryLevel" = "off";
         "extensions.ignoreRecommendations" = true;
       };
