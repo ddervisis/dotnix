@@ -25,6 +25,7 @@
     casks = [
       "ace-link"
       "balenaetcher"
+      "docker"
       "jellyfin-media-player"
       "mullvadvpn"
       "vlc"
