@@ -9,9 +9,11 @@
 }:
 
 {
-  imports = [
-    ./hardware-configuration.nix
-  ] ++ [ ../../modules/services/keycloak.nix ] ++ [ ../../modules/virtualisation/docker.nix ];
+  imports =
+    [ ./hardware-configuration.nix ]
+    ++ [ ../../modules/services/nginx.nix ]
+    ++ [ ../../modules/services/keycloak.nix ]
+    ++ [ ../../modules/virtualisation/docker.nix ];
 
   boot = {
     loader = {
@@ -47,7 +49,10 @@
     tmux
   ];
 
-  services.openssh.enable = true;
+  services = {
+    openssh.enable = true;
+    postgresql.enable = true;
+  };
 
   networking.firewall.enable = false;
 
