@@ -3,13 +3,28 @@
   lib,
   hostName,
   system,
+  talhelper,
   ...
 }:
 
 let
+  # nixpkgs.overlays = [
+  #   (final: prev: {
+  #     talosctl = prev.talosctl.overrideAttrs (previousAttrs: {
+  #       src = prev.fetchFromGitHub {
+  #         owner = "siderolabs";
+  #         repo = "talos";
+  #         rev = "v1.7.4";
+  #         hash = "sha256-TVRWcgBt6MmHOh3LYSjJtp5qf/+ar+LWDGfHKQhDFZ8=";
+  #       };
+  #     });
+  #   })
+  # ];
+
   pkgs = import nixpkgs {
     inherit system;
     config.allowUnfree = true;
+    # overlays = [ talosctl ];
   };
   hwmon = {
     name = "hwmon4";
@@ -49,12 +64,6 @@ in
   hardware = {
     opengl = {
       enable = true;
-      extraPackages = with pkgs; [
-        intel-media-driver
-        vaapiIntel
-        vaapiVdpau
-        libvdpau-va-gl
-      ];
     };
     pulseaudio = {
       enable = true;
@@ -89,18 +98,24 @@ in
 
   environment = {
     systemPackages = with pkgs; [
+      age
       awscli
       bitwarden
+      cifs-utils
       discord
       jellyfin-media-player
       jq
+      kubectl
       lm_sensors
       lutris
       parted
       ripgrep
       spotify
-      teamviewer
+      sops
+      talhelper.packages.${system}.default
+      talosctl
       teamspeak5_client
+      teamviewer
       unzip
       wineWowPackages.waylandFull
       zed-editor

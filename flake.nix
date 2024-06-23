@@ -23,6 +23,8 @@
       url = "gitlab:vriska/nix-rpi5";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    talhelper.url = "github:budimanjojo/talhelper";
   };
 
   outputs =
@@ -32,6 +34,7 @@
       darwin,
       nixvim,
       rpi5kernel,
+      talhelper,
       ...
     }:
     let
@@ -52,6 +55,7 @@
             home-manager
             nixvim
             rpi5kernel
+            talhelper
             vars
             ;
         }

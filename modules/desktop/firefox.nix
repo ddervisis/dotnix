@@ -294,9 +294,7 @@ in
         }
       ];
       Cookies = {
-        AcceptThirdParty = "never";
-        RejectTracker = true;
-        Behavior = "reject-tracker-and-partition-foreign";
+        Behavior = "reject-tracker";
         BehaviorPrivateBrowsing = "reject";
         Locked = true;
       };
@@ -506,7 +504,7 @@ in
       default = {
         isDefault = true;
         id = 0;
-        inherit search settings containers;
+        inherit search settings;
       };
     };
   };

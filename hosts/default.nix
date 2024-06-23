@@ -3,6 +3,7 @@
   home-manager,
   nixvim,
   rpi5kernel,
+  talhelper,
   vars,
   ...
 }:
@@ -19,6 +20,7 @@ let
       specialArgs = {
         inherit
           nixpkgs
+          talhelper
           vars
           hostName
           system
