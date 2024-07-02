@@ -7,7 +7,7 @@
   ...
 }:
 let
-  hwmon = "hwmon4";
+  hwmon = "hwmon3";
 in
 {
   programs.waybar = {

@@ -27,7 +27,7 @@ let
     # overlays = [ talosctl ];
   };
   hwmon = {
-    name = "hwmon4";
+    name = "hwmon3";
     mintemp = "15";
     maxtemp = "40";
     minstart = "130";
@@ -103,11 +103,13 @@ in
       bitwarden
       cifs-utils
       discord
+      goverlay
       jellyfin-media-player
       jq
       kubectl
       lm_sensors
       lutris
+      mangohud
       parted
       ripgrep
       spotify
