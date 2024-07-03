@@ -27,7 +27,7 @@ let
     # overlays = [ talosctl ];
   };
   hwmon = {
-    name = "hwmon3";
+    path = "/dev/hwmon";
     mintemp = "15";
     maxtemp = "40";
     minstart = "130";
@@ -73,14 +73,12 @@ in
       enable = true;
       config = ''
         INTERVAL=10
-        DEVPATH=${hwmon.name}=devices/pci0000:00/0000:00:01.2/0000:02:00.0/0000:03:08.0/0000:06:00.3/usb3/3-1/3-1:1.1/0003:0C70:F011.0004
-        DEVNAME=${hwmon.name}=octo
-        FCTEMPS=${hwmon.name}/pwm1=${hwmon.name}/temp1_input ${hwmon.name}/pwm3=${hwmon.name}/temp1_input ${hwmon.name}/pwm5=${hwmon.name}/temp1_input ${hwmon.name}/pwm7=${hwmon.name}/temp1_input
-        FCFANS=${hwmon.name}/pwm1=${hwmon.name}/fan1_input ${hwmon.name}/pwm3=${hwmon.name}/fan3_input ${hwmon.name}/pwm5=${hwmon.name}/fan5_input ${hwmon.name}/pwm7=${hwmon.name}/fan7_input
-        MINTEMP=${hwmon.name}/pwm1=${hwmon.mintemp} ${hwmon.name}/pwm3=${hwmon.mintemp} ${hwmon.name}/pwm5=${hwmon.mintemp} ${hwmon.name}/pwm7=${hwmon.mintemp}
-        MAXTEMP=${hwmon.name}/pwm1=${hwmon.maxtemp} ${hwmon.name}/pwm3=${hwmon.maxtemp} ${hwmon.name}/pwm5=${hwmon.maxtemp} ${hwmon.name}/pwm7=${hwmon.maxtemp}
-        MINSTART=${hwmon.name}/pwm1=${hwmon.minstart} ${hwmon.name}/pwm3=${hwmon.minstart} ${hwmon.name}/pwm5=${hwmon.minstart} ${hwmon.name}/pwm7=${hwmon.minstart}
-        MINSTOP=${hwmon.name}/pwm1=${hwmon.minstop} ${hwmon.name}/pwm3=${hwmon.minstop} ${hwmon.name}/pwm5=${hwmon.minstop} ${hwmon.name}/pwm7=${hwmon.minstop}
+        FCTEMPS=${hwmon.path}/pwm1=${hwmon.path}/temp1_input ${hwmon.path}/pwm3=${hwmon.path}/temp1_input ${hwmon.path}/pwm5=${hwmon.path}/temp1_input ${hwmon.path}/pwm7=${hwmon.path}/temp1_input
+        FCFANS=${hwmon.path}/pwm1=${hwmon.path}/fan1_input ${hwmon.path}/pwm3=${hwmon.path}/fan3_input ${hwmon.path}/pwm5=${hwmon.path}/fan5_input ${hwmon.path}/pwm7=${hwmon.path}/fan7_input
+        MINTEMP=${hwmon.path}/pwm1=${hwmon.mintemp} ${hwmon.path}/pwm3=${hwmon.mintemp} ${hwmon.path}/pwm5=${hwmon.mintemp} ${hwmon.path}/pwm7=${hwmon.mintemp}
+        MAXTEMP=${hwmon.path}/pwm1=${hwmon.maxtemp} ${hwmon.path}/pwm3=${hwmon.maxtemp} ${hwmon.path}/pwm5=${hwmon.maxtemp} ${hwmon.path}/pwm7=${hwmon.maxtemp}
+        MINSTART=${hwmon.path}/pwm1=${hwmon.minstart} ${hwmon.path}/pwm3=${hwmon.minstart} ${hwmon.path}/pwm5=${hwmon.minstart} ${hwmon.path}/pwm7=${hwmon.minstart}
+        MINSTOP=${hwmon.path}/pwm1=${hwmon.minstop} ${hwmon.path}/pwm3=${hwmon.minstop} ${hwmon.path}/pwm5=${hwmon.minstop} ${hwmon.path}/pwm7=${hwmon.minstop}
       '';
     };
     xone.enable = true;
@@ -154,7 +152,12 @@ in
   };
 
   services = {
-    udev.packages = with pkgs; [ yubikey-personalization ];
+    udev = {
+      packages = with pkgs; [ yubikey-personalization ];
+      extraRules = ''
+        ACTION=="add", SUBSYSTEM=="hwmon", ATTRS{name}=="octo", RUN+="/bin/sh -c 'ln -s /sys$devpath /dev/hwmon'"
+      '';
+    };
     pcscd.enable = true;
     teamviewer.enable = true;
   };

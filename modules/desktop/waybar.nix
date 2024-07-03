@@ -6,9 +6,6 @@
   monitors,
   ...
 }:
-let
-  hwmon = "hwmon3";
-in
 {
   programs.waybar = {
     enable = true;
@@ -201,7 +198,7 @@ in
         temperature = {
           tooltip = false;
           # thermal-zone = 1;
-          hwmon-path = "/sys/class/hwmon/${hwmon}/temp1_input";
+          hwmon-path = "/dev/hwmon/temp1_input";
           critical-threshold = 50;
           format = "{temperatureC}󰔄 {icon}";
           format-critical = "🔥 {temperatureC}󰔄 {icon}";
@@ -217,7 +214,7 @@ in
         "custom/fanspeed" = {
           tooltip = false;
           interval = 10;
-          exec = "/run/current-system/sw/bin/cat /sys/class/hwmon/${hwmon}/fan1_input";
+          exec = "/run/current-system/sw/bin/cat /dev/hwmon/fan1_input";
           format = "{}rpm ✇";
         };
 
@@ -295,8 +292,8 @@ in
             car = "";
           };
           tooltip-format = "{desc}, {volume}%";
-          on-click = "${pkgs.pamixer}/bin/pamixer -t";
-          on-click-right = "${pkgs.pamixer}/bin/pamixer --default-source -t";
+          on-click = "${pkgs.pamixer}/bin/pamixer --toggle-mute";
+          on-click-right = "${pkgs.pamixer}/bin/pamixer --default-source --toggle-mute";
           on-click-middle = "${pkgs.pavucontrol}/bin/pavucontrol";
         };
 
