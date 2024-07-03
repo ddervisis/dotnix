@@ -7,10 +7,9 @@
 
 {
   hardware = {
-    opengl = {
+    graphics = {
       enable = true;
-      driSupport = true;
-      driSupport32Bit = true;
+      enable32Bit = true;
     };
     nvidia = {
       # package = config.boot.kernelPackages.nvidiaPackages.latest;
@@ -91,7 +90,7 @@
     WLR_NO_HARDWARE_CURSORS = "1";
     LIBVA_DRIVER_NAME = "nvidia";
     XDG_SESSION_TYPE = "wayland";
-    # GBM_BACKEND = "nvidia-drm";
+    GBM_BACKEND = "nvidia-drm";
     __GLX_VENDOR_LIBRARY_NAME = "nvidia";
   };
 

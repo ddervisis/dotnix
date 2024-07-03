@@ -48,6 +48,7 @@ in
 
   boot = {
     kernelPackages = pkgs.linuxPackages_latest;
+    kernelParams = [ "nvidia-drm.fbdev=1" ];
     # binfmt.emulatedSystems = [ "aarch64-linux" ];
     loader = {
       systemd-boot = {
@@ -62,7 +63,7 @@ in
   systemd.enableEmergencyMode = false;
 
   hardware = {
-    opengl = {
+    graphics = {
       enable = true;
     };
     pulseaudio = {

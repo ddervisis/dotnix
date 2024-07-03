@@ -8,9 +8,8 @@
 # NOTE: Currently not in use
 
 {
-  hardware.opengl = {
+  hardware.graphics = {
     enable = true;
-    driSupport = true;
   };
 
   programs = {

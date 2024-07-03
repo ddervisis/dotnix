@@ -151,7 +151,7 @@
             html.enable = true;
             jsonls.enable = true;
             lua-ls.enable = true;
-            nil_ls.enable = true;
+            nil-ls.enable = true;
             pyright.enable = true;
             rust-analyzer = {
               enable = true;
