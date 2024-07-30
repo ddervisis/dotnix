@@ -1,5 +1,7 @@
 {
   nixpkgs,
+  lix,
+  lix-module,
   home-manager,
   nixvim,
   rpi5kernel,
@@ -30,6 +32,7 @@ let
       modules = [
         ./${hostName}
         ./configuration.nix
+        lix-module.nixosModules.default
 
         home-manager.nixosModules.home-manager
         {

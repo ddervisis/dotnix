@@ -117,7 +117,7 @@ in
         "$mod CTRL, E, exec, pypr expose"
         "$mod, Z, exec, pypr zoom"
 
-        # "$mod, S, exec, spotify"
+        "$mod, S, exec, spotube"
         "$mod, C, exec, ${pkgs.hyprpicker}/bin/hyprpicker -a"
         "$mod SHIFT, F, togglefloating,"
         "$mod CTRL, F, fullscreen, 0"
@@ -191,7 +191,6 @@ in
       ];
 
       windowrule = [
-        "float,title:(Spotify)"
         # "float,steam" 
       ];
       windowrulev2 = [

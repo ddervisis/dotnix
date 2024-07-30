@@ -105,20 +105,22 @@ in
       goverlay
       jellyfin-media-player
       jq
-      kubectl
       lm_sensors
       lutris
       mangohud
       parted
+      prismlauncher
       ripgrep
-      spotify
+      spotube
       sops
+      tailscale
       talhelper.packages.${system}.default
       talosctl
       teamspeak5_client
       teamviewer
       unzip
       wineWowPackages.waylandFull
+      yubikey-manager
       zed-editor
     ];
   };
@@ -161,6 +163,13 @@ in
     };
     pcscd.enable = true;
     teamviewer.enable = true;
+    tailscale.enable = true;
+    printing.enable = true;
+    avahi = {
+      enable = true;
+      nssmdns4 = true;
+      openFirewall = true;
+    };
   };
 
   security.pam.services.hyprlock = { };

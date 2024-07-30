@@ -7,7 +7,7 @@
       userName = "Dennis Dervisis";
       userEmail = "6106539+ddervisis@users.noreply.github.com";
       signing = {
-        key = "8FE7059BD65CECFCFD1D26747B12776305F7CD12";
+        key = "0xEFEB0306FC22576D";
         signByDefault = true;
       };
       ignores = [

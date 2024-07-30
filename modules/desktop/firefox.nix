@@ -300,7 +300,7 @@ in
       };
       DisableAccounts = true;
       DisableAppUpdate = true;
-      DisableBuiltinPDFViewer = true;
+      DisableBuiltinPDFViewer = false;
       DisableFirefoxAccounts = true;
       DisableFirefoxScreenshots = true;
       DisableFirefoxStudies = true;
@@ -423,7 +423,7 @@ in
         Locked = true;
       };
       Handlers = {
-        mimeTypes."application/pdf".action = "saveToDisk";
+        # mimeTypes."application/pdf".action = "saveToDisk";
       };
       HardwareAcceleration = true;
       Homepage = {
