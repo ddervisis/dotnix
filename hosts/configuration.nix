@@ -39,13 +39,6 @@
     sudo.wheelNeedsPassword = false;
   };
 
-  sound = {
-    enable = true;
-    mediaKeys = {
-      enable = true;
-    };
-  };
-
   fonts.packages = with pkgs; [
     carlito
     corefonts

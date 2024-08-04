@@ -272,8 +272,10 @@
         toggleterm.enable = true;
         treesitter = {
           enable = true;
-          ensureInstalled = "all";
           nixGrammars = true;
+          settings = {
+            ensure_installed = "all";
+          };
         };
         treesitter-context.enable = true;
         trouble.enable = true;
