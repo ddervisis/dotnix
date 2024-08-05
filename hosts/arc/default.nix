@@ -66,10 +66,7 @@ in
     graphics = {
       enable = true;
     };
-    pulseaudio = {
-      enable = true;
-      support32Bit = true;
-    };
+    alsa.enablePersistence = true;
     fancontrol = {
       enable = true;
       config = ''
