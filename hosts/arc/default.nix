@@ -107,8 +107,9 @@ in
       mangohud
       parted
       prismlauncher
+      r2modman
       ripgrep
-      spotube
+      spotify
       sops
       tailscale
       talhelper.packages.${system}.default

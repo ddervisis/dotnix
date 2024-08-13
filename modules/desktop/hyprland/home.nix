@@ -117,7 +117,7 @@ in
         "$mod CTRL, E, exec, pypr expose"
         "$mod, Z, exec, pypr zoom"
 
-        "$mod, S, exec, spotube"
+        "$mod, S, exec, ${pkgs.spotify}/bin/spotify"
         "$mod, C, exec, ${pkgs.hyprpicker}/bin/hyprpicker -a"
         "$mod SHIFT, F, togglefloating,"
         "$mod CTRL, F, fullscreen, 0"
