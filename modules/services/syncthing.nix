@@ -14,6 +14,7 @@
     systemService = true;
     guiAddress = "127.0.0.1:8384";
     overrideFolders = false;
+    overrideDevices = false;
     settings = {
       gui = {
         theme = "dark";
