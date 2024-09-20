@@ -73,15 +73,15 @@
       # };
 
       plugins = {
-        auto-session = {
-          enable = true;
-          autoRestore.enabled = true;
-          autoSave.enabled = true;
-          autoSession = {
-            enableLastSession = true;
-            useGitBranch = true;
-          };
-        };
+        # auto-session = {
+        #   enable = true;
+        #   autoRestore.enabled = true;
+        #   autoSave.enabled = true;
+        #   autoSession = {
+        #     enableLastSession = true;
+        #     useGitBranch = true;
+        #   };
+        # };
         cmp-buffer.enable = true;
         cmp-path.enable = true;
         cmp_luasnip.enable = true;
@@ -93,7 +93,7 @@
           enable = true;
         };
         gitblame.enable = true;
-        gitsigns.enable = true;
+        # gitsigns.enable = true;
         hardtime = {
           enable = true;
           disableMouse = true;
@@ -121,47 +121,39 @@
         indent-blankline = {
           enable = true;
         };
-        intellitab.enable = true;
+        # intellitab.enable = true;
         lastplace.enable = true;
-        # lint = {
-        #   enable = true;
-        #   lintersByFt = {
-        #     text = [ "vale" ];
-        #     json = [ "jsonlint" ];
-        #     markdown = [ "vale" ];
-        #     rst = [ "vale" ];
-        #     ruby = [ "ruby" ];
-        #     janet = [ "janet" ];
-        #     inko = [ "inko" ];
-        #     clojure = [ "clj-kondo" ];
-        #     dockerfile = [ "hadolint" ];
-        #     terraform = [ "tflint" ];
-        #     typscriptreact = [ "prettier_eslint" ];
-        #   };
-        # };
+        lint = {
+          enable = true;
+          lintersByFt = {
+            text = [ "vale" ];
+            json = [ "jsonlint" ];
+            markdown = [ "vale" ];
+            rst = [ "vale" ];
+            ruby = [ "ruby" ];
+            janet = [ "janet" ];
+            inko = [ "inko" ];
+            clojure = [ "clj-kondo" ];
+            dockerfile = [ "hadolint" ];
+            terraform = [ "tflint" ];
+            typscriptreact = [ "prettier_eslint" ];
+          };
+        };
         lsp = {
           enable = true;
           servers = {
-            clangd.enable = true;
-            cmake.enable = true;
-            # dockerls.enable = true;
-            eslint.enable = true;
+            dockerls.enable = true;
             gopls.enable = true;
-            # graphql.enable = true;
             html.enable = true;
             jsonls.enable = true;
             lua-ls.enable = true;
-            nil-ls.enable = true;
-            pyright.enable = true;
-            rust-analyzer = {
+            nil-ls = {
               enable = true;
-              installCargo = true;
-              installRustc = true;
+              settings = {
+                nix.flake.autoArchive = true;
+              };
             };
-            svelte.enable = true;
-            # terraform-ls.enable = true;
-            tsserver.enable = true;
-            zls.enable = true;
+            pyright.enable = true;
           };
           keymaps = {
             diagnostic = {
@@ -196,8 +188,8 @@
              end
           '';
         };
-        lspsaga.enable = true;
-        lsp-format.enable = true;
+        # lspsaga.enable = true;
+        # lsp-format.enable = true;
         lsp-lines.enable = true;
         lualine = {
           enable = true;
@@ -230,32 +222,19 @@
             lualine_z = [ "location" ];
           };
         };
-        luasnip.enable = true;
-        markdown-preview.enable = true;
+        # luasnip.enable = true;
+        # markdown-preview.enable = true;
         nix.enable = true;
-        nix-develop.enable = true;
+        # nix-develop.enable = true;
         nvim-colorizer.enable = true;
-        # nvim-cmp = {
-        #   enable = true;
-        #   autoEnableSources = true;
-        #   sources = [{ name = "nvim_lsp"; }];
-        #   mappingPresets = [ "insert" ];
-        #   mapping = {
-        #     "<C-Space>" = "cmp.mapping.complete()";
-        #     "<CR>" = "cmp.mapping.confirm({ select = true })";
-        #     "<C-p>" = "cmp.mapping.select_prev_item()";
-        #     "<C-n>" = "cmp.mapping.select_next_item()";
-        #   };
-        #   formatting.fields = [ "kind" "abbr" "menu" ];
-        # };
-        nvim-autopairs.enable = true;
+        # nvim-autopairs.enable = true;
         # persistence.enable = true;
-        project-nvim.enable = true;
-        refactoring.enable = true;
-        surround = {
-          enable = true;
-          package = pkgs.vimPlugins.nvim-surround;
-        };
+        # project-nvim.enable = true;
+        # refactoring.enable = true;
+        # surround = {
+        #   enable = true;
+        #   package = pkgs.vimPlugins.nvim-surround;
+        # };
         telescope = {
           enable = true;
           keymaps = {
@@ -269,7 +248,7 @@
         # TODO: Use custom keymaps for tmux-navigator,
         #       so it does not clash with the harpoon keymaps.
         # tmux-navigator.enable = true;
-        toggleterm.enable = true;
+        # toggleterm.enable = true;
         treesitter = {
           enable = true;
           nixGrammars = true;
