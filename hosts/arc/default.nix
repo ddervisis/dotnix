@@ -96,7 +96,6 @@ in
     systemPackages = with pkgs; [
       age
       awscli
-      bitwarden
       cifs-utils
       discord
       goverlay

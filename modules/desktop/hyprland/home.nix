@@ -198,7 +198,6 @@ in
         "stayfocused, title:^()$,class:^(steam)$"
         "minsize 1 1, title:^()$,class:^(steam)$"
         "float,class:(lutris),title:(Lutris)"
-        "float,class:(Bitwarden),title:(Bitwarden)"
       ];
     };
   };
