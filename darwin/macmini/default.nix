@@ -16,7 +16,6 @@
       age
       discord
       sops
-      talosctl
     ];
   };
 
