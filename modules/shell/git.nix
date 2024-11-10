@@ -38,6 +38,7 @@
         merge = {
           conflictstyle = "zdiff3";
         };
+        rerere.enabled = true;
       };
     };
   };

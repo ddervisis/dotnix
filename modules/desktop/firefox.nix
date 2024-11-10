@@ -349,6 +349,7 @@ in
           (extension "bitwarden-password-manager" "{446900e4-71c2-419f-a6a7-df9c091e268b}")
           (extension "return-youtube-dislikes" "{762f9885-5a13-4abd-9c77-433dcd38b8fd}")
           (extension "sponsorblock" "sponsorBlocker@ajay.app")
+          (extension "betterttv" "firefox@betterttv.net")
           # To add additional extensions, find it on addons.mozilla.org, find
           # the short ID in the url (like https://addons.mozilla.org/en-US/firefox/addon/!SHORT_ID!/)
           # Temporarily install the addon and the navigate to about:support#addons

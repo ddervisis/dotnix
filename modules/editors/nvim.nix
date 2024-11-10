@@ -59,9 +59,10 @@
         mapleader = " ";
       };
 
-      colorschemes.nord = {
+      colorschemes.catppuccin = {
         enable = true;
         settings = {
+          flavour = "macchiato";
           borders = true;
           contrast = true;
         };
@@ -96,7 +97,9 @@
         # gitsigns.enable = true;
         hardtime = {
           enable = true;
-          disableMouse = true;
+          settings = {
+            disable_mouse = true;
+          };
         };
         hmts = {
           enable = true;
@@ -146,8 +149,8 @@
             gopls.enable = true;
             html.enable = true;
             jsonls.enable = true;
-            lua-ls.enable = true;
-            nil-ls = {
+            lua_ls.enable = true;
+            nil_ls = {
               enable = true;
               settings = {
                 nix.flake.autoArchive = true;
@@ -193,33 +196,37 @@
         lsp-lines.enable = true;
         lualine = {
           enable = true;
-          theme = "dracula";
-          componentSeparators = {
-            left = "";
-            right = "";
-          };
-          sectionSeparators = {
-            left = "";
-            right = "";
-          };
-          inactiveSections = {
-            lualine_a = null;
-            lualine_b = null;
-            lualine_c = null;
-            lualine_x = null;
-            lualine_y = null;
-            lualine_z = null;
-          };
-          sections = {
-            lualine_a = [ "mode" ];
-            lualine_b = [
-              "filename"
-              "branch"
-            ];
-            lualine_c = [ "fileformat" ];
-            lualine_x = [ "progress" ];
-            lualine_y = [ "filetype" ];
-            lualine_z = [ "location" ];
+          settings = {
+            options = {
+              theme = "dracula";
+              component_separators = {
+                left = "";
+                right = "";
+              };
+              section_separators = {
+                left = "";
+                right = "";
+              };
+            };
+            inactive_sections = {
+              lualine_a = null;
+              lualine_b = null;
+              lualine_c = null;
+              lualine_x = null;
+              lualine_y = null;
+              lualine_z = null;
+            };
+            sections = {
+              lualine_a = [ "mode" ];
+              lualine_b = [
+                "filename"
+                "branch"
+              ];
+              lualine_c = [ "fileformat" ];
+              lualine_x = [ "progress" ];
+              lualine_y = [ "filetype" ];
+              lualine_z = [ "location" ];
+            };
           };
         };
         # luasnip.enable = true;
@@ -261,6 +268,7 @@
         undotree = {
           enable = true;
         };
+        web-devicons.enable = true;
         which-key.enable = true;
         wilder.enable = true;
       };

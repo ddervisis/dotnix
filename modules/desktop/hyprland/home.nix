@@ -61,6 +61,10 @@ in
         mouse_refocus = false;
       };
 
+      cursor = {
+        no_hardware_cursors = true;
+      };
+
       animations = {
         enabled = true;
 
@@ -199,6 +203,7 @@ in
         "stayfocused, title:^()$,class:^(steam)$"
         "minsize 1 1, title:^()$,class:^(steam)$"
         "float,class:(lutris),title:(Lutris)"
+        # "forceinput, class:^(discord)$, xwayland:0"
       ];
     };
   };

@@ -4,7 +4,7 @@
   programs = {
     kitty = {
       enable = true;
-      theme = "Nord";
+      themeFile = "Catppuccin-Macchiato";
       font = {
         package = (pkgs.nerdfonts.override { fonts = [ "FiraCode" ]; });
         name = "FiraCode Nerd Font";

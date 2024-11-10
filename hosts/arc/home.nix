@@ -33,8 +33,8 @@
       package = pkgs.dracula-theme;
     };
     cursorTheme = {
-      name = "Dracula-cursors";
-      package = pkgs.dracula-theme;
+      name = "catppuccin-cursors";
+      package = pkgs.catppuccin-cursors.macchiatoDark;
       size = 16;
     };
     iconTheme = {
