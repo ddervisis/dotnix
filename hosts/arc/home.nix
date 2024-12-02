@@ -33,9 +33,9 @@
       package = pkgs.dracula-theme;
     };
     cursorTheme = {
-      name = "catppuccin-cursors";
+      name = "catppuccin-macchiato-dark-cursors";
       package = pkgs.catppuccin-cursors.macchiatoDark;
-      size = 16;
+      size = 24;
     };
     iconTheme = {
       name = "Papirus-Dark";

@@ -14,7 +14,7 @@ let
   };
   hwmon = {
     path = "/dev/hwmon";
-    mintemp = "15";
+    mintemp = "10";
     maxtemp = "40";
     minstart = "130";
     minstop = "90";

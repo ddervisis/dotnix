@@ -19,6 +19,7 @@ in
     extraConfig = ''
       exec-once = ${pkgs.hyprpaper}/bin/hyprpaper
       exec-once = systemctl --user restart waybar
+      exec-once = /etc/profiles/per-user/${vars.user}/bin/hyprctl setcursor ${pkgs.catppuccin-cursors.macchiatoDark} 24
     '';
     settings = with colors.scheme.macchiato; {
       monitors = {
