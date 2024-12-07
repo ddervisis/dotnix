@@ -175,10 +175,9 @@
     '';
 
     extraSessionCommands = ''
-      #export WLR_NO_HARDWARE_CURSORS="1";  # Needed for cursor in vm
       export XDG_SESSION_TYPE=wayland
-      export XDG_SESSION_DESKTOP=sway
-      export XDG_CURRENT_DESKTOP=sway
+      export XDG_SESSION_DESKTOP=Hyprland
+      export XDG_CURRENT_DESKTOP=Hyprland
     '';
   };
 }

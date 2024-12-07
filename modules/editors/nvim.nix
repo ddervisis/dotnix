@@ -94,7 +94,7 @@
           enable = true;
         };
         gitblame.enable = true;
-        # gitsigns.enable = true;
+        gitsigns.enable = true;
         hardtime = {
           enable = true;
           settings = {

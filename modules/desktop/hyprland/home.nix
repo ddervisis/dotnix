@@ -18,13 +18,13 @@ in
 
     extraConfig = ''
       exec-once = ${pkgs.hyprpaper}/bin/hyprpaper
-      exec-once = systemctl --user restart waybar
+      exec-once = /run/current-system/sw/bin/systemctl --user restart waybar
       exec-once = /etc/profiles/per-user/${vars.user}/bin/hyprctl setcursor ${pkgs.catppuccin-cursors.macchiatoDark} 24
     '';
     settings = with colors.scheme.macchiato; {
       monitors = {
         monitor = [
-          "${monitors.primary.output},${monitors.primary.resolution.width}x${monitors.primary.resolution.height}@144,0x0,1"
+          "${monitors.primary.output},${monitors.primary.resolution.width}x${monitors.primary.resolution.height}@144,0x0,1,vrr,2"
           "${monitors.secondary.output},${monitors.secondary.resolution.width}x${monitors.secondary.resolution.height}@75,${monitors.primary.resolution.width}x0,1"
           # TODO: use variable for 1280 value (monitor height / 2)
           "${monitors.tertiary.output},${monitors.tertiary.resolution.width}x${monitors.tertiary.resolution.height}@75,1280x-${monitors.tertiary.resolution.height},1"
@@ -115,13 +115,12 @@ in
         "$mod CTRL, S, exec, ${pkgs.hyprshot}/bin/hyprshot --freeze --mode active --clipboard-only"
         "$mod SHIFT CTRL, S, exec, ${pkgs.hyprshot}/bin/hyprshot --freeze --mode output --clipboard-only"
         "$mod, E, exec, ${pkgs.pcmanfm}/bin/pcmanfm"
-        "$mod, L, exec, ${pkgs.hyprlock}/bin/hyprlock"
-        "$mod, F, exec, ${pkgs.firefox}"
+        "$mod CTRL, L, exec, ${pkgs.hyprlock}/bin/hyprlock"
 
         "$mod CTRL, M, togglespecialworkspace, minimized"
-        "$mod, M, exec, pypr toggle_minimized"
-        "$mod CTRL, E, exec, pypr expose"
-        "$mod, Z, exec, pypr zoom"
+        #"$mod, M, exec, pypr toggle_minimized"
+        #"$mod CTRL, E, exec, pypr expose"
+        #"$mod, Z, exec, pypr zoom"
 
         "$mod, S, exec, ${pkgs.spotify}/bin/spotify"
         "$mod, C, exec, ${pkgs.hyprpicker}/bin/hyprpicker -a"
@@ -131,7 +130,7 @@ in
         "$mod SHIFT, P, pseudo,"
         "$mod SHIFT, O, togglesplit,"
 
-        "$mod, p, exec, ${pkgs.playerctl} play-pause"
+        #"$mod, p, exec, ${pkgs.playerctl} play-pause"
         "$mod, bracketright, exec, ${pkgs.playerctl} next"
         "$mod, bracketleft, exec, ${pkgs.playerctl} previous"
 
@@ -188,6 +187,9 @@ in
         # Scroll through existing workspaces with $mod + scroll
         "$mod, mouse_down, workspace, e+1"
         "$mod, mouse_up, workspace, e-1"
+
+        # ", SHIFT CAPS, pass, class:^(TeamSpeak)$"
+        # ", SHIFT CAPS, pass, class:^(discord)$"
       ];
 
       bindm = [
@@ -201,8 +203,8 @@ in
       ];
       windowrulev2 = [
         # "move onscreen cursor -1% -1%,class:(steam)"
-        "stayfocused, title:^()$,class:^(steam)$"
-        "minsize 1 1, title:^()$,class:^(steam)$"
+        # "stayfocused, title:^()$,class:^(steam)$"
+        # "minsize 1 1, title:^()$,class:^(steam)$"
         "float,class:(lutris),title:(Lutris)"
         # "forceinput, class:^(discord)$, xwayland:0"
       ];

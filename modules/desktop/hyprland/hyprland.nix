@@ -93,6 +93,7 @@
     hypridle
     hyprlock
     hyprpaper
+    wl-clipboard
     xdg-user-dirs
     xdg-utils
   ];

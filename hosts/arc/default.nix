@@ -103,6 +103,7 @@ in
       wineWowPackages.waylandFull
       yubikey-manager
       zed-editor
+      zip
     ];
   };
 
