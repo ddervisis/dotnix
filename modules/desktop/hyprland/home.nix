@@ -1,6 +1,4 @@
 {
-  config,
-  lib,
   pkgs,
   vars,
   monitors,
@@ -45,12 +43,13 @@ in
           size = 4;
           passes = 2;
         };
-        drop_shadow = true;
-        shadow_range = 5;
-        shadow_offset = "0 0";
-        shadow_render_power = 3;
-        "col.shadow" = "${teal}";
-        "col.shadow_inactive" = "${base}";
+        # TODO: find shadow replacements or remove if it was just removed.
+        # drop_shadow = true;
+        # shadow_range = 5;
+        # shadow_offset = "0 0";
+        # shadow_render_power = 3;
+        # "col.shadow" = "${teal}";
+        # "col.shadow_inactive" = "${base}";
 
         active_opacity = 1.0;
         inactive_opacity = 1.0;

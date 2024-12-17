@@ -1,6 +1,4 @@
 {
-  config,
-  lib,
   pkgs,
   vars,
   monitors,
@@ -141,7 +139,7 @@
           "custom/fanspeed"
           "pulseaudio"
           # "battery"
-          # "bluetooth"
+          "bluetooth"
           "network"
           "tray"
         ];
@@ -256,8 +254,8 @@
           tooltip-format-enumerate-connected = "{device_alias}	{device_address}";
           tooltip-format-enumerate-connected-battery = "{device_alias}	{device_address}	({device_battery_percentage}%)";
           max-length = 35;
-          on-click = "${pkgs.${vars.terminal}}/bin/${vars.terminal} -e bluetooth_toggle";
-          on-click-right = "${pkgs.blueman}/bin/blueman";
+          # on-click = "${pkgs.${vars.terminal}}/bin/${vars.terminal} -e bluetooth_toggle";
+          # on-click-right = "${pkgs.blueman}/bin/blueman";
         };
 
         network = {

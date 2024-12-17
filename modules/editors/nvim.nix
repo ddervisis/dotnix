@@ -29,14 +29,14 @@
         hidden = true;
         hlsearch = false;
         incsearch = true;
-        list = true;
-        listchars = {
-          space = "·";
-          eol = "⏎";
-          tab = "␉·";
-          trail = "·";
-          nbsp = "⎵";
-        };
+        # list = true;
+        # listchars = {
+        #   space = "·";
+        #   eol = "⏎";
+        #   tab = "␉·";
+        #   trail = "·";
+        #   nbsp = "⎵";
+        # };
         nu = true;
         number = true;
         pumheight = 15;
@@ -74,15 +74,39 @@
       # };
 
       plugins = {
-        # auto-session = {
-        #   enable = true;
-        #   autoRestore.enabled = true;
-        #   autoSave.enabled = true;
-        #   autoSession = {
-        #     enableLastSession = true;
-        #     useGitBranch = true;
-        #   };
-        # };
+        auto-session = {
+          enable = true;
+          settings = {
+            auto_restore = true;
+            auto_save = true;
+            auto_restore_last_session = true;
+            use_git_branch = true;
+          };
+        };
+        cloak = {
+          enable = true;
+          settings = {
+            enabled = true;
+            cloak_character = "*";
+            cloak_telescope = true;
+            highlight_group = "Comment";
+            patterns = [
+              {
+                cloak_pattern = "=.+";
+                file_pattern = ".env*";
+              }
+            ];
+          };
+        };
+        cmp = {
+          enable = true;
+          autoEnableSources = true;
+          settings.sources = [
+            { name = "nvim_lsp"; }
+            { name = "path"; }
+            { name = "buffer"; }
+          ];
+        };
         cmp-buffer.enable = true;
         cmp-path.enable = true;
         cmp_luasnip.enable = true;
@@ -90,9 +114,7 @@
         cmp-nvim-lsp-signature-help.enable = true;
         cmp-nvim-lua.enable = true;
         comment.enable = true;
-        fugitive = {
-          enable = true;
-        };
+        fugitive.enable = true;
         gitblame.enable = true;
         gitsigns.enable = true;
         hardtime = {
@@ -106,6 +128,7 @@
         };
         harpoon = {
           enable = true;
+          enableTelescope = true;
           keymaps = {
             addFile = "<leader>a";
             toggleQuickMenu = "<C-e>";
@@ -115,16 +138,11 @@
               "3" = "<C-l>";
               "4" = "<C-;>";
             };
-            navNext = "<C-Tab>";
-            navPrev = "<C-S-Tab>";
           };
         };
         illuminate.enable = true;
         inc-rename.enable = true;
-        indent-blankline = {
-          enable = true;
-        };
-        # intellitab.enable = true;
+        indent-blankline.enable = true;
         lastplace.enable = true;
         lint = {
           enable = true;
@@ -133,10 +151,6 @@
             json = [ "jsonlint" ];
             markdown = [ "vale" ];
             rst = [ "vale" ];
-            ruby = [ "ruby" ];
-            janet = [ "janet" ];
-            inko = [ "inko" ];
-            clojure = [ "clj-kondo" ];
             dockerfile = [ "hadolint" ];
             terraform = [ "tflint" ];
             typscriptreact = [ "prettier_eslint" ];
@@ -145,9 +159,11 @@
         lsp = {
           enable = true;
           servers = {
+            dartls.enable = true;
             dockerls.enable = true;
             gopls.enable = true;
             html.enable = true;
+            htmx.enable = true;
             jsonls.enable = true;
             lua_ls.enable = true;
             nil_ls = {
@@ -157,6 +173,7 @@
               };
             };
             pyright.enable = true;
+            templ.enable = true;
           };
           keymaps = {
             diagnostic = {
@@ -174,74 +191,102 @@
         };
         lspkind = {
           enable = true;
-          cmp.ellipsisChar = "...";
-          cmp.menu = {
-            buffer = "[Buffer]";
-            nvim_lsp = "[LSP]";
-            luasnip = "[LuaSnip]";
-            nvim_lua = "[Lua]";
-            latex_symbols = "[Latex]";
+          cmp = {
+            ellipsisChar = "...";
+            menu = {
+              buffer = "[Buffer]";
+              nvim_lsp = "[LSP]";
+              luasnip = "[LuaSnip]";
+              nvim_lua = "[Lua]";
+              latex_symbols = "[Latex]";
+            };
+            after = ''
+              function(entry, vim_item, kind)
+               local strings = vim.split(kind.kind, "%s", { trimempty = true })
+                kind.kind = " " .. strings[1] .. " "
+                kind.menu = "    " .. strings[2]
+                return kind
+               end
+            '';
           };
-          cmp.after = ''
-            function(entry, vim_item, kind)
-             local strings = vim.split(kind.kind, "%s", { trimempty = true })
-              kind.kind = " " .. strings[1] .. " "
-              kind.menu = "    " .. strings[2]
-              return kind
-             end
-          '';
         };
-        # lspsaga.enable = true;
-        # lsp-format.enable = true;
+        lspsaga.enable = true;
+        lsp-format.enable = true;
         lsp-lines.enable = true;
         lualine = {
           enable = true;
           settings = {
             options = {
-              theme = "dracula";
+              theme = "auto";
               component_separators = {
-                left = "";
-                right = "";
+                left = "";
+                right = "";
               };
               section_separators = {
-                left = "";
-                right = "";
+                left = "";
+                right = "";
               };
             };
             inactive_sections = {
-              lualine_a = null;
-              lualine_b = null;
-              lualine_c = null;
-              lualine_x = null;
-              lualine_y = null;
-              lualine_z = null;
+              lualine_a = [ ];
+              lualine_b = [ ];
+              lualine_c = [ "filename" ];
+              lualine_x = [ "location" ];
+              lualine_y = [ ];
+              lualine_z = [ ];
             };
             sections = {
               lualine_a = [ "mode" ];
               lualine_b = [
-                "filename"
                 "branch"
+                "diff"
+                "diagnostics"
               ];
-              lualine_c = [ "fileformat" ];
-              lualine_x = [ "progress" ];
-              lualine_y = [ "filetype" ];
+              lualine_c = [
+                {
+                  __unkeyed = "filename";
+                  path = 1;
+                  newfile_status = true;
+                }
+              ];
+              lualine_x = [
+                # Show active language server
+                {
+                  __unkeyed.__raw = ''
+                    function()
+                        local msg = ""
+                        local buf_ft = vim.api.nvim_buf_get_option(0, 'filetype')
+                        local clients = vim.lsp.get_active_clients()
+                        if next(clients) == nil then
+                            return msg
+                        end
+                        for _, client in ipairs(clients) do
+                            local filetypes = client.config.filetypes
+                            if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
+                                return client.name
+                            end
+                        end
+                        return msg
+                    end
+                  '';
+                  icon = "";
+                  color.fg = "#ffffff";
+                }
+                "encoding"
+                "fileformat"
+                "filetype"
+              ];
+              lualine_y = [ "progress" ];
               lualine_z = [ "location" ];
             };
           };
         };
-        # luasnip.enable = true;
-        # markdown-preview.enable = true;
+        luasnip.enable = true;
+        markdown-preview.enable = true;
         nix.enable = true;
-        # nix-develop.enable = true;
+        nvim-autopairs.enable = true;
         nvim-colorizer.enable = true;
-        # nvim-autopairs.enable = true;
-        # persistence.enable = true;
-        # project-nvim.enable = true;
-        # refactoring.enable = true;
-        # surround = {
-        #   enable = true;
-        #   package = pkgs.vimPlugins.nvim-surround;
-        # };
+        refactoring.enable = true;
         telescope = {
           enable = true;
           keymaps = {
@@ -255,12 +300,13 @@
         # TODO: Use custom keymaps for tmux-navigator,
         #       so it does not clash with the harpoon keymaps.
         # tmux-navigator.enable = true;
-        # toggleterm.enable = true;
+        toggleterm.enable = true;
         treesitter = {
           enable = true;
           nixGrammars = true;
           settings = {
             ensure_installed = "all";
+            highlight.enable = true;
           };
         };
         treesitter-context.enable = true;
@@ -270,22 +316,12 @@
         };
         web-devicons.enable = true;
         which-key.enable = true;
-        wilder.enable = true;
+        # wilder.enable = true;
       };
 
-      extraPlugins = with pkgs.vimPlugins; [ cloak-nvim ];
+      extraPlugins = with pkgs.vimPlugins; [ nvim-treesitter-parsers.templ ];
 
       keymaps = [
-        {
-          key = "<Tab>";
-          action = ":bnext<CR>";
-          options.silent = true;
-        }
-        {
-          key = "<S-Tab>";
-          action = ":bprev<CR>";
-          options.silent = true;
-        }
         {
           key = "<C-s>";
           action = ":w<CR>";
@@ -332,11 +368,11 @@
           action = ":Git<CR>";
           options.silent = true;
         }
-        {
-          key = "<leader>fp";
-          action = ":Telescope projects<CR>";
-          options.silent = true;
-        }
+        # {
+        #   key = "<leader>fp";
+        #   action = ":Telescope projects<CR>";
+        #   options.silent = true;
+        # }
         {
           key = "<leader>t";
           action = ":ToggleTerm<CR>";
