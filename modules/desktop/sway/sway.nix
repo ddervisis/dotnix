@@ -4,9 +4,7 @@
   pkgs,
   ...
 }:
-
 # NOTE: Currently not in use
-
 {
   hardware.graphics = {
     enable = true;

@@ -4,9 +4,7 @@
   lib,
   vars,
   ...
-}:
-
-{
+}: {
   services.gpg-agent = {
     enable = true;
     enableScDaemon = true;

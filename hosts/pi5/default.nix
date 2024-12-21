@@ -6,14 +6,12 @@
   vars,
   rpi5kernel,
   ...
-}:
-
-{
+}: {
   imports =
-    [ ./hardware-configuration.nix ]
-    ++ [ ../../modules/services/nginx.nix ]
-    ++ [ ../../modules/services/keycloak.nix ]
-    ++ [ ../../modules/virtualisation/docker.nix ];
+    [./hardware-configuration.nix]
+    ++ [../../modules/services/nginx.nix]
+    ++ [../../modules/services/keycloak.nix]
+    ++ [../../modules/virtualisation/docker.nix];
 
   boot = {
     loader = {
@@ -34,8 +32,8 @@
     users.${vars.user} = {
       initialPassword = vars.user;
       isNormalUser = true;
-      extraGroups = [ "wheel" ];
-      packages = with pkgs; [ btop ];
+      extraGroups = ["wheel"];
+      packages = with pkgs; [btop];
     };
   };
 

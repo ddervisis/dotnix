@@ -4,12 +4,10 @@
   vars,
   monitors,
   ...
-}:
-
-{
-  imports = [ ];
+}: {
+  imports = [];
 
   home = {
-    packages = with pkgs; [ fzf ];
+    packages = with pkgs; [fzf];
   };
 }

@@ -1,1 +1,1 @@
-[ ./adguardhome.nix ]
+[./adguardhome.nix]

@@ -1,6 +1,4 @@
-{ pkgs, ... }:
-
-{
+{pkgs, ...}: {
   programs = {
     kitty = {
       enable = true;
@@ -25,7 +23,7 @@
         "ctrl+f>2" = "set_font_size 20";
       };
       # environment = { "LS_COLORS" = "1"; };
-      darwinLaunchOptions = [ "--single-instance" ];
+      darwinLaunchOptions = ["--single-instance"];
     };
   };
 }

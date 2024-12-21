@@ -4,9 +4,7 @@
   lib,
   vars,
   ...
-}:
-
-{
+}: {
   services.syncthing = {
     enable = true;
     user = "syncthing";

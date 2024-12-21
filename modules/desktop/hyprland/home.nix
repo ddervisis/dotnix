@@ -3,13 +3,10 @@
   vars,
   monitors,
   ...
-}:
-
-let
+}: let
   colors = import ../../themes/colors.nix;
   wallpaper = "/home/${vars.user}/.config/wall.png";
-in
-{
+in {
   wayland.windowManager.hyprland = {
     enable = true;
     systemd.enable = true;
@@ -198,7 +195,7 @@ in
       ];
 
       windowrule = [
-        # "float,steam" 
+        # "float,steam"
       ];
       windowrulev2 = [
         # "move onscreen cursor -1% -1%,class:(steam)"
@@ -213,7 +210,7 @@ in
   home.file.".config/hypr/hyprlock.conf".text = ''
     background {
       monitor =
-      path = ${wallpaper} 
+      path = ${wallpaper}
       color = rgba(25, 20, 20, 1.0)
       blur_passes = 0
       blur_size = 7
@@ -226,7 +223,7 @@ in
 
     # image {
     #   monitor =
-    #   path = ${wallpaper} 
+    #   path = ${wallpaper}
     #   size = 150 # lesser side if not 1:1 ratio
     #   rounding = -1 # negative values mean circle
     #   border_size = 4
@@ -242,7 +239,7 @@ in
       text = cmd[update:1000] echo "$(date '+%H:%M')"
       font_size = 48
       font_family = Noto Sans
-      position = 0, 360 
+      position = 0, 360
       halign = center
       valign = center
     }
@@ -292,7 +289,7 @@ in
   '';
 
   home.file.".config/hypr/hyprpaper.conf".text = ''
-    preload = ${wallpaper} 
+    preload = ${wallpaper}
     wallpaper = ,${wallpaper}
     splash = false
   '';

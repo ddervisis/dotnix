@@ -4,9 +4,7 @@
   pkgs,
   vars,
   ...
-}:
-
-{
+}: {
   programs = {
     zsh = {
       initExtra = ''

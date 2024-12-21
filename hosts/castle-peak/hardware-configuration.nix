@@ -7,41 +7,39 @@
   pkgs,
   modulesPath,
   ...
-}:
-
-{
-  imports = [ ];
+}: {
+  imports = [];
 
   boot.initrd.availableKernelModules = [
     "sd_mod"
     "sr_mod"
   ];
-  boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ ];
-  boot.extraModulePackages = [ ];
+  boot.initrd.kernelModules = [];
+  boot.kernelModules = [];
+  boot.extraModulePackages = [];
 
   fileSystems."/" = {
     device = "/dev/disk/by-label/root";
     fsType = "btrfs";
-    options = [ "subvol=root" ];
+    options = ["subvol=root"];
   };
 
   fileSystems."/home" = {
     device = "/dev/disk/by-label/root";
     fsType = "btrfs";
-    options = [ "subvol=home" ];
+    options = ["subvol=home"];
   };
 
   fileSystems."/nix" = {
     device = "/dev/disk/by-label/root";
     fsType = "btrfs";
-    options = [ "subvol=nix" ];
+    options = ["subvol=nix"];
   };
 
   fileSystems."/var/log" = {
     device = "/dev/disk/by-label/root";
     fsType = "btrfs";
-    options = [ "subvol=log" ];
+    options = ["subvol=log"];
   };
 
   fileSystems."/boot" = {
@@ -49,7 +47,7 @@
     fsType = "vfat";
   };
 
-  swapDevices = [ { device = "/dev/disk/by-label/swap"; } ];
+  swapDevices = [{device = "/dev/disk/by-label/swap";}];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's

@@ -4,9 +4,7 @@
   vars,
   monitors,
   ...
-}:
-
-{
+}: {
   imports = [
     ../../modules/desktop/hyprland/home.nix
     ../../modules/desktop/waybar.nix

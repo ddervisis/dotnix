@@ -1,1 +1,1 @@
-[ ./colors.nix ]
+[./colors.nix]

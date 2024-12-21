@@ -3,8 +3,7 @@
   vars,
   monitors,
   ...
-}:
-{
+}: {
   programs.waybar = {
     enable = true;
     systemd.enable = true;
@@ -126,7 +125,7 @@
         tray = {
           spacing = 10;
         };
-        modules-center = [ "clock" ];
+        modules-center = ["clock"];
         modules-left = [
           "hyprland/workspaces"
           "hyprland/window"
@@ -155,11 +154,11 @@
           };
           all-outputs = true;
           persistent-workspaces = {
-            "1" = [ ];
-            "2" = [ ];
-            "3" = [ ];
-            "4" = [ ];
-            "5" = [ ];
+            "1" = [];
+            "2" = [];
+            "3" = [];
+            "4" = [];
+            "5" = [];
           };
           on-scroll-up = "/etc/profiles/per-user/${vars.user}/bin/hyprctl dispatch workspace e+1";
           on-scroll-down = "/etc/profiles/per-user/${vars.user}/bin/hyprctl dispatch workspace e-1";

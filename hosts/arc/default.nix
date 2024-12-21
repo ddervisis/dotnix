@@ -5,9 +5,7 @@
   system,
   talhelper,
   ...
-}:
-
-let
+}: let
   pkgs = import nixpkgs {
     inherit system;
     config.allowUnfree = true;
@@ -19,10 +17,9 @@ let
     minstart = "130";
     minstop = "90";
   };
-in
-{
+in {
   imports =
-    [ (import ./hardware-configuration.nix) ]
+    [(import ./hardware-configuration.nix)]
     ++ [
       (import ../../modules/desktop/hyprland/hyprland.nix)
       (import ../../modules/services/syncthing.nix)
@@ -34,7 +31,7 @@ in
 
   boot = {
     kernelPackages = pkgs.linuxPackages_latest;
-    kernelParams = [ "nvidia-drm.fbdev=1" ];
+    kernelParams = ["nvidia-drm.fbdev=1"];
     # binfmt.emulatedSystems = [ "aarch64-linux" ];
     loader = {
       systemd-boot = {
@@ -74,13 +71,14 @@ in
     networkmanager.enable = true;
     firewall = {
       enable = true;
-      allowedTCPPorts = [ 22 ];
+      allowedTCPPorts = [22];
     };
   };
 
   environment = {
     systemPackages = with pkgs; [
       age
+      alejandra
       awscli
       cifs-utils
       discord
@@ -137,7 +135,7 @@ in
 
   services = {
     udev = {
-      packages = with pkgs; [ yubikey-personalization ];
+      packages = with pkgs; [yubikey-personalization];
       extraRules = ''
         ACTION=="add", SUBSYSTEM=="hwmon", ATTRS{name}=="octo", RUN+="/bin/sh -c 'ln -s /sys$devpath /dev/hwmon'"
       '';
@@ -153,5 +151,5 @@ in
     };
   };
 
-  security.pam.services.hyprlock = { };
+  security.pam.services.hyprlock = {};
 }

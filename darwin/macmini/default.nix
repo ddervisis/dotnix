@@ -6,9 +6,7 @@
   hostName,
   system,
   ...
-}:
-
-{
+}: {
   # imports = (import ../../modules/services);
 
   environment = {
@@ -20,7 +18,7 @@
   };
 
   homebrew = {
-    brews = [ "talhelper" ];
+    brews = ["talhelper"];
     casks = [
       "ace-link"
       "balenaetcher"

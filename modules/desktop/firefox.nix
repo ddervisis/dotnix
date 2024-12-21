@@ -3,9 +3,7 @@
   pkgs,
   lib,
   ...
-}:
-
-let
+}: let
   search = {
     force = true;
     default = "DuckDuckGo";
@@ -36,7 +34,7 @@ let
           url = "https://github.githubassets.com/favicons/favicon.svg";
           sha256 = "sha256-apV3zU9/prdb3hAlr4W5ROndE4g3O1XMum6fgKwurmA=";
         }}";
-        definedAliases = [ "@gh" ];
+        definedAliases = ["@gh"];
       };
       "Nix Packages" = {
         urls = [
@@ -55,7 +53,7 @@ let
           }
         ];
         icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
-        definedAliases = [ "@np" ];
+        definedAliases = ["@np"];
       };
       "NixOS Wiki" = {
         urls = [
@@ -70,7 +68,7 @@ let
           }
         ];
         icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
-        definedAliases = [ "@nw" ];
+        definedAliases = ["@nw"];
       };
       "Nixpkgs Issues" = {
         urls = [
@@ -85,7 +83,7 @@ let
           }
         ];
         icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
-        definedAliases = [ "@ni" ];
+        definedAliases = ["@ni"];
       };
       "Reddit" = {
         urls = [
@@ -103,7 +101,7 @@ let
           url = "https://www.redditstatic.com/accountmanager/favicon/favicon-512x512.png";
           sha256 = "sha256-4zWTcHuL1SEKk8KyVFsOKYPbM4rc7WNa9KrGhK4dJyg=";
         }}";
-        definedAliases = [ "@r" ];
+        definedAliases = ["@r"];
       };
       "Youtube" = {
         urls = [
@@ -121,7 +119,7 @@ let
           url = "www.youtube.com/s/desktop/8498231a/img/favicon_144x144.png";
           sha256 = "sha256-lQ5gbLyoWCH7cgoYcy+WlFDjHGbxwB8Xz0G7AZnr9vI=";
         }}";
-        definedAliases = [ "@y" ];
+        definedAliases = ["@y"];
       };
     };
   };
@@ -145,7 +143,7 @@ let
     "browser.toolbars.bookmarks.visibility" = "always";
     "browser.uiCustomization.state" = builtins.toJSON {
       placements = {
-        widget-overflow-fixed-list = [ ];
+        widget-overflow-fixed-list = [];
         nav-bar = [
           "back-button"
           "forward-button"
@@ -161,13 +159,13 @@ let
           "_446900e4-71c2-419f-a6a7-df9c091e268b_-browser-action" # Bitwarden
           "jid1-mnnxcxisbpnsxq_jetpack-browser-action" # Privacy Badger
         ];
-        toolbar-menubar = [ "menubar-items" ];
+        toolbar-menubar = ["menubar-items"];
         TabsToolbar = [
           "tabbrowser-tabs"
           "new-tab-button"
           "alltabs-button"
         ];
-        PersonalToolbar = [ "personal-bookmarks" ];
+        PersonalToolbar = ["personal-bookmarks"];
       };
       dirtyAreaCache = [
         "nav-bar"
@@ -265,8 +263,7 @@ let
       id = 6;
     };
   };
-in
-{
+in {
   programs.firefox = {
     enable = true;
 
@@ -328,19 +325,17 @@ in
         Cryptomining = true;
         Fingerprinting = true;
       };
-      ExtensionSettings =
-        with builtins;
-        let
-          extension = shortId: uuid: {
-            name = uuid;
-            value = {
-              install_url = "https://addons.mozilla.org/firefox/downloads/latest/${shortId}/latest.xpi";
-              installation_mode = "normal_installed";
-              updates_disabled = true;
-              default_area = "menupanel";
-            };
+      ExtensionSettings = with builtins; let
+        extension = shortId: uuid: {
+          name = uuid;
+          value = {
+            install_url = "https://addons.mozilla.org/firefox/downloads/latest/${shortId}/latest.xpi";
+            installation_mode = "normal_installed";
+            updates_disabled = true;
+            default_area = "menupanel";
           };
-        in
+        };
+      in
         listToAttrs [
           (extension "multi-account-containers" "@testpilot-containers")
           (extension "ublock-origin" "uBlock0@raymondhill.net")

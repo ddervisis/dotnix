@@ -6,16 +6,13 @@
   hostName,
   system,
   ...
-}:
-
-let
+}: let
   pkgs = import nixpkgs {
     inherit system;
     config.allowUnfree = true;
   };
-in
-{
-  imports = [ (import ./hardware-configuration.nix) ] ++ (import ../../modules/virtualisation);
+in {
+  imports = [(import ./hardware-configuration.nix)] ++ (import ../../modules/virtualisation);
 
   boot = {
     kernelPackages = pkgs.linuxPackages_latest;
@@ -35,11 +32,11 @@ in
     networkmanager.enable = true;
     firewall = {
       enable = true;
-      allowedTCPPorts = [ 22 ];
+      allowedTCPPorts = [22];
     };
   };
 
   environment = {
-    systemPackages = with pkgs; [ ripgrep ];
+    systemPackages = with pkgs; [ripgrep];
   };
 }

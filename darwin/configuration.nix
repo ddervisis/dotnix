@@ -6,9 +6,7 @@
   vars,
   ...
 }:
-
-with lib;
-{
+with lib; {
   users.users.${vars.user} = {
     home = "/Users/${vars.user}";
     shell = pkgs.zsh;
@@ -30,7 +28,7 @@ with lib;
   };
 
   environment = {
-    shells = [ pkgs.zsh ];
+    shells = [pkgs.zsh];
     variables = {
       EDITOR = "${vars.editor}";
       VISUAL = "${vars.editor}";
@@ -85,7 +83,7 @@ with lib;
       upgrade = false;
       cleanup = "zap";
     };
-    brews = [ ];
+    brews = [];
     casks = [
       "arc"
       "bitwarden"

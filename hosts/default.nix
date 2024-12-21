@@ -8,16 +8,13 @@
   talhelper,
   vars,
   ...
-}:
-
-let
-  mkSystem =
-    {
-      hostName,
-      system,
-      stateVersion ? "23.11",
-      monitors ? { },
-    }:
+}: let
+  mkSystem = {
+    hostName,
+    system,
+    stateVersion ? "23.11",
+    monitors ? {},
+  }:
     nixpkgs.lib.nixosSystem {
       specialArgs = {
         inherit
@@ -42,21 +39,23 @@ let
             inherit vars stateVersion monitors;
           };
           home-manager.users.${vars.user} = {
-            imports = [
-              (import ./home.nix)
-            ] ++ [ (import ./${hostName}/home.nix) ] ++ [ nixvim.homeManagerModules.nixvim ];
+            imports =
+              [
+                (import ./home.nix)
+              ]
+              ++ [(import ./${hostName}/home.nix)]
+              ++ [nixvim.homeManagerModules.nixvim];
           };
         }
       ];
     };
 
-  mkPi =
-    {
-      hostName,
-      system,
-      stateVersion ? "23.11",
-      extraModules ? [ ],
-    }:
+  mkPi = {
+    hostName,
+    system,
+    stateVersion ? "23.11",
+    extraModules ? [],
+  }:
     nixpkgs.lib.nixosSystem {
       specialArgs = {
         inherit
@@ -68,26 +67,28 @@ let
           stateVersion
           ;
       };
-      modules = [ ./${hostName} ] ++ extraModules;
+      modules = [./${hostName}] ++ extraModules;
     };
 
-  mkPiImage =
-    {
-      hostName,
-      system,
-      stateVersion ? "23.11",
-    }:
+  mkPiImage = {
+    hostName,
+    system,
+    stateVersion ? "23.11",
+  }:
     (mkPi {
       hostName = hostName;
       system = system;
       stateVersion = stateVersion;
       extraModules = [
         "${nixpkgs}/nixos/modules/installer/sd-card/sd-image-aarch64.nix"
-        { disabledModules = [ "profiles/base.nix" ]; }
+        {disabledModules = ["profiles/base.nix"];}
       ];
-    }).config.system.build.sdImage;
-in
-{
+    })
+    .config
+    .system
+    .build
+    .sdImage;
+in {
   arc = mkSystem {
     hostName = "arc";
     system = "x86_64-linux";

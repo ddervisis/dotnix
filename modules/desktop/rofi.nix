@@ -3,9 +3,7 @@
   pkgs,
   vars,
   ...
-}:
-
-let
+}: let
   inherit (config.lib.formats.rasi) mkLiteral;
 
   nord = {
@@ -128,8 +126,7 @@ let
       text-color = mkLiteral "inherit";
     };
   };
-in
-{
+in {
   programs = {
     rofi = {
       package = pkgs.rofi-wayland-unwrapped;

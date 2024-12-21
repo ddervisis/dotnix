@@ -6,7 +6,5 @@
   hostName,
   system,
   ...
-}:
-
-{
+}: {
 }

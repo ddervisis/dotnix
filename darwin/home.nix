@@ -5,9 +5,7 @@
   vars,
   stateVersion,
   ...
-}:
-
-{
+}: {
   imports = (import ../modules/editors) ++ (import ../modules/programs) ++ (import ../modules/shell);
 
   home = {
@@ -30,7 +28,7 @@
       currentHostDefaults."com.apple.controlcenter".BatteryShowPercentage = true;
       defaults = {
         NSGlobalDomain = {
-          AppleLanguages = [ "en" ];
+          AppleLanguages = ["en"];
           AppleLocale = "en_US";
           AppleMeasurementUnits = "Centimeters";
           AppleMetricUnits = true;

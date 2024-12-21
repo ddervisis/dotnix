@@ -4,19 +4,17 @@
   pkgs,
   modulesPath,
   ...
-}:
-
-{
-  imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
+}: {
+  imports = [(modulesPath + "/installer/scan/not-detected.nix")];
 
   boot = {
     initrd.availableKernelModules = [
       "usbhid"
       "usb_storage"
     ];
-    initrd.kernelModules = [ ];
-    kernelModules = [ ];
-    extraModulePackages = [ ];
+    initrd.kernelModules = [];
+    kernelModules = [];
+    extraModulePackages = [];
   };
 
   fileSystems."/" = {
@@ -29,7 +27,7 @@
     fsType = "vfat";
   };
 
-  swapDevices = [ ];
+  swapDevices = [];
 
   networking.useDHCP = lib.mkDefault true;
 

@@ -1,11 +1,8 @@
-{ pkgs, ... }:
-
-{
+{pkgs, ...}: {
   programs = {
     vscode = {
       enable = true;
-      extensions =
-        with pkgs.vscode-extensions;
+      extensions = with pkgs.vscode-extensions;
         [
           bbenoist.nix
           eamodio.gitlens
@@ -97,14 +94,14 @@
         "nix.serverSettings" = {
           "nil" = {
             "formatting" = {
-              "command" = [ "nixpkgs-fmt" ];
+              "command" = ["nixpkgs-fmt"];
             };
           };
         };
         # Python
         "[python]" = {
           "diffEditor.ignoreTrimWhitespace" = false;
-          "gitlens.codeLens.symbolScopes" = [ "!Module" ];
+          "gitlens.codeLens.symbolScopes" = ["!Module"];
           "editor.formatOnPaste" = true;
           "editor.formatOnType" = true;
           "editor.formatOnSave" = true;
@@ -144,7 +141,7 @@
         "[dart]" = {
           "editor.formatOnSave" = true;
           "editor.formatOnType" = true;
-          "editor.rulers" = [ 80 ];
+          "editor.rulers" = [80];
           "editor.selectionHighlight" = false;
           "editor.suggestSelection" = "first";
           "editor.tabCompletion" = "onlySnippets";

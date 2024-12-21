@@ -38,55 +38,52 @@
     talhelper.url = "github:budimanjojo/talhelper";
   };
 
-  outputs =
-    {
-      nixpkgs,
-      lix,
-      lix-module,
-      home-manager,
-      darwin,
-      nixvim,
-      rpi5kernel,
-      talhelper,
-      ...
-    }:
-    let
-      vars = {
-        user = "gr4pe";
-        # user = "dennis.dervisis";
-        terminal = "kitty";
-        editor = "nvim";
-      };
-      nix.registry.nixpkgs.flake = nixpkgs;
-    in
-    {
-      nixosConfigurations = (
-        import ./hosts {
-          inherit (nixpkgs) lib;
-          inherit
-            nixpkgs
-            lix
-            lix-module
-            home-manager
-            nixvim
-            rpi5kernel
-            talhelper
-            vars
-            ;
-        }
-      );
-
-      darwinConfigurations = (
-        import ./darwin {
-          inherit (nixpkgs) lib;
-          inherit
-            nixpkgs
-            home-manager
-            nixvim
-            darwin
-            vars
-            ;
-        }
-      );
+  outputs = {
+    nixpkgs,
+    lix,
+    lix-module,
+    home-manager,
+    darwin,
+    nixvim,
+    rpi5kernel,
+    talhelper,
+    ...
+  }: let
+    vars = {
+      user = "gr4pe";
+      # user = "dennis.dervisis";
+      terminal = "kitty";
+      editor = "nvim";
     };
+    nix.registry.nixpkgs.flake = nixpkgs;
+  in {
+    nixosConfigurations = (
+      import ./hosts {
+        inherit (nixpkgs) lib;
+        inherit
+          nixpkgs
+          lix
+          lix-module
+          home-manager
+          nixvim
+          rpi5kernel
+          talhelper
+          vars
+          ;
+      }
+    );
+
+    darwinConfigurations = (
+      import ./darwin {
+        inherit (nixpkgs) lib;
+        inherit
+          nixpkgs
+          home-manager
+          nixvim
+          darwin
+          vars
+          ;
+      }
+    );
+  };
 }

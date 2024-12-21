@@ -1,6 +1,8 @@
-{ pkgs, vars, ... }:
-
 {
+  pkgs,
+  vars,
+  ...
+}: {
   programs.rio = {
     enable = true;
     settings = {

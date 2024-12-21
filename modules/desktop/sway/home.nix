@@ -6,9 +6,7 @@
   monitors,
   ...
 }:
-
 # NOTE: Currently not in use
-
 {
   wayland.windowManager.sway = {
     enable = true;
@@ -42,10 +40,10 @@
         #''; always = true;}
       ];
 
-      bars = [ ];
+      bars = [];
 
       fonts = {
-        names = [ "Source Code Pro" ];
+        names = ["Source Code Pro"];
         size = 10.0;
       };
 

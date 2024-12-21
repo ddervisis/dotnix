@@ -3,9 +3,7 @@
   pkgs,
   vars,
   ...
-}:
-
-{
+}: {
   programs.fuzzel = {
     enable = true;
     package = pkgs.fuzzel;

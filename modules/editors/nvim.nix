@@ -1,6 +1,4 @@
-{ pkgs, ... }:
-
-{
+{pkgs, ...}: {
   programs = {
     nixvim = {
       enable = true;
@@ -102,9 +100,9 @@
           enable = true;
           autoEnableSources = true;
           settings.sources = [
-            { name = "nvim_lsp"; }
-            { name = "path"; }
-            { name = "buffer"; }
+            {name = "nvim_lsp";}
+            {name = "path";}
+            {name = "buffer";}
           ];
         };
         cmp-buffer.enable = true;
@@ -147,13 +145,13 @@
         lint = {
           enable = true;
           lintersByFt = {
-            text = [ "vale" ];
-            json = [ "jsonlint" ];
-            markdown = [ "vale" ];
-            rst = [ "vale" ];
-            dockerfile = [ "hadolint" ];
-            terraform = [ "tflint" ];
-            typscriptreact = [ "prettier_eslint" ];
+            text = ["vale"];
+            json = ["jsonlint"];
+            markdown = ["vale"];
+            rst = ["vale"];
+            dockerfile = ["hadolint"];
+            terraform = ["tflint"];
+            typscriptreact = ["prettier_eslint"];
           };
         };
         lsp = {
@@ -228,15 +226,15 @@
               };
             };
             inactive_sections = {
-              lualine_a = [ ];
-              lualine_b = [ ];
-              lualine_c = [ "filename" ];
-              lualine_x = [ "location" ];
-              lualine_y = [ ];
-              lualine_z = [ ];
+              lualine_a = [];
+              lualine_b = [];
+              lualine_c = ["filename"];
+              lualine_x = ["location"];
+              lualine_y = [];
+              lualine_z = [];
             };
             sections = {
-              lualine_a = [ "mode" ];
+              lualine_a = ["mode"];
               lualine_b = [
                 "branch"
                 "diff"
@@ -276,8 +274,8 @@
                 "fileformat"
                 "filetype"
               ];
-              lualine_y = [ "progress" ];
-              lualine_z = [ "location" ];
+              lualine_y = ["progress"];
+              lualine_z = ["location"];
             };
           };
         };
@@ -319,7 +317,7 @@
         # wilder.enable = true;
       };
 
-      extraPlugins = with pkgs.vimPlugins; [ neoformat nvim-treesitter-parsers.templ ];
+      extraPlugins = with pkgs.vimPlugins; [neoformat nvim-treesitter-parsers.templ];
 
       keymaps = [
         {
@@ -335,13 +333,13 @@
         {
           key = "<";
           action = "< gv";
-          mode = [ "v" ];
+          mode = ["v"];
           options.silent = true;
         }
         {
           key = ">";
           action = "> gv";
-          mode = [ "v" ];
+          mode = ["v"];
           options.silent = true;
         }
         {
@@ -400,13 +398,13 @@
         }
         {
           key = "<A-j>";
-          mode = [ "v" ];
+          mode = ["v"];
           action = ":m '>+1<CR>gv=gv";
           options.silent = true;
         }
         {
           key = "<C-k>";
-          mode = [ "v" ];
+          mode = ["v"];
           action = ":m '<-2<CR>gv==gv";
           options.silent = true;
         }

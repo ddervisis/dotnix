@@ -1,6 +1,8 @@
-{ pkgs, vars, ... }:
-
 {
+  pkgs,
+  vars,
+  ...
+}: {
   services.greetd = {
     enable = true;
     settings = {

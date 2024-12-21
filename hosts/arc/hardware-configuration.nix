@@ -3,10 +3,8 @@
   lib,
   modulesPath,
   ...
-}:
-
-{
-  imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
+}: {
+  imports = [(modulesPath + "/installer/scan/not-detected.nix")];
 
   boot.initrd.availableKernelModules = [
     "nvme"
@@ -15,10 +13,10 @@
     "usb_storage"
     "sd_mod"
   ];
-  boot.initrd.kernelModules = [ "nvidia" ];
-  boot.kernelModules = [ "kvm-amd" ];
+  boot.initrd.kernelModules = ["nvidia"];
+  boot.kernelModules = ["kvm-amd"];
   boot.extraModulePackages = [
-    # config.boot.kernelPackages.nvidia_x11 
+    # config.boot.kernelPackages.nvidia_x11
   ];
 
   fileSystems."/" = {
@@ -88,14 +86,12 @@
   fileSystems."/mnt/storage" = {
     device = "//10.10.100.100/storage";
     fsType = "cifs";
-    options =
-      let
-        automount_opts = "x-systemd.automount,noauto,x-systemd.idle-timeout=60,x-systemd.device-timeout=5s,x-systemd.mount-timeout=5s";
-      in
-      [ "${automount_opts},credentials=/etc/nixos/smb-secrets,uid=1000,gid=100" ];
+    options = let
+      automount_opts = "x-systemd.automount,noauto,x-systemd.idle-timeout=60,x-systemd.device-timeout=5s,x-systemd.mount-timeout=5s";
+    in ["${automount_opts},credentials=/etc/nixos/smb-secrets,uid=1000,gid=100"];
   };
 
-  swapDevices = [ { device = "/dev/disk/by-label/swap"; } ];
+  swapDevices = [{device = "/dev/disk/by-label/swap";}];
 
   networking.useDHCP = lib.mkDefault true;
 

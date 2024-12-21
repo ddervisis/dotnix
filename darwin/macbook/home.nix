@@ -5,7 +5,5 @@
   vars,
   stateVersion,
   ...
-}:
-
-{
+}: {
 }

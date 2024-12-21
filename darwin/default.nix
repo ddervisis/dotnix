@@ -5,21 +5,18 @@
   nixvim,
   vars,
   ...
-}:
-
-let
+}: let
   system = "aarch64-darwin";
   pkgs = import nixpkgs {
     inherit system;
     config.allowUnfree = true;
   };
 
-  mkSystem =
-    {
-      hostName,
-      system,
-      stateVersion ? "23.11",
-    }:
+  mkSystem = {
+    hostName,
+    system,
+    stateVersion ? "23.11",
+  }:
     darwin.lib.darwinSystem rec {
       inherit system;
       specialArgs = {
@@ -38,15 +35,17 @@ let
             inherit vars stateVersion;
           };
           home-manager.users.${vars.user} = {
-            imports = [
-              (import ./home.nix)
-            ] ++ [ (import ./${hostName}/home.nix) ] ++ [ nixvim.homeManagerModules.nixvim ];
+            imports =
+              [
+                (import ./home.nix)
+              ]
+              ++ [(import ./${hostName}/home.nix)]
+              ++ [nixvim.homeManagerModules.nixvim];
           };
         }
       ];
     };
-in
-{
+in {
   macbook = mkSystem {
     # Mac15,6 (2023)
     hostName = "macbook";

@@ -1,6 +1,9 @@
-{ pkgs, lib, vars, ... }:
-
 {
+  pkgs,
+  lib,
+  vars,
+  ...
+}: {
   programs.zed-editor = {
     enable = true;
     extensions = [
@@ -248,7 +251,7 @@
       inline_completions_disabled_in = [];
       # Whether to show tabs and spaces in the editor.
       # This setting can take three values:
-      # 
+      #
       # 1. Draw tabs and spaces only for the selected text (default):
       #    "selection"
       # 2. Do not draw any tabs or spaces:
@@ -334,14 +337,14 @@
         active_line_width = 1;
         # Determines how indent guides are colored.
         # This setting can take the following three values:
-        # 
+        #
         # 1. "disabled"
         # 2. "fixed"
         # 3. "indent_aware"
         coloring = "indent_aware";
         # Determines how indent guide backgrounds are colored.
         # This setting can take the following two values:
-        # 
+        #
         # 1. "disabled"
         # 2. "indent_aware"
         background_coloring = "disabled";
@@ -384,7 +387,7 @@
         # Corresponds to null/None LSP hint type value.
         show_other_hints = true;
         # Whether to show a background for inlay hints.
-        # 
+        #
         # If set to `true`, the background will use the `hint.background` color from the current theme.
         show_background = false;
         # Time to wait after editing the buffer, before requesting the hints,
@@ -435,7 +438,7 @@
         };
         # Which files containing diagnostic errors/warnings to mark in the project panel.
         # This setting can take the following three values:
-        # 
+        #
         # 1. Do not mark any files:
         #    "off"
         # 2. Only mark files with errors:
@@ -447,7 +450,7 @@
         indent_guides = {
           # When to show indent guides in the project panel.
           # This setting can take two values:
-          # 
+          #
           # 1. Always show indent guides:
           #    "always"
           # 2. Never show indent guides:
@@ -481,7 +484,7 @@
         indent_guides = {
           # When to show indent guides in the outline panel.
           # This setting can take two values:
-          # 
+          #
           # 1. Always show indent guides:
           #    "always"
           # 2. Never show indent guides:
@@ -492,7 +495,7 @@
         scrollbar = {
           # When to show the scrollbar in the project panel.
           # This setting can take four values:
-          # 
+          #
           # 1. null (default): Inherit editor settings
           # 2. Show the scrollbar if there's important information or
           #    follow the system's configured behavior (default):
@@ -577,7 +580,7 @@
       # For example, when editing opening <html> tag, the contents of the closing </html> tag will be edited as well.
       linked_edits = true;
       # The list of language servers to use (or disable) for all languages.
-      # 
+      #
       # This is typically customized on a per-language basis.
       language_servers = ["..."];
       # When to automatically save edited buffers. This setting can
@@ -627,7 +630,7 @@
         # Whether a preview tab gets replaced when code navigation is used to navigate away from the tab.
         enable_preview_from_code_navigation = true;
       };
-      # Settings related to the file finder. 
+      # Settings related to the file finder.
       file_finder = {
         # Whether to show file icons in the file finder.
         file_icons = true;
@@ -961,7 +964,7 @@
       #
       # If you don't want any of these extensions, add this field to your settings
       # and change the value to `false`.
-      # NOTE: Extensions will be installed via the `zed-editor.extensions` list. 
+      # NOTE: Extensions will be installed via the `zed-editor.extensions` list.
       # "auto_install_extensions": {
       #   "html": true
       # },
@@ -1007,7 +1010,7 @@
         };
         Go = {
           code_actions_on_format = {
-            source.organizeImports = true;
+            "source.organizeImports" = true;
           };
         };
         GraphQL = {
