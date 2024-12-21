@@ -319,7 +319,7 @@
         # wilder.enable = true;
       };
 
-      extraPlugins = with pkgs.vimPlugins; [ nvim-treesitter-parsers.templ ];
+      extraPlugins = with pkgs.vimPlugins; [ neoformat nvim-treesitter-parsers.templ ];
 
       keymaps = [
         {

@@ -66,7 +66,7 @@
         # gpg-connect-agent /bye
         # export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
         alias gs="gst"
-        alias docker="podman"
+        # alias docker="podman"
       '';
 
       shellAliases.fixstore = "sudo nix-store --verify --check-contents --repair";

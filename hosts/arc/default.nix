@@ -102,7 +102,6 @@ in
       unzip
       wineWowPackages.waylandFull
       yubikey-manager
-      zed-editor
       zip
     ];
   };

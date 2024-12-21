@@ -1,4 +1,0 @@
-#!/usr/bin/env nix-shell
-#!nix-shell -I nixpkgs=https://github.com/NixOS/nixpkgs/archive/f7c12586bee29c7a036862626328ec3a64684393.tar.gz -i bash -p findutils nixfmt-rfc-style
-
-find . -name '*.nix' -exec nixfmt {} +
