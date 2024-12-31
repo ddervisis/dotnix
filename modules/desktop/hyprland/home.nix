@@ -130,8 +130,8 @@ in {
         "$mod, bracketright, exec, ${pkgs.playerctl} next"
         "$mod, bracketleft, exec, ${pkgs.playerctl} previous"
 
-        ", XF86AudioRaiseVolume, exec, ${pkgs.pamixer}/bin/pamixer --increase"
-        ", XF86AudioLowerVolume, exec, ${pkgs.pamixer}/bin/pamixer --decrease"
+        ", XF86AudioRaiseVolume, exec, ${pkgs.pamixer}/bin/pamixer --increase 10"
+        ", XF86AudioLowerVolume, exec, ${pkgs.pamixer}/bin/pamixer --decrease 10"
         ", XF86AudioMute, exec, ${pkgs.pamixer}/bin/pamixer --toggle-mute"
         ", XF86AudioMicMute, exec, ${pkgs.pamixer}/bin/pamixer --default-source --toggle-mute"
         # ", XF86AudioPrev, exec, "

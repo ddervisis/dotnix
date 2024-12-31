@@ -362,7 +362,7 @@
           options.silent = true;
         }
         {
-          key = "<leader>gs";
+          key = "<leader>gg";
           action = ":Git<CR>";
           options.silent = true;
         }
@@ -387,6 +387,11 @@
           options.silent = true;
         }
         {
+          key = "<leader>q`";
+          action = "ciw``<Esc>P";
+          options.silent = true;
+        }
+        {
           key = "<A-j>";
           action = ":m .+1<CR>==";
           options.silent = true;
@@ -406,6 +411,21 @@
           key = "<C-k>";
           mode = ["v"];
           action = ":m '<-2<CR>gv==gv";
+          options.silent = true;
+        }
+        {
+          key = "<leader>gs";
+          action = ":Gitsigns stage_hunk<CR>";
+          options.silent = true;
+        }
+        {
+          key = "<leader>gr";
+          action = ":Gitsigns reset_hunk<CR>";
+          options.silent = true;
+        }
+        {
+          key = "<leader>gu";
+          action = ":Gitsigns undo_stage_hunk<CR>";
           options.silent = true;
         }
       ];

@@ -77,6 +77,7 @@ in {
 
   environment = {
     systemPackages = with pkgs; [
+      bat
       age
       alejandra
       awscli

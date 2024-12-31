@@ -984,7 +984,7 @@
         };
         C = {
           format_on_save = "off";
-          use_on_type_format = "off";
+          use_on_type_format = false;
         };
         "C++" = {
           format_on_save = "off";
@@ -1132,6 +1132,7 @@
           };
         };
         YAML = {
+          tab_size = 2;
           prettier = {
             allowed = true;
           };
@@ -1214,8 +1215,18 @@
           settings = {
             yaml = {
               keyOrdering = false;
+              editor.tabSize = 2;
               format = {
+                enable = true;
                 singleQuote = false;
+                bracketSpacing = false;
+                proseWrap = "always";
+                # printWidth = 80;
+              };
+              schemas = {
+                "Kubernetes" = "globPattern";
+                "https://json.schemastore.org/kustomization" = "/kustomization.yaml";
+                "https://raw.githubusercontent.com/fluxcd-community/flux2-schemas/refs/heads/main/all.json" = ["/*" "!/kustomization.yaml" "!*.sops.yaml"];
               };
             };
           };
@@ -1232,11 +1243,25 @@
       };
       # Vim settings
       vim = {
-        toggle_relave_line_numbers = true;
+        # If `true`, line numbers are relative in normal mode and absolute
+        # in insert mode, giving you the best of both options.
+        toggle_relative_line_numbers = true;
+        # Determines how system clipboard is used:
+        #   "always": use for all operations
+        #   "never": only use when explicitly specified
+        #   "on_yank": use for yank operations
         use_system_clipboard = "always";
+        # If `true`, `f` and `t` motions extend across multiple lines.
         use_multiline_find = false;
+        # If `true`, `f` and `t` motions are case-insensitive when the target
+        # letter is lowercase.
         use_smartcase_find = false;
-        custom_digraphs = {};
+        # An object that allows you to add custom digraphs.
+        custom_digraphs = {
+          fz = "🧟‍♀️";
+        };
+        # The duration of the highlight animation(in ms). Set to `0` to disable
+        highlight_on_yank_duration = 200;
       };
       # The server to connect to. If the environment variable
       # ZED_SERVER_URL is set, it will override this setting.
