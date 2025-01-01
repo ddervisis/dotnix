@@ -111,6 +111,7 @@
         cmp-nvim-lsp.enable = true;
         cmp-nvim-lsp-signature-help.enable = true;
         cmp-nvim-lua.enable = true;
+        colorizer.enable = true;
         comment.enable = true;
         fugitive.enable = true;
         gitblame.enable = true;
@@ -283,7 +284,6 @@
         markdown-preview.enable = true;
         nix.enable = true;
         nvim-autopairs.enable = true;
-        nvim-colorizer.enable = true;
         refactoring.enable = true;
         telescope = {
           enable = true;
