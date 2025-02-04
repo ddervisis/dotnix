@@ -24,6 +24,7 @@ in {
       (import ../../modules/desktop/hyprland/hyprland.nix)
       (import ../../modules/services/syncthing.nix)
       (import ../../modules/services/mullvad.nix)
+      # (import ../../modules/services/cloudflared.nix)
       (import ../../modules/desktop/greetd.nix)
     ]
     ++ (import ../../modules/virtualisation)

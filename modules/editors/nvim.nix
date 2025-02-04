@@ -72,15 +72,15 @@
       # };
 
       plugins = {
-        auto-session = {
-          enable = true;
-          settings = {
-            auto_restore = true;
-            auto_save = true;
-            auto_restore_last_session = true;
-            use_git_branch = true;
-          };
-        };
+        # auto-session = {
+        #   enable = true;
+        #   settings = {
+        #     auto_restore = true;
+        #     auto_save = true;
+        #     auto_restore_last_session = true;
+        #     use_git_branch = true;
+        #   };
+        # };
         cloak = {
           enable = true;
           settings = {
@@ -99,11 +99,28 @@
         cmp = {
           enable = true;
           autoEnableSources = true;
-          settings.sources = [
-            {name = "nvim_lsp";}
-            {name = "path";}
-            {name = "buffer";}
-          ];
+          settings = {
+            mapping = {
+              "<C-Space>" = "cmp.mapping.complete()";
+              "<C-d>" = "cmp.mapping.scroll_docs(-4)";
+              "<C-e>" = "cmp.mapping.close()";
+              "<C-f>" = "cmp.mapping.scroll_docs(4)";
+              "<CR>" = "cmp.mapping.confirm({ select = true })";
+              "<S-Tab>" = "cmp.mapping(cmp.mapping.select_prev_item(), {'i', 's'})";
+              "<Tab>" = "cmp.mapping(cmp.mapping.select_next_item(), {'i', 's'})";
+            };
+            sources = [
+              {name = "nvim_lsp";}
+              {name = "luasnip";}
+              {name = "path";}
+              {name = "buffer";}
+            ];
+            snippet.expand = ''
+             function(args)
+               require('luasnip').lsp_expand(args.body)
+             end
+            '';
+          };
         };
         cmp-buffer.enable = true;
         cmp-path.enable = true;
@@ -173,6 +190,7 @@
             };
             pyright.enable = true;
             templ.enable = true;
+            zls.enable = true;
           };
           keymaps = {
             diagnostic = {
@@ -303,9 +321,37 @@
           enable = true;
           nixGrammars = true;
           settings = {
-            ensure_installed = "all";
             highlight.enable = true;
           };
+          grammarPackages = with pkgs.vimPlugins.nvim-treesitter.builtGrammars; [
+            bash
+            comment
+            dart
+            dockerfile
+            gdscript
+            gitignore
+            go
+            gomod
+            gosum
+            helm
+            html
+            http
+            json
+            lua
+            make
+            markdown
+            nix
+            python
+            regex
+            rst
+            templ
+            toml
+            vim
+            vimdoc
+            xml
+            yaml
+            zig
+          ];
         };
         treesitter-context.enable = true;
         trouble.enable = true;
@@ -315,6 +361,7 @@
         web-devicons.enable = true;
         which-key.enable = true;
         # wilder.enable = true;
+        zig.enable = true;
       };
 
       extraPlugins = with pkgs.vimPlugins; [neoformat nvim-treesitter-parsers.templ];

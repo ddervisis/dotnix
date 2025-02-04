@@ -30,6 +30,7 @@
       "terraform"
       "toml"
       "xml"
+      "zig"
     ];
     extraPackages = with pkgs; [
       alejandra
@@ -38,6 +39,8 @@
       gopls
       nil
       nixd
+      zig
+      zls
     ];
     userKeymaps = [
       {
@@ -1137,6 +1140,13 @@
             allowed = true;
           };
         };
+        Zig = {
+          format_on_save = "language_server";
+          code_actions_on_format = {
+            "source.fixAll" = true;
+            "source.organizeImports" = true;
+          };
+        };
       };
       # Different settings for specific language models.
       language_models = {
@@ -1226,9 +1236,18 @@
               schemas = {
                 "Kubernetes" = "globPattern";
                 "https://json.schemastore.org/kustomization" = "/kustomization.yaml";
-                "https://raw.githubusercontent.com/fluxcd-community/flux2-schemas/refs/heads/main/all.json" = ["/*" "!/kustomization.yaml" "!*.sops.yaml"];
+                # "https://raw.githubusercontent.com/fluxcd-community/flux2-schemas/refs/heads/main/all.json" = ["/*" "!/kustomization.yaml" "!*.sops.yaml"];
               };
             };
+          };
+        };
+        zls = {
+          binary = {
+            path = lib.getExe pkgs.zls;
+          };
+          initialization_options = {
+            enable_build_on_save = true;
+            zig_exe_path = lib.getExe pkgs.zig;
           };
         };
       };
