@@ -10,8 +10,9 @@
     style = ''
       * {
         border: none;
-        font-family: FiraCode Nerd Font Mono;
+        font-family: FiraCode Nerd Font Mono, "Font Awesome 6 Free";
         font-weight: bold;
+        font-size: 14;
       }
       window#waybar {
         background-color: #1a1b26;
@@ -34,6 +35,7 @@
       #network,
       #window,
       #cpu,
+      #custom-gpu,
       #disk,
       #temperature,
       #custom-fanspeed,
@@ -67,6 +69,9 @@
       }
       #cpu {
         color: #d19a66;
+      }
+      #custom-gpu {
+        color: #0dff9d;
       }
       #memory {
         color: #c678dd;
@@ -132,6 +137,7 @@
         ];
         modules-right = [
           "cpu"
+          "custom/gpu"
           "memory"
           "disk"
           "temperature"
@@ -178,6 +184,14 @@
           # format = "{icon0}{icon1}{icon2}{icon3} {usage:>2}% ";
           # format-icons = ["▁" "▂" "▃" "▄" "▅" "▆" "▇" "█"];
           interval = 5;
+        };
+
+        "custom/gpu" = {
+          format = "{}% <span font='14'></span>";
+          tooltip = true;
+          interval = 5;
+          exec = "/run/current-system/sw/bin/nvidia-smi --query-gpu=utilization.gpu --format=csv,noheader,nounits";
+          tooltip-format = "GPU utilization";
         };
 
         memory = {
