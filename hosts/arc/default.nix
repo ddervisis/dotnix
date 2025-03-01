@@ -3,7 +3,7 @@
   lib,
   hostName,
   system,
-  talhelper,
+  zen-browser,
   ...
 }: let
   pkgs = import nixpkgs {
@@ -102,6 +102,7 @@ in {
       unzip
       wineWowPackages.waylandFull
       yubikey-manager
+      zen-browser.packages."${system}".default
       zip
     ];
   };

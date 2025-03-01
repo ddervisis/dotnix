@@ -36,6 +36,8 @@
     };
 
     talhelper.url = "github:budimanjojo/talhelper";
+
+    zen-browser.url = "github:0xc000022070/zen-browser-flake";
   };
 
   outputs = {
@@ -47,6 +49,7 @@
     nixvim,
     rpi5kernel,
     talhelper,
+    zen-browser,
     ...
   }: let
     vars = {
@@ -68,6 +71,7 @@
           nixvim
           rpi5kernel
           talhelper
+          zen-browser
           vars
           ;
       }

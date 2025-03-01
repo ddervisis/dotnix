@@ -1,5 +1,4 @@
-{ vars, ... }:
-{
+{vars, ...}: {
   services.cloudflared = {
     enable = true;
     user = vars.user;

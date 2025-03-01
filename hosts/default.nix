@@ -6,6 +6,7 @@
   nixvim,
   rpi5kernel,
   talhelper,
+  zen-browser,
   vars,
   ...
 }: let
@@ -20,6 +21,7 @@
         inherit
           nixpkgs
           talhelper
+          zen-browser
           vars
           hostName
           system
