@@ -1,4 +1,5 @@
 {
+  lib,
   pkgs,
   vars,
   monitors,
@@ -21,8 +22,7 @@ in {
         monitor = [
           "${monitors.primary.output},${monitors.primary.resolution.width}x${monitors.primary.resolution.height}@165,0x0,1,vrr,2"
           "${monitors.secondary.output},${monitors.secondary.resolution.width}x${monitors.secondary.resolution.height}@165,${monitors.primary.resolution.width}x0,1,vrr,2"
-          # TODO: use variable for 1280 value (monitor height / 2)
-          "${monitors.tertiary.output},${monitors.tertiary.resolution.width}x${monitors.tertiary.resolution.height}@165,1280x-${monitors.tertiary.resolution.height},1,vrr,2"
+          "${monitors.tertiary.output},${monitors.tertiary.resolution.width}x${monitors.tertiary.resolution.height}@165,${builtins.toString (lib.strings.toInt monitors.tertiary.resolution.width / 2)}x-${monitors.tertiary.resolution.height},1,vrr,2"
         ];
       };
       general = {
