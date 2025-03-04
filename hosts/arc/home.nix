@@ -8,7 +8,7 @@
   imports = [
     ../../modules/desktop/hyprland/home.nix
     ../../modules/desktop/waybar.nix
-    ../../modules/desktop/firefox.nix
+    # ../../modules/desktop/firefox.nix
     ../../modules/desktop/fuzzel.nix
     ../../modules/desktop/thunderbird.nix
     ../../modules/services/gpg-agent.nix
