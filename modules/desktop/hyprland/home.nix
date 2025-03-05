@@ -1,12 +1,15 @@
 {
   lib,
   pkgs,
+  system,
   vars,
   monitors,
+  zen-browser,
   ...
 }: let
   colors = import ../../themes/colors.nix;
   wallpaper = "/home/${vars.user}/.config/wall.png";
+  zen = zen-browser.packages."${system}".default;
 in {
   wayland.windowManager.hyprland = {
     enable = true;
@@ -105,21 +108,22 @@ in {
         "$mod SHIFT, Q, killactive"
         "$mod, R, forcerendererreload"
         # "$mod, SPACE, exec, ${pkgs.rofi}/bin/rofi -show drun -show-icons"
-        "$mod, SPACE, exec, ${pkgs.fuzzel}/bin/fuzzel"
-        "$mod, P, exec, ${pkgs.rofi}/bin/rofi -show p -modi p:'${pkgs.rofi-power-menu}/bin/rofi-power-menu --choices=shutdown/reboot'"
-        "$mod SHIFT, S, exec, ${pkgs.hyprshot}/bin/hyprshot --freeze --mode region --clipboard-only"
-        "$mod CTRL, S, exec, ${pkgs.hyprshot}/bin/hyprshot --freeze --mode active --clipboard-only"
-        "$mod SHIFT CTRL, S, exec, ${pkgs.hyprshot}/bin/hyprshot --freeze --mode output --clipboard-only"
-        "$mod, E, exec, ${pkgs.pcmanfm}/bin/pcmanfm"
-        "$mod CTRL, L, exec, ${pkgs.hyprlock}/bin/hyprlock"
+        "$mod, SPACE, exec, ${lib.getExe pkgs.fuzzel}"
+        "$mod, P, exec, ${lib.getExe pkgs.rofi} -show p -modi p:'${lib.getExe pkgs.rofi-power-menu} --choices=shutdown/reboot'"
+        "$mod SHIFT, S, exec, ${lib.getExe pkgs.hyprshot} --freeze --mode region --clipboard-only"
+        "$mod CTRL, S, exec, ${lib.getExe pkgs.hyprshot} --freeze --mode active --clipboard-only"
+        "$mod SHIFT CTRL, S, exec, ${lib.getExe pkgs.hyprshot} --freeze --mode output --clipboard-only"
+        "$mod, E, exec, ${lib.getExe pkgs.pcmanfm}"
+        "$mod CTRL, L, exec, ${lib.getExe pkgs.hyprlock}"
 
         "$mod CTRL, M, togglespecialworkspace, minimized"
         #"$mod, M, exec, pypr toggle_minimized"
         #"$mod CTRL, E, exec, pypr expose"
         #"$mod, Z, exec, pypr zoom"
 
-        "$mod, S, exec, ${pkgs.spotify}/bin/spotify"
-        "$mod, C, exec, ${pkgs.hyprpicker}/bin/hyprpicker -a"
+        "$mod, Z, exec, ${lib.getExe zen}"
+        "$mod, S, exec, ${lib.getExe pkgs.spotify}"
+        "$mod, C, exec, ${lib.getExe pkgs.hyprpicker} -a"
         "$mod SHIFT, F, togglefloating,"
         "$mod CTRL, F, fullscreen, 0"
         # "$mod SHIFT CTRL, F, fakefullscreen, 0"
@@ -127,13 +131,13 @@ in {
         "$mod SHIFT, O, togglesplit,"
 
         #"$mod, p, exec, ${pkgs.playerctl} play-pause"
-        "$mod, bracketright, exec, ${pkgs.playerctl} next"
-        "$mod, bracketleft, exec, ${pkgs.playerctl} previous"
+        "$mod, bracketright, exec, ${lib.getExe pkgs.playerctl} next"
+        "$mod, bracketleft, exec, ${lib.getExe pkgs.playerctl} previous"
 
-        ", XF86AudioRaiseVolume, exec, ${pkgs.pamixer}/bin/pamixer --increase 10"
-        ", XF86AudioLowerVolume, exec, ${pkgs.pamixer}/bin/pamixer --decrease 10"
-        ", XF86AudioMute, exec, ${pkgs.pamixer}/bin/pamixer --toggle-mute"
-        ", XF86AudioMicMute, exec, ${pkgs.pamixer}/bin/pamixer --default-source --toggle-mute"
+        ", XF86AudioRaiseVolume, exec, ${lib.getExe pkgs.pamixer} --increase 10"
+        ", XF86AudioLowerVolume, exec, ${lib.getExe pkgs.pamixer} --decrease 10"
+        ", XF86AudioMute, exec, ${lib.getExe pkgs.pamixer} --toggle-mute"
+        ", XF86AudioMicMute, exec, ${lib.getExe pkgs.pamixer} --default-source --toggle-mute"
         # ", XF86AudioPrev, exec, "
         # ", XF86AudioNext, exec, "
         # ", XF86AudioPlay, exec, "

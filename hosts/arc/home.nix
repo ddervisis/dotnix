@@ -1,8 +1,7 @@
 {
   config,
   pkgs,
-  vars,
-  monitors,
+  zen-browser,
   ...
 }: {
   imports = [

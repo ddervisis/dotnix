@@ -38,7 +38,7 @@
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
           home-manager.extraSpecialArgs = {
-            inherit vars stateVersion monitors;
+            inherit system vars stateVersion monitors zen-browser;
           };
           home-manager.users.${vars.user} = {
             imports =
