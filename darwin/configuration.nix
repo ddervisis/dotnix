@@ -12,20 +12,22 @@ with lib; {
     shell = pkgs.zsh;
   };
 
-  fonts = {
-    fontDir.enable = true;
-    fonts = with pkgs; [
-      corefonts
-      font-awesome
-      (nerdfonts.override {
-        fonts = [
-          "FiraCode"
-          "DroidSansMono"
-        ];
-      })
-      roboto
-    ];
-  };
+  fonts.packages = with pkgs; [
+    carlito
+    corefonts
+    font-awesome
+    ibm-plex
+    # jetbrains-mono
+    (nerdfonts.override {
+      fonts = [
+        "FiraCode"
+        "DroidSansMono"
+      ];
+    })
+    roboto
+    source-code-pro
+    vegur
+  ];
 
   environment = {
     shells = [pkgs.zsh];
@@ -33,6 +35,7 @@ with lib; {
       EDITOR = "${vars.editor}";
       VISUAL = "${vars.editor}";
     };
+    pathsToLink = ["/share/qemu"];
     systemPackages = with pkgs; [
       btop
       direnv
@@ -46,6 +49,7 @@ with lib; {
       pinentry_mac
       pfetch
       podman
+      podman-compose
       podman-tui
       qemu
       rectangle
@@ -83,7 +87,7 @@ with lib; {
       upgrade = false;
       cleanup = "zap";
     };
-    brews = [];
+    brews = [ "util-linux" ];
     casks = [
       "arc"
       "bitwarden"
@@ -93,9 +97,15 @@ with lib; {
       "stats"
       "sublime-text"
     ];
+    # These app IDs are from using the mas CLI app
+    # mas = mac app store
+    # https://github.com/mas-cli/mas
+    #
+    # $ nix shell nixpkgs#mas
+    # $ mas search <app name>
+    #
     masApps = {
       "Amphetamine" = 937984704;
-      "Microsoft Remote Desktop" = 1295203466;
     };
   };
 
@@ -131,14 +141,27 @@ with lib; {
         orientation = "bottom";
         showhidden = true;
         tilesize = 60;
+        persistent-others = [ "~/Downloads" ];
       };
       finder = {
+        _FXShowPosixPathInTitle = false;
+        AppleShowAllExtensions = true;
+        AppleShowAllFiles = false;
+        CreateDesktop = true;
+        FXDefaultSearchScope = "SCcf";
+        FXEnableExtensionChangeWarning = false;
+        FXPreferredViewStyle = "clmv";
         QuitMenuItem = false;
+        ShowPathbar = true;
+        ShowStatusBar = false;
       };
       trackpad = {
         Clicking = true;
         TrackpadRightClick = true;
       };
+    };
+    startup = {
+      chime = false;
     };
     activationScripts.postActivation.text = "sudo chsh -s ${pkgs.zsh}/bin/zsh";
     stateVersion = 4;
