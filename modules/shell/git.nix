@@ -1,15 +1,16 @@
 {
   pkgs,
   lib,
+  vars,
   ...
 }: {
   programs = {
     git = {
       enable = true;
-      userName = "Dennis Dervisis";
-      userEmail = "6106539+ddervisis@users.noreply.github.com";
+      userName = vars.git.user;
+      userEmail = vars.git.email;
       signing = {
-        key = "0xEFEB0306FC22576D";
+        key = vars.git.gpgKey;
         signByDefault = true;
       };
       ignores = [
@@ -25,7 +26,7 @@
             insteadOf = "https://github.com/";
           };
         };
-        gpg.program = "${pkgs.gnupg}/bin/gpg2";
+        gpg.program = "${lib.getExe pkgs.gnupg}";
         tag.gpgsign = true;
         commit = {
           gpgsign = true;

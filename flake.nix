@@ -57,8 +57,12 @@
       # user = "dennis.dervisis";
       terminal = "kitty";
       editor = "nvim";
+      git = {
+        user = "Dennis Dervisis";
+        email = "6106539+ddervisis@users.noreply.github.com";
+        gpgKey = "0xEFEB0306FC22576D";
+      };
     };
-    nix.registry.nixpkgs.flake = nixpkgs;
   in {
     nixosConfigurations = (
       import ./hosts {
