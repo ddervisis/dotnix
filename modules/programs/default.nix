@@ -1,5 +1,5 @@
 [
-  ./kitty.nix
+  # ./kitty.nix
   ./gh.nix
   # ./rio.nix
 ]

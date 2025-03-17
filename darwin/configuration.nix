@@ -18,12 +18,8 @@ with lib; {
     font-awesome
     ibm-plex
     # jetbrains-mono
-    (nerdfonts.override {
-      fonts = [
-        "FiraCode"
-        "DroidSansMono"
-      ];
-    })
+    nerd-fonts.fira-code
+    nerd-fonts.droid-sans-mono
     roboto
     source-code-pro
     vegur
@@ -74,10 +70,6 @@ with lib; {
         enableSSHSupport = true;
       };
     };
-  };
-
-  services = {
-    nix-daemon.enable = true;
   };
 
   homebrew = {

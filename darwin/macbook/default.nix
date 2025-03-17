@@ -40,17 +40,17 @@
     defaults = {
       dock = {
         persistent-apps = [
-          "/System/Applications/Launchpad.app/"
-          "/Applications/Microsoft Outlook.app/"
-          "/Applications/Microsoft Teams (work or school).app/"
-          "/Applications/Sublime Text.app/"
-          "/Applications/Zed.app/"
-          "/Applications/Bruno.app/"
-          "/${pkgs.iterm2}/Applications/iTerm2.app/"
-          "/Applications/Microsoft Remote Desktop.app/"
-          "/Applications/Arc.app/"
-          "/${pkgs.spotify}/Applications/Spotify.app/"
-          "/System/Applications/System Settings.app/"
+          { app = "/System/Applications/Launchpad.app/"; }
+          { app = "/Applications/Microsoft Outlook.app/"; }
+          { app = "/Applications/Microsoft Teams.app/"; }
+          { app = "/Applications/Sublime Text.app/"; }
+          { app = "/${pkgs.zed-editor}/Applications/Zed.app/"; }
+          { app = "/Applications/Bruno.app/"; }
+          { app = "/${pkgs.iterm2}/Applications/iTerm2.app/"; }
+          { app = "/Applications/Microsoft Remote Desktop.app/"; }
+          { app = "/Applications/Arc.app/"; }
+          { app = "/${pkgs.spotify}/Applications/Spotify.app/"; }
+          { app = "/System/Applications/System Settings.app/"; }
         ];
       };
     };
