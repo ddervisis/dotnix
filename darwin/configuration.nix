@@ -1,6 +1,5 @@
 {
   lib,
-  config,
   pkgs,
   system,
   vars,
@@ -79,7 +78,7 @@ with lib; {
       upgrade = false;
       cleanup = "zap";
     };
-    brews = [ "util-linux" ];
+    brews = ["util-linux"];
     casks = [
       "arc"
       "bitwarden"
@@ -133,7 +132,7 @@ with lib; {
         orientation = "bottom";
         showhidden = true;
         tilesize = 60;
-        persistent-others = [ "~/Downloads" ];
+        persistent-others = ["~/Downloads"];
       };
       finder = {
         _FXShowPosixPathInTitle = false;

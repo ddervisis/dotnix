@@ -6,17 +6,18 @@
         extensions = with pkgs.vscode-extensions;
           [
             bbenoist.nix
+            catppuccin.catppuccin-vsc
+            catppuccin.catppuccin-vsc-icons
+            dart-code.flutter
             eamodio.gitlens
             esbenp.prettier-vscode
             foxundermoon.shell-format
+            golang.go
             jnoortheen.nix-ide
+            mkhl.direnv
             ms-python.python
             naumovs.color-highlight
             waderyan.gitblame
-            arrterian.nix-env-selector
-            dart-code.flutter
-            catppuccin.catppuccin-vsc
-            catppuccin.catppuccin-vsc-icons
           ]
           ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
             {
@@ -24,12 +25,6 @@
               publisher = "wayou";
               version = "1.0.5";
               sha256 = "sha256-CQVtMdt/fZcNIbH/KybJixnLqCsz5iF1U0k+GfL65Ok=";
-            }
-            {
-              name = "Go";
-              publisher = "golang";
-              version = "0.41.1";
-              sha256 = "sha256-tSt0IqRuE3nJgMYvdYUz5QDtzOsKKQqyW2KD1FEhkEQ=";
             }
           ];
         userSettings = {

@@ -22,7 +22,6 @@ in {
     [(import ./hardware-configuration.nix)]
     ++ [
       (import ../../modules/desktop/hyprland/hyprland.nix)
-      (import ../../modules/services/syncthing.nix)
       (import ../../modules/services/mullvad.nix)
       # (import ../../modules/services/cloudflared.nix)
       (import ../../modules/desktop/greetd.nix)
@@ -83,7 +82,9 @@ in {
       alejandra
       awscli
       cifs-utils
+      code-cursor
       discord
+      godot
       goverlay
       jellyfin-media-player
       jq
@@ -91,6 +92,7 @@ in {
       lutris
       mangohud
       parted
+      piper
       prismlauncher
       r2modman
       ripgrep
@@ -108,6 +110,7 @@ in {
   };
 
   programs = {
+    adb.enable = true;
     steam = {
       enable = true;
       gamescopeSession.enable = true;
@@ -152,6 +155,7 @@ in {
       nssmdns4 = true;
       openFirewall = true;
     };
+    ratbagd.enable = true;
   };
 
   security.pam.services.hyprlock = {};

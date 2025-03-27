@@ -1,13 +1,4 @@
-{
-  pkgs,
-  config,
-  lib,
-  vars,
-  hostName,
-  system,
-  ...
-}:
-{
+{pkgs, ...}: {
   environment = {
     systemPackages = with pkgs; [
       gh
@@ -40,17 +31,17 @@
     defaults = {
       dock = {
         persistent-apps = [
-          { app = "/System/Applications/Launchpad.app/"; }
-          { app = "/Applications/Microsoft Outlook.app/"; }
-          { app = "/Applications/Microsoft Teams.app/"; }
-          { app = "/Applications/Sublime Text.app/"; }
-          { app = "/${pkgs.zed-editor}/Applications/Zed.app/"; }
-          { app = "/Applications/Bruno.app/"; }
-          { app = "/${pkgs.iterm2}/Applications/iTerm2.app/"; }
-          { app = "/Applications/Microsoft Remote Desktop.app/"; }
-          { app = "/Applications/Arc.app/"; }
-          { app = "/${pkgs.spotify}/Applications/Spotify.app/"; }
-          { app = "/System/Applications/System Settings.app/"; }
+          {app = "/System/Applications/Launchpad.app/";}
+          {app = "/Applications/Microsoft Outlook.app/";}
+          {app = "/Applications/Microsoft Teams.app/";}
+          {app = "/Applications/Sublime Text.app/";}
+          {app = "/${pkgs.zed-editor}/Applications/Zed.app/";}
+          {app = "/Applications/Bruno.app/";}
+          {app = "/${pkgs.iterm2}/Applications/iTerm2.app/";}
+          {app = "/Applications/Microsoft Remote Desktop.app/";}
+          {app = "/Applications/Arc.app/";}
+          {app = "/${pkgs.spotify}/Applications/Spotify.app/";}
+          {app = "/System/Applications/System Settings.app/";}
         ];
       };
     };

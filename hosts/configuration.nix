@@ -1,6 +1,6 @@
 {
-  config,
   pkgs,
+  options,
   vars,
   stateVersion,
   ...
@@ -11,6 +11,8 @@
       "wheel"
       "sudo"
       "audio"
+      "kvm"
+      "adb"
     ];
     shell = pkgs.zsh;
     initialPassword = vars.user;
@@ -73,6 +75,10 @@
         enable = true;
         enableSSHSupport = true;
       };
+    };
+    nix-ld = {
+      enable = true;
+      libraries = options.programs.nix-ld.libraries.default;
     };
   };
 

@@ -1,15 +1,7 @@
-{
-  config,
-  pkgs,
-  lib,
-  vars,
-  ...
-}: {
+{...}: {
+  # SeeAlso: https://nix-community.github.io/home-manager/options.xhtml#opt-services.syncthing.enable
   services.syncthing = {
     enable = true;
-    user = "syncthing";
-    group = "syncthing";
-    systemService = true;
     guiAddress = "127.0.0.1:8384";
     overrideFolders = false;
     overrideDevices = false;

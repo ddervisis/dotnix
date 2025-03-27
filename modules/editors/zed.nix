@@ -15,6 +15,7 @@
       "dockerfile"
       "gdscript"
       "git-firefly"
+      "graphql"
       "html"
       "ini"
       "less"
@@ -81,6 +82,10 @@
       features = {
         # Which inline completion provider to use.
         inline_completion_provider = "supermaven";
+        edit_prediction_provider = "zed";
+      };
+      edit_predictions = {
+        mode = "auto";
       };
       # The name of a font to use for rendering text in the editor
       buffer_font_family = "Zed Plex Mono";
@@ -308,7 +313,7 @@
         # Whether to show selected symbol occurrences in the scrollbar.
         selected_symbol = true;
         # Whether to show diagnostic indicators in the scrollbar.
-        diagnostics = true;
+        diagnostics = "all";
       };
       # Enable middle-click paste on Linux.
       middle_click_paste = true;
@@ -522,7 +527,7 @@
       };
       chat_panel = {
         # Whether to show the chat panel button in the status bar.
-        button = false;
+        button = "never";
         # Where to the chat panel. Can be 'left' or 'right'.
         dock = "right";
         # Default width of the chat panel.

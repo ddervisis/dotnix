@@ -1,7 +1,6 @@
 {
   config,
   pkgs,
-  zen-browser,
   ...
 }: {
   imports = [
@@ -11,6 +10,7 @@
     ../../modules/desktop/fuzzel.nix
     ../../modules/desktop/thunderbird.nix
     ../../modules/services/gpg-agent.nix
+    ../../modules/services/syncthing.nix
   ];
 
   home = {
