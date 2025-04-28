@@ -23,7 +23,6 @@ in {
     ++ [
       (import ../../modules/desktop/hyprland/hyprland.nix)
       (import ../../modules/services/mullvad.nix)
-      # (import ../../modules/services/cloudflared.nix)
       (import ../../modules/desktop/greetd.nix)
     ]
     ++ (import ../../modules/virtualisation)
@@ -88,6 +87,7 @@ in {
       goverlay
       jellyfin-media-player
       jq
+      libresprite
       lm_sensors
       lutris
       mangohud
@@ -96,8 +96,9 @@ in {
       prismlauncher
       r2modman
       ripgrep
-      spotify
+      sonic-pi
       sops
+      spotify
       tailscale
       teamspeak5_client
       teamviewer
