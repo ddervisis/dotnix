@@ -7,7 +7,7 @@
 }: {
   programs = {
     zsh = {
-      initExtra = ''
+      initContent = ''
         # source <(talhelper completion zsh)
       '';
     };

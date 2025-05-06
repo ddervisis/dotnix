@@ -44,7 +44,7 @@
         '';
       };
 
-      initExtra = ''
+      initContent = ''
         alias gs="gst"
       '';
 

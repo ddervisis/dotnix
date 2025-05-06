@@ -17,7 +17,7 @@
   programs = {
     home-manager.enable = true;
     zsh = {
-      initExtra = ''
+      initContent = ''
         eval "$(/opt/homebrew/bin/brew shellenv)"
       '';
     };

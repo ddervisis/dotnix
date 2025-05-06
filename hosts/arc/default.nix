@@ -96,7 +96,7 @@ in {
       prismlauncher
       r2modman
       ripgrep
-      sonic-pi
+      # sonic-pi
       sops
       spotify
       tailscale

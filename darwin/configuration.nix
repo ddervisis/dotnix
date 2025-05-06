@@ -104,8 +104,8 @@ with lib; {
     package = pkgs.nix;
     gc = {
       automatic = true;
-      interval.Day = 7;
-      options = "--delete-older-than 7d";
+      randomizedDelaySec = "14m"
+      options = "--delete-older-than 10d";
     };
     extraOptions = ''
       auto-optimise-store = true

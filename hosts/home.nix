@@ -32,7 +32,7 @@
   programs = {
     home-manager.enable = true;
     zsh = {
-      initExtra = ''
+      initContent = ''
         [ "$(tty)" = "/dev/tty1" ] && exec Hyprland
       '';
     };
