@@ -1,5 +1,4 @@
 [
+  ./ghostty.nix
   ./kitty.nix
-  ./gh.nix
-  # ./rio.nix
 ]
