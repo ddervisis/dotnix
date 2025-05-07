@@ -11,14 +11,14 @@
 
   environment = {
     systemPackages = with pkgs; [
-      age
       discord
       sops
+      swiftlint
     ];
   };
 
   homebrew = {
-    brews = ["talhelper"];
+    brews = [];
     casks = [
       "ace-link"
       "balenaetcher"

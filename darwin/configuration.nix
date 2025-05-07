@@ -11,18 +11,15 @@ with lib; {
     shell = pkgs.zsh;
   };
 
-  fonts.packages = with pkgs; [
-    carlito
-    corefonts
-    font-awesome
-    ibm-plex
-    # jetbrains-mono
-    nerd-fonts.fira-code
-    nerd-fonts.droid-sans-mono
-    roboto
-    source-code-pro
-    vegur
-  ];
+  fonts = {
+    packages = with pkgs; [
+      corefonts
+      font-awesome
+      nerd-fonts.fira-code
+      nerd-fonts.droid-sans-mono
+      roboto
+    ];
+  };
 
   environment = {
     shells = [pkgs.zsh];
@@ -36,16 +33,15 @@ with lib; {
       direnv
       fd
       fzf
+      gimp
       git
       jq
       mkcert
       nil
-      nixpkgs-fmt
       pinentry_mac
       pfetch
-      podman
-      podman-compose
-      podman-tui
+      # podman
+      # podman-tui
       qemu
       rectangle
       ripgrep
@@ -104,8 +100,8 @@ with lib; {
     package = pkgs.nix;
     gc = {
       automatic = true;
-      randomizedDelaySec = "14m"
-      options = "--delete-older-than 10d";
+      interval = { Weekday = 0; Hour = 0; Minute = 0; };
+      options = "--delete-older-than 7d";
     };
     extraOptions = ''
       auto-optimise-store = true

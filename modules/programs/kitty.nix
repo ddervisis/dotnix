@@ -6,7 +6,7 @@
       font = {
         package = pkgs.nerd-fonts.fira-code;
         name = "FiraCode Nerd Font";
-        size = 12;
+        size = 14;
       };
       shellIntegration = {
         enableZshIntegration = true;

@@ -9,6 +9,7 @@
     extensions = [
       "basher"
       "catppuccin"
+      "catppuccin-icons"
       "csv"
       "dart"
       "docker-compose"
@@ -67,6 +68,7 @@
         light = "Catppuccin Macchiato";
         dark = "Catppuccin Macchiato";
       };
+      icon_theme = "Catppuccin Macchiato";
       # The name of a base set of key bindings to use.
       # This setting can take four values, each named after another
       # text editor:
