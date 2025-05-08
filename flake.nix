@@ -55,7 +55,7 @@
     vars = {
       user = "gr4pe";
       # user = "dennis.dervisis";
-      terminal = "kitty";
+      terminal = "ghostty";
       editor = "nvim";
       git = {
         user = "Dennis Dervisis";

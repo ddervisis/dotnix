@@ -1,4 +1,3 @@
 [
-  # ./ghostty.nix
-  ./kitty.nix
+  ./ghostty.nix
 ]

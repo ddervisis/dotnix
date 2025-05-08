@@ -107,7 +107,6 @@ in {
         "$mod, RETURN, exec, ${pkgs.${vars.terminal}}/bin/${vars.terminal}"
         "$mod SHIFT, Q, killactive"
         "$mod, R, forcerendererreload"
-        # "$mod, SPACE, exec, ${pkgs.rofi}/bin/rofi -show drun -show-icons"
         "$mod, SPACE, exec, ${lib.getExe pkgs.fuzzel}"
         "$mod, P, exec, ${lib.getExe pkgs.rofi} -show p -modi p:'${lib.getExe pkgs.rofi-power-menu} --choices=shutdown/reboot'"
         "$mod SHIFT, S, exec, ${lib.getExe pkgs.hyprshot} --freeze --mode region --clipboard-only"

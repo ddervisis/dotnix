@@ -97,7 +97,7 @@ in {
     stateVersion = "23.11";
     monitors = {
       primary = {
-        output = "DP-2"; # $ swaymsg -t get_outputs
+        output = "DP-2"; # $ hyprctl monitors all
         resolution = {
           width = "2560";
           height = "1440";
