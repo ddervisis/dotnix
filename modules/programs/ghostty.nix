@@ -9,7 +9,7 @@
       font-size = 12;
       font-family = "FiraCode Nerd Font";
       keybind = [
-        "ctrl+l=clear_screen"
+        # "ctrl+l=clear_screen"
       ];
       theme = "catppuccin-macchiato";
     };

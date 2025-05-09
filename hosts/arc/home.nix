@@ -11,6 +11,7 @@
     ../../modules/desktop/thunderbird.nix
     ../../modules/services/gpg-agent.nix
     ../../modules/services/syncthing.nix
+    ../../modules/desktop/eww.nix
   ];
 
   home = {
