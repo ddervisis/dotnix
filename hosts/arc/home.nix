@@ -1,6 +1,8 @@
 {
   config,
+  lib,
   pkgs,
+  vars,
   ...
 }: {
   imports = [
@@ -11,6 +13,7 @@
     ../../modules/desktop/thunderbird.nix
     ../../modules/services/gpg-agent.nix
     ../../modules/services/syncthing.nix
+    ../../modules/desktop/ags.nix
   ];
 
   home = {
@@ -32,7 +35,7 @@
     cursorTheme = {
       name = "catppuccin-macchiato-dark-cursors";
       package = pkgs.catppuccin-cursors.macchiatoDark;
-      size = 24;
+      # size = 24;
     };
     iconTheme = {
       name = "Papirus-Dark";

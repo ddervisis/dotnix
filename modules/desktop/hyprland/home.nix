@@ -112,7 +112,7 @@ in {
         "$mod SHIFT, S, exec, ${lib.getExe pkgs.hyprshot} --freeze --mode region --clipboard-only"
         "$mod CTRL, S, exec, ${lib.getExe pkgs.hyprshot} --freeze --mode active --clipboard-only"
         "$mod SHIFT CTRL, S, exec, ${lib.getExe pkgs.hyprshot} --freeze --mode output --clipboard-only"
-        "$mod, E, exec, ${lib.getExe pkgs.pcmanfm}"
+        "$mod, E, exec, ${lib.getExe pkgs.xfce.thunar}"
         "$mod CTRL, L, exec, ${lib.getExe pkgs.hyprlock}"
 
         "$mod CTRL, M, togglespecialworkspace, minimized"

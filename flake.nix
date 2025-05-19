@@ -38,6 +38,11 @@
     talhelper.url = "github:budimanjojo/talhelper";
 
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
+
+    ags = {
+      url = "github:aylur/ags";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
@@ -50,6 +55,7 @@
     rpi5kernel,
     talhelper,
     zen-browser,
+    ags,
     ...
   }: let
     vars = {
@@ -76,6 +82,7 @@
           rpi5kernel
           talhelper
           zen-browser
+          ags
           vars
           ;
       }

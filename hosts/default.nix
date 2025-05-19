@@ -7,6 +7,7 @@
   rpi5kernel,
   talhelper,
   zen-browser,
+  ags,
   vars,
   ...
 }: let
@@ -22,6 +23,7 @@
           nixpkgs
           talhelper
           zen-browser
+          ags
           vars
           hostName
           system
@@ -38,15 +40,15 @@
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
           home-manager.extraSpecialArgs = {
-            inherit system vars stateVersion monitors zen-browser;
+            inherit system vars stateVersion monitors zen-browser ags;
           };
           home-manager.users.${vars.user} = {
-            imports =
-              [
-                (import ./home.nix)
-              ]
-              ++ [(import ./${hostName}/home.nix)]
-              ++ [nixvim.homeManagerModules.nixvim];
+            imports = [
+              (import ./home.nix)
+              (import ./${hostName}/home.nix)
+              nixvim.homeManagerModules.nixvim
+              ags.homeManagerModules.default
+            ];
           };
         }
       ];

@@ -179,6 +179,11 @@
               };
             };
             pyright.enable = true;
+            rust_analyzer = {
+              enable = true;
+              installCargo = false;
+              installRustc = false;
+            };
             templ.enable = true;
             zls.enable = true;
           };
@@ -313,35 +318,6 @@
           settings = {
             highlight.enable = true;
           };
-          grammarPackages = with pkgs.vimPlugins.nvim-treesitter.builtGrammars; [
-            bash
-            comment
-            dart
-            dockerfile
-            gdscript
-            gitignore
-            go
-            gomod
-            gosum
-            helm
-            html
-            http
-            json
-            lua
-            make
-            markdown
-            nix
-            python
-            regex
-            rst
-            templ
-            toml
-            vim
-            vimdoc
-            xml
-            yaml
-            zig
-          ];
         };
         treesitter-context.enable = true;
         trouble.enable = true;

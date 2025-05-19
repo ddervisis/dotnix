@@ -3,6 +3,8 @@
     vscode = {
       enable = true;
       profiles.default = {
+        enableExtensionUpdateCheck = false;
+        enableUpdateCheck = false;
         extensions = with pkgs.vscode-extensions;
           [
             bbenoist.nix

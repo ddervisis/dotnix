@@ -24,6 +24,7 @@ in {
       (import ../../modules/desktop/hyprland/hyprland.nix)
       (import ../../modules/services/mullvad.nix)
       (import ../../modules/desktop/greetd.nix)
+      (import ../../modules/desktop/thunar.nix)
     ]
     ++ (import ../../modules/virtualisation)
     ++ (import ../../modules/hardware);
@@ -102,6 +103,7 @@ in {
       tailscale
       teamspeak5_client
       teamviewer
+      tree
       unzip
       wineWowPackages.waylandFull
       yubikey-manager
