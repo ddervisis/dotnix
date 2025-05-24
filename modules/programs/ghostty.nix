@@ -12,6 +12,8 @@
         # "ctrl+l=clear_screen"
       ];
       theme = "catppuccin-macchiato";
+      quit-after-last-window-closed = false;
+      gtk-single-instance = true;
     };
   };
 }

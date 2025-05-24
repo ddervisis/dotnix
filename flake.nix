@@ -35,12 +35,23 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    talhelper.url = "github:budimanjojo/talhelper";
+    talhelper = {
+      url = "github:budimanjojo/talhelper";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
-    zen-browser.url = "github:0xc000022070/zen-browser-flake";
+    zen-browser = {
+      url = "github:0xc000022070/zen-browser-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     ags = {
       url = "github:aylur/ags";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    catppuccin = {
+      url = "github:catppuccin/nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -56,6 +67,7 @@
     talhelper,
     zen-browser,
     ags,
+    catppuccin,
     ...
   }: let
     vars = {
@@ -83,6 +95,7 @@
           talhelper
           zen-browser
           ags
+          catppuccin
           vars
           ;
       }

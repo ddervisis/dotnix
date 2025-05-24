@@ -21,6 +21,7 @@
     f3d
     freetype
     ffmpegthumbnailer
+    gnome-disk-utility
     gnome-epub-thumbnailer
     libgsf
     mcomix

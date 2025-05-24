@@ -18,7 +18,7 @@ in {
     extraConfig = ''
       exec-once = ${pkgs.hyprpaper}/bin/hyprpaper
       exec-once = /run/current-system/sw/bin/systemctl --user restart waybar
-      exec-once = /etc/profiles/per-user/${vars.user}/bin/hyprctl setcursor ${pkgs.catppuccin-cursors.macchiatoDark} 24
+      exec-once = /etc/profiles/per-user/${vars.user}/bin/hyprctl setcursor ${pkgs.catppuccin-cursors.macchiatoLavender} 24
     '';
     settings = with colors.scheme.macchiato; {
       monitors = {
@@ -29,16 +29,16 @@ in {
         ];
       };
       general = {
-        gaps_in = 2;
-        gaps_out = 3;
-        border_size = 1;
+        gaps_in = 0;
+        gaps_out = 0;
+        border_size = 0;
         "col.active_border" = "${teal}";
         "col.inactive_border" = "${surface1}";
         layout = "dwindle";
         resize_on_border = true;
       };
       decoration = {
-        rounding = 10;
+        rounding = 0;
         blur = {
           size = 4;
           passes = 2;

@@ -26,20 +26,22 @@
     file.".config/wall.png".source = config.lib.file.mkOutOfStoreSymlink ../../modules/themes/wall.png;
   };
 
+  catppuccin = {
+    enable = true;
+    accent = "lavender";
+    flavor = "macchiato";
+    cursors.enable = true;
+    gtk = {
+      enable = true;
+      icon.enable = true;
+    };
+  };
+
   gtk = {
     enable = true;
-    theme = {
-      name = "Dracula";
-      package = pkgs.dracula-theme;
-    };
     cursorTheme = {
-      name = "catppuccin-macchiato-dark-cursors";
-      package = pkgs.catppuccin-cursors.macchiatoDark;
-      # size = 24;
-    };
-    iconTheme = {
-      name = "Papirus-Dark";
-      package = pkgs.papirus-icon-theme;
+      name = "catppuccin-macchiato-lavender-cursors";
+      size = 24;
     };
   };
 }

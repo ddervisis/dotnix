@@ -8,6 +8,7 @@
   talhelper,
   zen-browser,
   ags,
+  catppuccin,
   vars,
   ...
 }: let
@@ -24,6 +25,7 @@
           talhelper
           zen-browser
           ags
+          catppuccin
           vars
           hostName
           system
@@ -48,6 +50,7 @@
               (import ./${hostName}/home.nix)
               nixvim.homeManagerModules.nixvim
               ags.homeManagerModules.default
+              catppuccin.homeModules.catppuccin
             ];
           };
         }

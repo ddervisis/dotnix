@@ -82,7 +82,6 @@ in {
       alejandra
       awscli
       cifs-utils
-      code-cursor
       discord
       godot
       goverlay
