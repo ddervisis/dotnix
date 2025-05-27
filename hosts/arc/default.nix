@@ -78,6 +78,7 @@ in {
   environment = {
     systemPackages = with pkgs; [
       bat
+      adwaita-icon-theme
       age
       alejandra
       awscli
@@ -96,7 +97,6 @@ in {
       prismlauncher
       r2modman
       ripgrep
-      # sonic-pi
       sops
       spotify
       tailscale
