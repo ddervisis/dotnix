@@ -20,6 +20,7 @@
             ms-python.python
             naumovs.color-highlight
             waderyan.gitblame
+            sumneko.lua
           ]
           ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
             {
@@ -27,6 +28,18 @@
               publisher = "wayou";
               version = "1.0.5";
               sha256 = "sha256-CQVtMdt/fZcNIbH/KybJixnLqCsz5iF1U0k+GfL65Ok=";
+            }
+            {
+              name = "arb-editor";
+              publisher = "google";
+              version = "0.2.1";
+              sha256 = "sha256-uHdQeW9ZXYg6+VnD6cb5CU10/xV5hCtxt5K+j0qb7as=";
+            }
+            {
+              name = "tabletopsimulator-lua";
+              publisher = "rolandostar";
+              version = "1.1.3";
+              sha256 = "sha256-3ulgyicmHdjJDrnV4mPse0QfkgSeC9oN9l+aa99lc1w=";
             }
           ];
         userSettings = {
@@ -148,6 +161,7 @@
           "dart.checkForSdkUpdates" = false;
           "telemetry.telemetryLevel" = "off";
           "extensions.ignoreRecommendations" = true;
+          "git.openRepositoryInParentFolders" = "never";
         };
         keybindings = [
           {

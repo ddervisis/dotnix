@@ -1,5 +1,5 @@
 [
   ./nvim.nix
-  # ./vscode.nix
-  # ./zed.nix
+  ./vscode.nix
+  ./zed.nix
 ]

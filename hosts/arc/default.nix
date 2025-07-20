@@ -77,10 +77,10 @@ in {
 
   environment = {
     systemPackages = with pkgs; [
-      bat
       adwaita-icon-theme
       age
       alejandra
+      bat
       awscli
       cifs-utils
       discord
@@ -95,6 +95,8 @@ in {
       parted
       piper
       prismlauncher
+      protonup-qt
+      quickemu
       r2modman
       ripgrep
       sops
@@ -116,6 +118,9 @@ in {
     steam = {
       enable = true;
       gamescopeSession.enable = true;
+      extraCompatPackages = with pkgs; [
+        proton-ge-bin
+      ];
     };
     gamescope.enable = true;
     gamemode = {

@@ -63,12 +63,12 @@
       # - "system": Use the theme that corresponds to the system's appearance
       # - "light": Use the theme indicated by the "light" field
       # - "dark": Use the theme indicated by the "dark" field
-      theme = {
-        mode = "system";
-        light = "Catppuccin Macchiato";
-        dark = "Catppuccin Macchiato";
-      };
-      icon_theme = "Catppuccin Macchiato";
+      # theme = {
+      #   mode = "system";
+      #   light = "Catppuccin Macchiato";
+      #   dark = "Catppuccin Macchiato";
+      # };
+      # icon_theme = "Catppuccin Macchiato";
       # The name of a base set of key bindings to use.
       # This setting can take four values, each named after another
       # text editor:
