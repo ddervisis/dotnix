@@ -6,17 +6,18 @@
   monitors,
   zen-browser,
   ...
-}: let
+}:
+let
   colors = import ../../themes/colors.nix;
   wallpaper = "/home/${vars.user}/.config/wall.png";
   zen = zen-browser.packages."${system}".default;
-in {
+in
+{
   wayland.windowManager.hyprland = {
     enable = true;
     systemd.enable = true;
 
     extraConfig = ''
-      exec-once = ${pkgs.hyprpaper}/bin/hyprpaper
       exec-once = /run/current-system/sw/bin/systemctl --user restart waybar
       exec-once = /etc/profiles/per-user/${vars.user}/bin/hyprctl setcursor ${pkgs.catppuccin-cursors.macchiatoLavender} 24
     '';
@@ -25,7 +26,9 @@ in {
         monitor = [
           "${monitors.primary.output},${monitors.primary.resolution.width}x${monitors.primary.resolution.height}@165,0x0,1,vrr,2"
           "${monitors.secondary.output},${monitors.secondary.resolution.width}x${monitors.secondary.resolution.height}@165,${monitors.primary.resolution.width}x0,1,vrr,2"
-          "${monitors.tertiary.output},${monitors.tertiary.resolution.width}x${monitors.tertiary.resolution.height}@165,${builtins.toString (lib.strings.toInt monitors.tertiary.resolution.width / 2)}x-${monitors.tertiary.resolution.height},1,vrr,2"
+          "${monitors.tertiary.output},${monitors.tertiary.resolution.width}x${monitors.tertiary.resolution.height}@165,${
+            builtins.toString (lib.strings.toInt monitors.tertiary.resolution.width / 2)
+          }x-${monitors.tertiary.resolution.height},1,vrr,2"
         ];
       };
       general = {
@@ -85,11 +88,6 @@ in {
         smart_split = true;
       };
 
-      gestures = {
-        # See https://wiki.hyprland.org/Configuring/Variables/ for more
-        workspace_swipe = true;
-      };
-
       misc = {
         disable_hyprland_logo = true;
         disable_splash_rendering = true;
@@ -112,7 +110,7 @@ in {
         "$mod SHIFT, S, exec, ${lib.getExe pkgs.hyprshot} --freeze --mode region --clipboard-only"
         "$mod CTRL, S, exec, ${lib.getExe pkgs.hyprshot} --freeze --mode active --clipboard-only"
         "$mod SHIFT CTRL, S, exec, ${lib.getExe pkgs.hyprshot} --freeze --mode output --clipboard-only"
-        "$mod, E, exec, ${lib.getExe pkgs.xfce.thunar}"
+        "$mod, E, exec, ${lib.getExe pkgs.thunar}"
         "$mod CTRL, L, exec, ${lib.getExe pkgs.hyprlock}"
 
         "$mod CTRL, M, togglespecialworkspace, minimized"
@@ -289,11 +287,5 @@ in {
       halign = center
       valign = center
     }
-  '';
-
-  home.file.".config/hypr/hyprpaper.conf".text = ''
-    preload = ${wallpaper}
-    wallpaper = ,${wallpaper}
-    splash = false
   '';
 }

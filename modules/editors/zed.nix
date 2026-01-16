@@ -3,7 +3,8 @@
   lib,
   vars,
   ...
-}: {
+}:
+{
   programs.zed-editor = {
     enable = true;
     extensions = [
@@ -44,6 +45,7 @@
       zig
       zls
     ];
+    mutableUserKeymaps = false;
     userKeymaps = [
       {
         context = "Editor";
@@ -55,6 +57,7 @@
         };
       }
     ];
+    mutableUserSettings = false;
     # NOTE: This includes the complete default settings of Zed.
     userSettings = {
       # The name of the Zed theme to use for the UI.
@@ -83,14 +86,14 @@
       # Features that can be globally enabled or disabled
       features = {
         # Which inline completion provider to use.
-        inline_completion_provider = "supermaven";
-        edit_prediction_provider = "zed";
+        # inline_completion_provider = "supermaven";
+        # edit_prediction_provider = "zed";
       };
-      edit_predictions = {
-        mode = "auto";
-      };
+      # edit_predictions = {
+      #   mode = "auto";
+      # };
       # The name of a font to use for rendering text in the editor
-      buffer_font_family = "Zed Plex Mono";
+      buffer_font_family = ".ZedMono";
       # Set the buffer text's font fallbacks, this will be merged with
       # the platform's default fallbacks.
       buffer_font_fallbacks = null;
@@ -116,7 +119,7 @@
       buffer_line_height = "comfortable";
       # The name of a font to use for rendering text in the UI
       # You can set this to ".SystemUIFont" to use the system font
-      ui_font_family = "Zed Plex Sans";
+      ui_font_family = ".ZedSans";
       # Set the UI's font fallbacks, this will be merged with the platform's
       # default font fallbacks.
       ui_font_fallbacks = null;
@@ -135,7 +138,7 @@
       active_pane_modifiers = {
         # The factor to grow the active pane by. Defaults to 1.0
         # which gives the same size as all other panes.
-        magnification = 1.0;
+        # magnification = 1.0;
         # Inset border size of the active pane, in pixels.
         border_size = 0.0;
         # Opacity of the inactive panes. 0 means transparent, 1 means opaque.
@@ -215,7 +218,7 @@
       show_completion_documentation = true;
       # The debounce delay before re-querying the language server for completion
       # documentation when not included in original completion list.
-      completion_documentation_secondary_query_debounce = 300;
+      # completion_documentation_secondary_query_debounce = 300;
       # Show method signatures in the editor, when inside parentheses.
       auto_signature_help = false;
       # Whether to show the signature help after completion or a bracket pair inserted.
@@ -227,13 +230,24 @@
       # additional guides as specified by the 'wrap_guides' setting.
       show_wrap_guides = true;
       # Character counts at which to show wrap guides in the editor.
-      wrap_guides = [80 100 120];
+      wrap_guides = [
+        80
+        100
+        120
+      ];
       # Hide the values of in variables from visual display in private files
       redact_private_values = true;
       # The default number of lines to expand excerpts in the multibuffer by.
       expand_excerpt_lines = 3;
       # Globs to match against file paths to determine if a file is private.
-      private_files = ["**/.env*" "**/*.pem" "**/*.key" "**/*.cert" "**/*.crt" "**/secrets.yml"];
+      private_files = [
+        "**/.env*"
+        "**/*.pem"
+        "**/*.key"
+        "**/*.cert"
+        "**/*.crt"
+        "**/secrets.yml"
+      ];
       # Whether to use additional LSP queries to format (and amend) the code after
       # every "trigger" symbol input, defined by LSP server capabilities.
       use_on_type_format = true;
@@ -244,7 +258,7 @@
       # Whether to automatically surround selected text when typing opening parenthesis,
       # bracket, brace, single or double quote characters.
       # For example, when you select text and type (, Zed will surround the text with ().
-      use_autosurround = true;
+      # use_autosurround = true;
       # Whether indentation of pasted content should be adjusted based on the context.
       auto_indent_on_paste = true;
       # Controls how the editor handles the autoclosed characters.
@@ -255,10 +269,10 @@
       always_treat_brackets_as_autoclosed = false;
       # Controls whether inline completions are shown immediately (true)
       # or manually by triggering `editor::ShowInlineCompletion` (false).
-      show_inline_completions = true;
+      # show_inline_completions = true;
       # Controls whether inline completions are shown in a given language scope.
       # Example: ["string", "comment"]
-      inline_completions_disabled_in = [];
+      # inline_completions_disabled_in = [ ];
       # Whether to show tabs and spaces in the editor.
       # This setting can take three values:
       #
@@ -332,7 +346,7 @@
         # Whether to show line numbers in the gutter.
         line_numbers = true;
         # Whether to show code action buttons in the gutter.
-        code_actions = true;
+        # code_actions = true;
         # Whether to show runnables buttons in the gutter.
         runnables = true;
         # Whether to show fold buttons in the gutter.
@@ -366,7 +380,7 @@
       # Scroll sensitivity multiplier. This multiplier is applied
       # to both the horizontal and vertical delta values while scrolling.
       scroll_sensitivity = 1.0;
-      relative_line_numbers = false;
+      relative_line_numbers = "disabled";
       # If 'search_wrap' is disabled, search result do not wrap around the end of the file.
       search_wrap = true;
       # Search options to enable by default when opening new project and buffer searches.
@@ -527,14 +541,14 @@
         # Default width of the collaboration panel.
         default_width = 240;
       };
-      chat_panel = {
-        # Whether to show the chat panel button in the status bar.
-        button = "never";
-        # Where to the chat panel. Can be 'left' or 'right'.
-        dock = "right";
-        # Default width of the chat panel.
-        default_width = 240;
-      };
+      # chat_panel = {
+      #   # Whether to show the chat panel button in the status bar.
+      #   button = "never";
+      #   # Where to the chat panel. Can be 'left' or 'right'.
+      #   dock = "right";
+      #   # Default width of the chat panel.
+      #   default_width = 240;
+      # };
       message_editor = {
         # Whether to automatically replace emoji shortcodes with emoji characters.
         # For example: typing `:wave:` gets replaced with `👋`.
@@ -548,39 +562,39 @@
         # Default width of the notification panel.
         default_width = 380;
       };
-      assistant = {
-        # Version of this setting.
-        version = "2";
-        # Whether the assistant is enabled
-        enabled = true;
-        # Whether to show the assistant panel button in the status bar.
-        button = true;
-        # Where to dock the assistant panel. Can be 'left', 'right' or 'bottom'.
-        dock = "right";
-        # Default width when the assistant is docked to the left or right.
-        default_width = 640;
-        # Default height when the assistant is docked to the bottom.
-        default_height = 320;
-        # The default model to use when creating new chats
-        default_model = {
-          # The provider to use.
-          provider = "openai";
-          # The model to use.
-          model = "gpt-4o";
-        };
-      };
+      # assistant = {
+      #   # Version of this setting.
+      #   version = "2";
+      #   # Whether the assistant is enabled
+      #   enabled = true;
+      #   # Whether to show the assistant panel button in the status bar.
+      #   button = true;
+      #   # Where to dock the assistant panel. Can be 'left', 'right' or 'bottom'.
+      #   dock = "right";
+      #   # Default width when the assistant is docked to the left or right.
+      #   default_width = 640;
+      #   # Default height when the assistant is docked to the bottom.
+      #   default_height = 320;
+      #   # The default model to use when creating new chats
+      #   default_model = {
+      #     # The provider to use.
+      #     provider = "openai";
+      #     # The model to use.
+      #     model = "gpt-4o";
+      #   };
+      # };
       # The settings for slash commands.
       slash_commands = {
         # Settings for the `/docs` slash command.
-        docs = {
-          # Whether `/docs` is enabled.
-          enabled = false;
-        };
+        # docs = {
+        #   # Whether `/docs` is enabled.
+        #   enabled = false;
+        # };
         # Settings for the `/project` slash command.
-        project = {
-          # Whether `/project` is enabled.
-          enabled = false;
-        };
+        # project = {
+        #   # Whether `/project` is enabled.
+        #   enabled = false;
+        # };
       };
       # Whether the screen sharing icon is shown in the os status bar.
       show_call_status_icon = true;
@@ -592,7 +606,7 @@
       # The list of language servers to use (or disable) for all languages.
       #
       # This is typically customized on a per-language basis.
-      language_servers = ["..."];
+      language_servers = [ "..." ];
       # When to automatically save edited buffers. This setting can
       # take four values.
       #
@@ -638,7 +652,7 @@
         # Whether to open tabs in preview mode when selected from the file finder.
         enable_preview_from_file_finder = true;
         # Whether a preview tab gets replaced when code navigation is used to navigate away from the tab.
-        enable_preview_from_code_navigation = true;
+        # enable_preview_from_code_navigation = true;
       };
       # Settings related to the file finder.
       file_finder = {
@@ -743,7 +757,7 @@
       # ignored by git. This is useful for files that are not tracked by git,
       # but are still important to your project. Note that globs that are
       # overly broad can slow down Zed's file scanning. Overridden by `file_scan_exclusions`.
-      file_scan_inclusions = [".env*"];
+      file_scan_inclusions = [ ".env*" ];
       # Git gutter behavior configuration.
       git = {
         # Control whether the git gutter is shown. May take 2 values:
@@ -771,10 +785,10 @@
       # 2. Load direnv configuration through the shell hook, works for POSIX shells and fish.
       #      "load_direnv": "shell_hook"
       load_direnv = "shell_hook";
-      inline_completions = {
-        # A list of globs representing files that inline completions should be disabled for.
-        disabled_globs = [".env"];
-      };
+      # inline_completions = {
+      #   # A list of globs representing files that inline completions should be disabled for.
+      #   disabled_globs = [ ".env" ];
+      # };
       # Settings specific to journaling
       journal = {
         # The path of the directory where journal entries are stored
@@ -897,7 +911,12 @@
             # Default directories to search for virtual environments, relative
             # to the current working directory. We recommend overriding this
             # in your project's settings, rather than globally.
-            directories = [".env" "env" ".venv" "venv"];
+            directories = [
+              ".env"
+              "env"
+              ".venv"
+              "venv"
+            ];
             # Can also be `csh`, `fish`, `nushell` and `power_shell`
             activate_script = "default";
           };
@@ -930,10 +949,10 @@
           calt = true;
         };
       };
-      code_actions_on_format = {};
+      code_actions_on_format = { };
       # Settings related to running tasks.
       tasks = {
-        variables = {};
+        variables = { };
       };
       # An object whose keys are language names, and whose values
       # are arrays of filenames or extensions of files that should
@@ -948,9 +967,14 @@
       # }
       #
       file_types = {
-        "Plain Text" = ["txt"];
-        "JSONC" = ["**/.zed/**/*.json" "**/zed/**/*.json" "**/Zed/**/*.json" "**/.vscode/**/*.json"];
-        "Shell Script" = [".env.*"];
+        "Plain Text" = [ "txt" ];
+        "JSONC" = [
+          "**/.zed/**/*.json"
+          "**/zed/**/*.json"
+          "**/Zed/**/*.json"
+          "**/.vscode/**/*.json"
+        ];
+        "Shell Script" = [ ".env.*" ];
       };
       # By default use a recent system version of node, or install our own.
       # You can override this to use a version of node that is not in $PATH with:
@@ -980,18 +1004,21 @@
       # },
       # Different settings for specific languages.
       languages = {
-        Astro = {
-          language_servers = ["astro-language-server" "..."];
-          prettier = {
-            allowed = true;
-            plugins = ["prettier-plugin-astro"];
-          };
-        };
-        Blade = {
-          prettier = {
-            allowed = true;
-          };
-        };
+        # Astro = {
+        #   language_servers = [
+        #     "astro-language-server"
+        #     "..."
+        #   ];
+        #   prettier = {
+        #     allowed = true;
+        #     plugins = [ "prettier-plugin-astro" ];
+        #   };
+        # };
+        # Blade = {
+        #   prettier = {
+        #     allowed = true;
+        #   };
+        # };
         C = {
           format_on_save = "off";
           use_on_type_format = false;
@@ -1012,12 +1039,21 @@
           remove_trailing_whitespace_on_save = false;
           ensure_final_newline_on_save = false;
         };
-        Elixir = {
-          language_servers = ["elixir-ls" "!next-ls" "!lexical" "..."];
-        };
-        Erlang = {
-          language_servers = ["erlang-ls" "!elp" "..."];
-        };
+        # Elixir = {
+        #   language_servers = [
+        #     "elixir-ls"
+        #     "!next-ls"
+        #     "!lexical"
+        #     "..."
+        #   ];
+        # };
+        # Erlang = {
+        #   language_servers = [
+        #     "erlang-ls"
+        #     "!elp"
+        #     "..."
+        #   ];
+        # };
         Go = {
           code_actions_on_format = {
             "source.organizeImports" = true;
@@ -1028,22 +1064,31 @@
             allowed = true;
           };
         };
-        HEEX = {
-          language_servers = ["elixir-ls" "!next-ls" "!lexical" "..."];
-        };
+        # HEEX = {
+        #   language_servers = [
+        #     "elixir-ls"
+        #     "!next-ls"
+        #     "!lexical"
+        #     "..."
+        #   ];
+        # };
         HTML = {
           prettier = {
             allowed = true;
           };
         };
-        Java = {
-          prettier = {
-            allowed = true;
-            plugins = ["prettier-plugin-java"];
-          };
-        };
+        # Java = {
+        #   prettier = {
+        #     allowed = true;
+        #     plugins = [ "prettier-plugin-java" ];
+        #   };
+        # };
         JavaScript = {
-          language_servers = ["!typescript-language-server" "vtsls" "..."];
+          language_servers = [
+            "!typescript-language-server"
+            "vtsls"
+            "..."
+          ];
           prettier = {
             allowed = true;
           };
@@ -1065,17 +1110,26 @@
             allowed = true;
           };
         };
-        PHP = {
-          language_servers = ["phpactor" "!intelephense" "..."];
-          prettier = {
-            allowed = true;
-            plugins = ["@prettier/plugin-php"];
-            parser = "php";
-          };
-        };
-        Ruby = {
-          language_servers = ["solargraph" "!ruby-lsp" "!rubocop" "..."];
-        };
+        # PHP = {
+        #   language_servers = [
+        #     "phpactor"
+        #     "!intelephense"
+        #     "..."
+        #   ];
+        #   prettier = {
+        #     allowed = true;
+        #     plugins = [ "@prettier/plugin-php" ];
+        #     parser = "php";
+        #   };
+        # };
+        # Ruby = {
+        #   language_servers = [
+        #     "solargraph"
+        #     "!ruby-lsp"
+        #     "!rubocop"
+        #     "..."
+        #   ];
+        # };
         SCSS = {
           prettier = {
             allowed = true;
@@ -1086,61 +1140,82 @@
             allowed = true;
           };
         };
-        Starlark = {
-          language_servers = ["starpls" "!buck2-lsp" "..."];
-        };
-        Svelte = {
-          language_servers = ["svelte-language-server" "..."];
-          prettier = {
-            allowed = true;
-            plugins = ["prettier-plugin-svelte"];
-          };
-        };
+        # Starlark = {
+        #   language_servers = [
+        #     "starpls"
+        #     "!buck2-lsp"
+        #     "..."
+        #   ];
+        # };
+        # Svelte = {
+        #   language_servers = [
+        #     "svelte-language-server"
+        #     "..."
+        #   ];
+        #   prettier = {
+        #     allowed = true;
+        #     plugins = [ "prettier-plugin-svelte" ];
+        #   };
+        # };
         TSX = {
-          language_servers = ["!typescript-language-server" "vtsls" "..."];
+          language_servers = [
+            "!typescript-language-server"
+            "vtsls"
+            "..."
+          ];
           prettier = {
             allowed = true;
           };
         };
-        Twig = {
-          prettier = {
-            allowed = true;
-          };
-        };
+        # Twig = {
+        #   prettier = {
+        #     allowed = true;
+        #   };
+        # };
         TypeScript = {
-          language_servers = ["!typescript-language-server" "vtsls" "..."];
+          language_servers = [
+            "!typescript-language-server"
+            "vtsls"
+            "..."
+          ];
           prettier = {
             allowed = true;
           };
         };
-        "Vue.js" = {
-          language_servers = ["vue-language-server" "..."];
-          prettier = {
-            allowed = true;
-          };
-        };
+        # "Vue.js" = {
+        #   language_servers = [
+        #     "vue-language-server"
+        #     "..."
+        #   ];
+        #   prettier = {
+        #     allowed = true;
+        #   };
+        # };
         XML = {
           prettier = {
             allowed = true;
-            plugins = ["@prettier/plugin-xml"];
+            plugins = [ "@prettier/plugin-xml" ];
           };
         };
         Nix = {
-          language_servers = ["nil" "!nixd"];
+          language_servers = [
+            "nil"
+            "!nixd"
+          ];
           formatter = {
             external = {
               command = "alejandra";
             };
           };
         };
-        pyright = {
-          settings = {
-            python.analysis = {
-              diagnosticMode = "workspace";
-              typeCheckingMode = "strict";
-            };
-          };
-        };
+        # pyright = {
+        #   settings = {
+        #     python.analysis = {
+        #       diagnosticMode = "workspace";
+        #       typeCheckingMode = "strict";
+        #     };
+        #   };
+        # };
         YAML = {
           tab_size = 2;
           prettier = {
@@ -1148,7 +1223,7 @@
           };
         };
         Zig = {
-          format_on_save = "language_server";
+          format_on_save = "on";
           code_actions_on_format = {
             "source.fixAll" = true;
             "source.organizeImports" = true;
@@ -1158,7 +1233,7 @@
       # Different settings for specific language models.
       language_models = {
         anthropic = {
-          version = "1";
+          # version = "1";
           api_url = "https://api.anthropic.com";
         };
         google = {
@@ -1168,7 +1243,7 @@
           api_url = "http://localhost:11434";
         };
         openai = {
-          version = "1";
+          # version = "1";
           api_url = "https://api.openai.com/v1";
         };
       };
@@ -1208,24 +1283,24 @@
         # }
         dart = {
           binary = {
-            path_lookup = true;
+            # path_lookup = true;
           };
         };
         nil = {
           initialization_options = {
             formatting = {
-              command = ["alejandra"];
+              command = [ "alejandra" ];
             };
           };
           settings = {
             diagnostics = {
-              ignored = ["unused_binding"];
+              ignored = [ "unused_binding" ];
             };
           };
         };
         nix = {
           binary = {
-            path_lookup = true;
+            # path_lookup = true;
           };
         };
         yaml-language-server = {
@@ -1278,7 +1353,7 @@
         #   "on_yank": use for yank operations
         use_system_clipboard = "always";
         # If `true`, `f` and `t` motions extend across multiple lines.
-        use_multiline_find = false;
+        # use_multiline_find = false;
         # If `true`, `f` and `t` motions are case-insensitive when the target
         # letter is lowercase.
         use_smartcase_find = false;
@@ -1293,10 +1368,10 @@
       # ZED_SERVER_URL is set, it will override this setting.
       server_url = "https://zed.dev";
       # Task-related settings.
-      task = {
-        # Whether to show task status indicator in the status bar. Default: true
-        show_status_indicator = true;
-      };
+      # task = {
+      #   # Whether to show task status indicator in the status bar. Default: true
+      #   show_status_indicator = true;
+      # };
       # Whether to show full labels in line indicator or short ones
       #
       # Values:
@@ -1323,7 +1398,7 @@
       # {
       #   "W": "workspace::Save"
       # }
-      command_aliases = {};
+      command_aliases = { };
       # ssh_connections is an array of ssh connections.
       # You can configure these from `project: Open Remote` in the command palette.
       # Zed's ssh support will pull configuration from your ~/.ssh too.
@@ -1339,9 +1414,9 @@
       #     ]
       #   }
       # ]
-      ssh_connections = [];
+      ssh_connections = [ ];
       # Configures context servers for use in the Assistant.
-      context_servers = {};
+      context_servers = { };
     };
   };
 }

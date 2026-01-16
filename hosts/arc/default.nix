@@ -5,7 +5,8 @@
   system,
   zen-browser,
   ...
-}: let
+}:
+let
   pkgs = import nixpkgs {
     inherit system;
     config.allowUnfree = true;
@@ -17,22 +18,24 @@
     minstart = "130";
     minstop = "90";
   };
-in {
-  imports =
-    [(import ./hardware-configuration.nix)]
-    ++ [
-      (import ../../modules/desktop/hyprland/hyprland.nix)
-      (import ../../modules/services/mullvad.nix)
-      (import ../../modules/desktop/greetd.nix)
-      (import ../../modules/desktop/thunar.nix)
-      (import ../../modules/services/openrgb.nix)
-    ]
-    ++ (import ../../modules/virtualisation)
-    ++ (import ../../modules/hardware);
+in
+{
+  imports = [
+    (import ./hardware-configuration.nix)
+  ]
+  ++ [
+    (import ../../modules/desktop/hyprland/hyprland.nix)
+    (import ../../modules/services/mullvad.nix)
+    (import ../../modules/desktop/greetd.nix)
+    (import ../../modules/desktop/thunar.nix)
+    (import ../../modules/services/openrgb.nix)
+  ]
+  ++ (import ../../modules/virtualisation)
+  ++ (import ../../modules/hardware);
 
   boot = {
     kernelPackages = pkgs.linuxPackages_latest;
-    kernelParams = ["nvidia-drm.fbdev=1"];
+    kernelParams = [ "nvidia-drm.fbdev=1" ];
     # binfmt.emulatedSystems = [ "aarch64-linux" ];
     loader = {
       systemd-boot = {
@@ -42,7 +45,7 @@ in {
       efi.canTouchEfiVariables = true;
       timeout = 3;
     };
-    supportedFilesystems = ["nfs"];
+    supportedFilesystems = [ "nfs" ];
   };
 
   systemd.enableEmergencyMode = false;
@@ -73,7 +76,7 @@ in {
     networkmanager.enable = true;
     firewall = {
       enable = true;
-      allowedTCPPorts = [22];
+      allowedTCPPorts = [ 22 ];
     };
   };
 
@@ -98,6 +101,7 @@ in {
       mangohud
       parted
       piper
+      polkit
       prismlauncher
       protonup-qt
       quickemu
@@ -105,9 +109,10 @@ in {
       r2modman
       ripgrep
       sops
+      spice
       spotify
       tailscale
-      teamspeak5_client
+      teamspeak6-client
       teamviewer
       tree
       unzip
@@ -119,7 +124,6 @@ in {
   };
 
   programs = {
-    adb.enable = true;
     steam = {
       enable = true;
       gamescopeSession.enable = true;
@@ -153,7 +157,7 @@ in {
 
   services = {
     udev = {
-      packages = with pkgs; [yubikey-personalization];
+      packages = with pkgs; [ yubikey-personalization ];
       extraRules = ''
         ACTION=="add", SUBSYSTEM=="hwmon", ATTRS{name}=="octo", RUN+="/bin/sh -c 'ln -s /sys$devpath /dev/hwmon'"
         SUBSYSTEM=="hidraw", ATTR{idVendor}=="fffe", ATTR{idProduct}=="004b", MODE="0666"
@@ -171,5 +175,5 @@ in {
     ratbagd.enable = true;
   };
 
-  security.pam.services.hyprlock = {};
+  security.pam.services.hyprlock = { };
 }

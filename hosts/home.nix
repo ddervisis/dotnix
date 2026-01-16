@@ -20,7 +20,7 @@
 
       # General configuration
       gnupg
-      pinentry
+      pinentry-curses
 
       # Nix language server
       nil

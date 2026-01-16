@@ -40,7 +40,7 @@
                 (import ./home.nix)
               ]
               ++ [(import ./${hostName}/home.nix)]
-              ++ [nixvim.homeManagerModules.nixvim];
+              ++ [nixvim.homeModules.nixvim];
           };
         }
       ];

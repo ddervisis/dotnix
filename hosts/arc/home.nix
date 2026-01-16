@@ -4,9 +4,11 @@
   pkgs,
   vars,
   ...
-}: {
+}:
+{
   imports = [
     ../../modules/desktop/hyprland/home.nix
+    ../../modules/services/hyprpaper.nix
     ../../modules/desktop/waybar.nix
     # ../../modules/desktop/firefox.nix
     ../../modules/desktop/fuzzel.nix
@@ -23,10 +25,7 @@
       vlc
       fzf
     ];
-    file.".config/wall.png" = {
-      enable = true;
-      source = config.lib.file.mkOutOfStoreSymlink ../../modules/themes/wall.png;
-    };
+    file.".config/wall.png".source = config.lib.file.mkOutOfStoreSymlink ../../modules/themes/wall.png;
   };
 
   catppuccin = {
@@ -34,14 +33,11 @@
     accent = "lavender";
     flavor = "macchiato";
     cursors.enable = true;
-    gtk = {
-      enable = true;
-      icon.enable = true;
-    };
   };
 
   gtk = {
     enable = true;
+    colorScheme = "dark";
     cursorTheme = {
       name = "catppuccin-macchiato-lavender-cursors";
       size = 24;

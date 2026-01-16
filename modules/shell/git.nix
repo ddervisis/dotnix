@@ -7,8 +7,6 @@
   programs = {
     git = {
       enable = true;
-      userName = vars.git.user;
-      userEmail = vars.git.email;
       signing = {
         key = vars.git.gpgKey;
         signByDefault = true;
@@ -17,7 +15,11 @@
         "*~"
         ".DS_Store"
       ];
-      extraConfig = {
+      settings = {
+        user = {
+          name = vars.git.user;
+          email = vars.git.email;
+        };
         core = {
           editor = "nvim";
         };

@@ -4,8 +4,9 @@
   vars,
   stateVersion,
   ...
-}: {
-  users.groups.multimedia = {};
+}:
+{
+  users.groups.multimedia = { };
   users.users.${vars.user} = {
     isNormalUser = true;
     extraGroups = [
@@ -13,8 +14,8 @@
       "sudo"
       "audio"
       "kvm"
-      "adb"
       "multimedia"
+      "polkituser"
     ];
     shell = pkgs.zsh;
     initialPassword = vars.user;
@@ -67,7 +68,7 @@
       vim
       wget
     ];
-    pathsToLink = ["/share/zsh"];
+    pathsToLink = [ "/share/zsh" ];
   };
 
   programs = {
@@ -104,7 +105,7 @@
   nix = {
     settings = {
       auto-optimise-store = true;
-      trusted-users = [vars.user];
+      trusted-users = [ vars.user ];
     };
     gc = {
       automatic = true;

@@ -1,15 +1,17 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   programs = {
     vscode = {
       enable = true;
       profiles.default = {
         enableExtensionUpdateCheck = false;
         enableUpdateCheck = false;
-        extensions = with pkgs.vscode-extensions;
+        extensions =
+          with pkgs.vscode-extensions;
           [
             bbenoist.nix
-            catppuccin.catppuccin-vsc
-            catppuccin.catppuccin-vsc-icons
+            # catppuccin.catppuccin-vsc
+            # catppuccin.catppuccin-vsc-icons
             dart-code.flutter
             eamodio.gitlens
             esbenp.prettier-vscode
@@ -22,6 +24,7 @@
             waderyan.gitblame
             sumneko.lua
             vscodevim.vim
+            tamasfe.even-better-toml
           ]
           ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
             {
@@ -106,14 +109,14 @@
           "nix.serverSettings" = {
             "nil" = {
               "formatting" = {
-                "command" = ["nixpkgs-fmt"];
+                "command" = [ "nixpkgs-fmt" ];
               };
             };
           };
           # Python
           "[python]" = {
             "diffEditor.ignoreTrimWhitespace" = false;
-            "gitlens.codeLens.symbolScopes" = ["!Module"];
+            "gitlens.codeLens.symbolScopes" = [ "!Module" ];
             "editor.formatOnPaste" = true;
             "editor.formatOnType" = true;
             "editor.formatOnSave" = true;
@@ -153,7 +156,7 @@
           "[dart]" = {
             "editor.formatOnSave" = true;
             "editor.formatOnType" = true;
-            "editor.rulers" = [80];
+            "editor.rulers" = [ 80 ];
             "editor.selectionHighlight" = false;
             "editor.suggestSelection" = "first";
             "editor.tabCompletion" = "onlySnippets";
@@ -170,26 +173,44 @@
           "vim.hlsearch" = true;
           "vim.insertModeKeyBindings" = [
             {
-              "before" = ["j" "j"];
-              "after" = ["<Esc>"];
+              "before" = [
+                "j"
+                "j"
+              ];
+              "after" = [ "<Esc>" ];
             }
           ];
           "vim.normalModeKeyBindingsNonRecursive" = [
             {
-              "before" = ["<leader>" "p" "v"];
-              "after" = [":" "E" "x" "<enter>"];
+              "before" = [
+                "<leader>"
+                "p"
+                "v"
+              ];
+              "after" = [
+                ":"
+                "E"
+                "x"
+                "<enter>"
+              ];
             }
             {
-              "before" = ["<leader>" "d"];
-              "after" = ["d" "d"];
+              "before" = [
+                "<leader>"
+                "d"
+              ];
+              "after" = [
+                "d"
+                "d"
+              ];
             }
             {
-              "before" = ["<C-n"];
-              "after" = [":nohl"];
+              "before" = [ "<C-n" ];
+              "after" = [ ":nohl" ];
             }
             {
-              "before" = ["K"];
-              "commands" = ["lineBreakInsert"];
+              "before" = [ "K" ];
+              "commands" = [ "lineBreakInsert" ];
               "silent" = true;
             }
           ];
