@@ -21,6 +21,7 @@
             naumovs.color-highlight
             waderyan.gitblame
             sumneko.lua
+            vscodevim.vim
           ]
           ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
             {
@@ -162,6 +163,49 @@
           "telemetry.telemetryLevel" = "off";
           "extensions.ignoreRecommendations" = true;
           "git.openRepositoryInParentFolders" = "never";
+          "vim.easymotion" = true;
+          "vim.incsearch" = true;
+          "vim.useSystemClipboard" = true;
+          "vim.useCtrlKeys" = true;
+          "vim.hlsearch" = true;
+          "vim.insertModeKeyBindings" = [
+            {
+              "before" = ["j" "j"];
+              "after" = ["<Esc>"];
+            }
+          ];
+          "vim.normalModeKeyBindingsNonRecursive" = [
+            {
+              "before" = ["<leader>" "p" "v"];
+              "after" = [":" "E" "x" "<enter>"];
+            }
+            {
+              "before" = ["<leader>" "d"];
+              "after" = ["d" "d"];
+            }
+            {
+              "before" = ["<C-n"];
+              "after" = [":nohl"];
+            }
+            {
+              "before" = ["K"];
+              "commands" = ["lineBreakInsert"];
+              "silent" = true;
+            }
+          ];
+          "vim.leader" = "<space>";
+          "vim.handleKeys" = {
+            "<C-a" = false;
+            "<C-s>" = false;
+            "<C-w>" = false;
+            "<C-f>" = false;
+            "<C-p>" = false;
+          };
+          "vim.smartRelativeLine" = true;
+          "vim.changeWordIncludesWhitespace" = false;
+          "extensions.experimental.affinity" = {
+            "vscodevim.vim" = 1;
+          };
         };
         keybindings = [
           {

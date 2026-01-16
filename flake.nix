@@ -54,6 +54,15 @@
       url = "github:catppuccin/nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    agenix = {
+      url = "github:ryantm/agenix";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        home-manager.follows = "home-manager";
+        darwin.follows = "";
+      };
+    };
   };
 
   outputs = {
@@ -68,6 +77,7 @@
     zen-browser,
     ags,
     catppuccin,
+    agenix,
     ...
   }: let
     vars = {
@@ -96,6 +106,7 @@
           zen-browser
           ags
           catppuccin
+          agenix
           vars
           ;
       }

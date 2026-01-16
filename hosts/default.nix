@@ -9,6 +9,7 @@
   zen-browser,
   ags,
   catppuccin,
+  agenix,
   vars,
   ...
 }: let
@@ -26,6 +27,7 @@
           zen-browser
           ags
           catppuccin
+          agenix
           vars
           hostName
           system
@@ -36,6 +38,7 @@
         ./${hostName}
         ./configuration.nix
         lix-module.nixosModules.default
+        agenix.nixosModules.default
 
         home-manager.nixosModules.home-manager
         {

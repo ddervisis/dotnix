@@ -25,6 +25,7 @@ in {
       (import ../../modules/services/mullvad.nix)
       (import ../../modules/desktop/greetd.nix)
       (import ../../modules/desktop/thunar.nix)
+      (import ../../modules/services/openrgb.nix)
     ]
     ++ (import ../../modules/virtualisation)
     ++ (import ../../modules/hardware);
@@ -41,6 +42,7 @@ in {
       efi.canTouchEfiVariables = true;
       timeout = 3;
     };
+    supportedFilesystems = ["nfs"];
   };
 
   systemd.enableEmergencyMode = false;
@@ -81,8 +83,10 @@ in {
       age
       alejandra
       bat
+      brave
       awscli
       cifs-utils
+      darktable
       discord
       godot
       goverlay
@@ -97,6 +101,7 @@ in {
       prismlauncher
       protonup-qt
       quickemu
+      rawtherapee
       r2modman
       ripgrep
       sops
@@ -151,6 +156,7 @@ in {
       packages = with pkgs; [yubikey-personalization];
       extraRules = ''
         ACTION=="add", SUBSYSTEM=="hwmon", ATTRS{name}=="octo", RUN+="/bin/sh -c 'ln -s /sys$devpath /dev/hwmon'"
+        SUBSYSTEM=="hidraw", ATTR{idVendor}=="fffe", ATTR{idProduct}=="004b", MODE="0666"
       '';
     };
     pcscd.enable = true;

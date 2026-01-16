@@ -180,14 +180,14 @@
         };
 
         cpu = {
-          format = "{usage}% <span font='14'></span>";
+          format = "{usage}% <span font='14'></span>";
           # format = "{icon0}{icon1}{icon2}{icon3} {usage:>2}% ";
           # format-icons = ["▁" "▂" "▃" "▄" "▅" "▆" "▇" "█"];
           interval = 5;
         };
 
         "custom/gpu" = {
-          format = "{}% <span font='14'></span>";
+          format = "{}% <span font='14'>󰾲</span>";
           tooltip = true;
           interval = 5;
           exec = "/run/current-system/sw/bin/nvidia-smi --query-gpu=utilization.gpu --format=csv,noheader,nounits";

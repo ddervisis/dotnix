@@ -14,81 +14,128 @@
     "sd_mod"
   ];
   boot.initrd.kernelModules = ["nvidia"];
-  boot.kernelModules = ["kvm-amd"];
+  boot.kernelModules = ["kvm-amd" "i2c-dev" "i2c-piix4"];
   boot.extraModulePackages = [
     # config.boot.kernelPackages.nvidia_x11
   ];
 
-  fileSystems."/" = {
-    device = "/dev/disk/by-label/root";
-    fsType = "btrfs";
-    options = [
-      "subvol=root"
-      "compress=zstd"
-      "noatime"
-      "nodiratime"
-    ];
-  };
+  fileSystems = {
+    "/" = {
+      device = "/dev/disk/by-label/root";
+      fsType = "btrfs";
+      options = [
+        "subvol=root"
+        "compress=zstd"
+        "noatime"
+        "nodiratime"
+      ];
+    };
 
-  fileSystems."/home" = {
-    device = "/dev/disk/by-label/root";
-    fsType = "btrfs";
-    options = [
-      "subvol=home"
-      "compress=zstd"
-      "noatime"
-      "nodiratime"
-    ];
-  };
+    "/home" = {
+      device = "/dev/disk/by-label/root";
+      fsType = "btrfs";
+      options = [
+        "subvol=home"
+        "compress=zstd"
+        "noatime"
+        "nodiratime"
+      ];
+    };
 
-  fileSystems."/nix" = {
-    device = "/dev/disk/by-label/root";
-    fsType = "btrfs";
-    options = [
-      "subvol=nix"
-      "compress=zstd"
-      "noatime"
-      "nodiratime"
-    ];
-  };
+    "/nix" = {
+      device = "/dev/disk/by-label/root";
+      fsType = "btrfs";
+      options = [
+        "subvol=nix"
+        "compress=zstd"
+        "noatime"
+        "nodiratime"
+      ];
+    };
 
-  fileSystems."/var/log" = {
-    device = "/dev/disk/by-label/root";
-    fsType = "btrfs";
-    options = [
-      "subvol=log"
-      "compress=zstd"
-      "noatime"
-      "nodiratime"
-    ];
-  };
+    "/var/log" = {
+      device = "/dev/disk/by-label/root";
+      fsType = "btrfs";
+      options = [
+        "subvol=log"
+        "compress=zstd"
+        "noatime"
+        "nodiratime"
+      ];
+    };
 
-  fileSystems."/boot" = {
-    device = "/dev/disk/by-label/boot";
-    fsType = "vfat";
-  };
+    "/boot" = {
+      device = "/dev/disk/by-label/boot";
+      fsType = "vfat";
+    };
 
-  fileSystems."/data" = {
-    device = "/dev/disk/by-label/data";
-    fsType = "btrfs";
-    options = [
-      "subvol=data"
-      "compress=zstd"
-      "noatime"
-      "nodiratime"
-      # "defaults"
-      # "user"
-      # "uid=1000"
-      # "exec"
-    ];
-  };
+    "/data" = {
+      device = "/dev/disk/by-label/data";
+      fsType = "btrfs";
+      options = [
+        "subvol=data"
+        "compress=zstd"
+        "noatime"
+        "nodiratime"
+        # "defaults"
+        # "user"
+        # "uid=1000"
+        # "exec"
+      ];
+    };
 
-  fileSystems."/mnt/storage" = {
-    device = "//10.10.100.100/storage";
-    fsType = "cifs";
-    options = let
-      automount_opts = "x-systemd.automount,noauto,x-systemd.idle-timeout=60,x-systemd.device-timeout=5s,x-systemd.mount-timeout=5s";
-    in ["${automount_opts},credentials=/etc/nixos/smb-secrets,uid=1000,gid=100"];
+    # NFS Shares
+    "/mnt/ascaron/media" = {
+      device = "10.10.100.101:/media";
+      fsType = "nfs";
+      options = [
+        "x-systemd.automount"
+        "noauto"
+        "x-systemd.idle-timeout=60"
+        "soft"
+        # "rsize=1048576"
+        # "wsize=1048576"
+        # "tcp"
+        # "async"
+      ];
+    };
+
+    "/mnt/ascaron/downloads" = {
+      device = "10.10.100.101:/downloads";
+      fsType = "nfs";
+      options = [
+        "x-systemd.automount"
+        "noauto"
+        "x-systemd.idle-timeout=60"
+        "soft"
+        # "rsize=1048576"
+        # "wsize=1048576"
+        # "tcp"
+        # "async"
+      ];
+    };
+
+    "/mnt/ascaron/backup" = {
+      device = "10.10.100.101:/backup";
+      fsType = "nfs";
+      options = [
+        "x-systemd.automount"
+        "noauto"
+        "x-systemd.idle-timeout=60"
+        "soft"
+      ];
+    };
+
+    "/mnt/ascaron/games" = {
+      device = "10.10.100.101:/games";
+      fsType = "nfs";
+      options = [
+        "x-systemd.automount"
+        "noauto"
+        "x-systemd.idle-timeout=60"
+        "soft"
+      ];
+    };
   };
 
   swapDevices = [{device = "/dev/disk/by-label/swap";}];

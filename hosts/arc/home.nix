@@ -23,7 +23,10 @@
       vlc
       fzf
     ];
-    file.".config/wall.png".source = config.lib.file.mkOutOfStoreSymlink ../../modules/themes/wall.png;
+    file.".config/wall.png" = {
+      enable = true;
+      source = config.lib.file.mkOutOfStoreSymlink ../../modules/themes/wall.png;
+    };
   };
 
   catppuccin = {

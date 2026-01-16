@@ -5,6 +5,7 @@
   stateVersion,
   ...
 }: {
+  users.groups.multimedia = {};
   users.users.${vars.user} = {
     isNormalUser = true;
     extraGroups = [
@@ -13,6 +14,7 @@
       "audio"
       "kvm"
       "adb"
+      "multimedia"
     ];
     shell = pkgs.zsh;
     initialPassword = vars.user;
