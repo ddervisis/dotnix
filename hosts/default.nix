@@ -45,7 +45,14 @@
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
           home-manager.extraSpecialArgs = {
-            inherit system vars stateVersion monitors zen-browser ags;
+            inherit
+              system
+              vars
+              stateVersion
+              monitors
+              zen-browser
+              ags
+              ;
           };
           home-manager.users.${vars.user} = {
             imports = [
@@ -93,11 +100,7 @@
         "${nixpkgs}/nixos/modules/installer/sd-card/sd-image-aarch64.nix"
         {disabledModules = ["profiles/base.nix"];}
       ];
-    })
-    .config
-    .system
-    .build
-    .sdImage;
+    }).config.system.build.sdImage;
 in {
   arc = mkSystem {
     hostName = "arc";

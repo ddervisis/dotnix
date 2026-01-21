@@ -1,8 +1,6 @@
-{ config, ... }:
-let
+{config, ...}: let
   wallpaper = "${config.home.homeDirectory}/.config/wall.png";
-in
-{
+in {
   services.hyprpaper = {
     enable = true;
     settings = {

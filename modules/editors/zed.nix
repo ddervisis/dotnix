@@ -3,8 +3,7 @@
   lib,
   vars,
   ...
-}:
-{
+}: {
   programs.zed-editor = {
     enable = true;
     extensions = [
@@ -606,7 +605,7 @@
       # The list of language servers to use (or disable) for all languages.
       #
       # This is typically customized on a per-language basis.
-      language_servers = [ "..." ];
+      language_servers = ["..."];
       # When to automatically save edited buffers. This setting can
       # take four values.
       #
@@ -757,7 +756,7 @@
       # ignored by git. This is useful for files that are not tracked by git,
       # but are still important to your project. Note that globs that are
       # overly broad can slow down Zed's file scanning. Overridden by `file_scan_exclusions`.
-      file_scan_inclusions = [ ".env*" ];
+      file_scan_inclusions = [".env*"];
       # Git gutter behavior configuration.
       git = {
         # Control whether the git gutter is shown. May take 2 values:
@@ -949,10 +948,10 @@
           calt = true;
         };
       };
-      code_actions_on_format = { };
+      code_actions_on_format = {};
       # Settings related to running tasks.
       tasks = {
-        variables = { };
+        variables = {};
       };
       # An object whose keys are language names, and whose values
       # are arrays of filenames or extensions of files that should
@@ -967,14 +966,14 @@
       # }
       #
       file_types = {
-        "Plain Text" = [ "txt" ];
+        "Plain Text" = ["txt"];
         "JSONC" = [
           "**/.zed/**/*.json"
           "**/zed/**/*.json"
           "**/Zed/**/*.json"
           "**/.vscode/**/*.json"
         ];
-        "Shell Script" = [ ".env.*" ];
+        "Shell Script" = [".env.*"];
       };
       # By default use a recent system version of node, or install our own.
       # You can override this to use a version of node that is not in $PATH with:
@@ -1194,7 +1193,7 @@
         XML = {
           prettier = {
             allowed = true;
-            plugins = [ "@prettier/plugin-xml" ];
+            plugins = ["@prettier/plugin-xml"];
           };
         };
         Nix = {
@@ -1289,12 +1288,12 @@
         nil = {
           initialization_options = {
             formatting = {
-              command = [ "alejandra" ];
+              command = ["alejandra"];
             };
           };
           settings = {
             diagnostics = {
-              ignored = [ "unused_binding" ];
+              ignored = ["unused_binding"];
             };
           };
         };
@@ -1398,7 +1397,7 @@
       # {
       #   "W": "workspace::Save"
       # }
-      command_aliases = { };
+      command_aliases = {};
       # ssh_connections is an array of ssh connections.
       # You can configure these from `project: Open Remote` in the command palette.
       # Zed's ssh support will pull configuration from your ~/.ssh too.
@@ -1414,9 +1413,9 @@
       #     ]
       #   }
       # ]
-      ssh_connections = [ ];
+      ssh_connections = [];
       # Configures context servers for use in the Assistant.
-      context_servers = { };
+      context_servers = {};
     };
   };
 }

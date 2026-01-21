@@ -4,8 +4,7 @@
   pkgs,
   vars,
   ...
-}:
-{
+}: {
   imports = [
     ../../modules/desktop/hyprland/home.nix
     ../../modules/services/hyprpaper.nix

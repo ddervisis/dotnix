@@ -6,13 +6,11 @@
   monitors,
   zen-browser,
   ...
-}:
-let
+}: let
   colors = import ../../themes/colors.nix;
   wallpaper = "/home/${vars.user}/.config/wall.png";
   zen = zen-browser.packages."${system}".default;
-in
-{
+in {
   wayland.windowManager.hyprland = {
     enable = true;
     systemd.enable = true;
