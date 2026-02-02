@@ -14,7 +14,11 @@
     "sd_mod"
   ];
   boot.initrd.kernelModules = ["nvidia"];
-  boot.kernelModules = ["kvm-amd" "i2c-dev" "i2c-piix4"];
+  boot.kernelModules = [
+    "kvm-amd"
+    "i2c-dev"
+    "i2c-piix4"
+  ];
   boot.extraModulePackages = [
     # config.boot.kernelPackages.nvidia_x11
   ];
@@ -86,7 +90,7 @@
 
     # NFS Shares
     "/mnt/ascaron/media" = {
-      device = "10.10.100.101:/media";
+      device = "10.10.100.100:/media";
       fsType = "nfs";
       options = [
         "x-systemd.automount"
@@ -101,7 +105,7 @@
     };
 
     "/mnt/ascaron/downloads" = {
-      device = "10.10.100.101:/downloads";
+      device = "10.10.100.100:/downloads";
       fsType = "nfs";
       options = [
         "x-systemd.automount"
@@ -116,7 +120,7 @@
     };
 
     "/mnt/ascaron/backup" = {
-      device = "10.10.100.101:/backup";
+      device = "10.10.100.100:/backup";
       fsType = "nfs";
       options = [
         "x-systemd.automount"
@@ -127,7 +131,7 @@
     };
 
     "/mnt/ascaron/games" = {
-      device = "10.10.100.101:/games";
+      device = "10.10.100.100:/games";
       fsType = "nfs";
       options = [
         "x-systemd.automount"
