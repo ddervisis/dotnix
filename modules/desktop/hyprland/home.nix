@@ -195,12 +195,10 @@ in {
 
       windowrule = [
         # "float,steam"
-      ];
-      windowrulev2 = [
+        # "float,class:(lutris),title:(Lutris)"
         # "move onscreen cursor -1% -1%,class:(steam)"
         # "stayfocused, title:^()$,class:^(steam)$"
         # "minsize 1 1, title:^()$,class:^(steam)$"
-        "float,class:(lutris),title:(Lutris)"
         # "forceinput, class:^(discord)$, xwayland:0"
       ];
     };

@@ -5,7 +5,8 @@
   system,
   zen-browser,
   ...
-}: let
+}:
+let
   pkgs = import nixpkgs {
     inherit system;
     config.allowUnfree = true;
@@ -17,35 +18,35 @@
     minstart = "130";
     minstop = "90";
   };
-in {
-  imports =
-    [
-      (import ./hardware-configuration.nix)
-    ]
-    ++ [
-      (import ../../modules/desktop/hyprland/hyprland.nix)
-      (import ../../modules/services/mullvad.nix)
-      (import ../../modules/desktop/greetd.nix)
-      (import ../../modules/desktop/thunar.nix)
-      (import ../../modules/services/openrgb.nix)
-      (import ../../modules/services/ollama.nix)
-    ]
-    ++ (import ../../modules/virtualisation)
-    ++ (import ../../modules/hardware);
+in
+{
+  imports = [
+    (import ./hardware-configuration.nix)
+  ]
+  ++ [
+    (import ../../modules/desktop/hyprland/hyprland.nix)
+    (import ../../modules/services/mullvad.nix)
+    (import ../../modules/desktop/greetd.nix)
+    (import ../../modules/desktop/thunar.nix)
+    (import ../../modules/services/openrgb.nix)
+    (import ../../modules/services/ollama.nix)
+  ]
+  ++ (import ../../modules/virtualisation)
+  ++ (import ../../modules/hardware);
 
   boot = {
     kernelPackages = pkgs.linuxPackages_latest;
-    kernelParams = ["nvidia-drm.fbdev=1"];
+    kernelParams = [ "nvidia-drm.fbdev=1" ];
     # binfmt.emulatedSystems = [ "aarch64-linux" ];
     loader = {
       systemd-boot = {
         enable = true;
-        configurationLimit = 5;
+        configurationLimit = 3;
       };
       efi.canTouchEfiVariables = true;
       timeout = 3;
     };
-    supportedFilesystems = ["nfs"];
+    supportedFilesystems = [ "nfs" ];
   };
 
   systemd.enableEmergencyMode = false;
@@ -76,13 +77,14 @@ in {
     networkmanager.enable = true;
     firewall = {
       enable = true;
-      allowedTCPPorts = [22];
+      allowedTCPPorts = [ 22 ];
     };
   };
 
   environment = {
     systemPackages = with pkgs; [
       adwaita-icon-theme
+      android-tools
       age
       alejandra
       bat
@@ -99,6 +101,7 @@ in {
       lm_sensors
       lutris
       mangohud
+      opencode
       parted
       piper
       polkit
@@ -116,6 +119,7 @@ in {
       teamviewer
       tree
       unzip
+      via
       wineWowPackages.waylandFull
       yubikey-manager
       zen-browser.packages."${system}".default
@@ -157,7 +161,9 @@ in {
 
   services = {
     udev = {
-      packages = with pkgs; [yubikey-personalization];
+      packages = with pkgs; [
+        yubikey-personalization
+      ];
       extraRules = ''
         ACTION=="add", SUBSYSTEM=="hwmon", ATTRS{name}=="octo", RUN+="/bin/sh -c 'ln -s /sys$devpath /dev/hwmon'"
         SUBSYSTEM=="hidraw", ATTR{idVendor}=="fffe", ATTR{idProduct}=="004b", MODE="0666"
@@ -175,5 +181,30 @@ in {
     ratbagd.enable = true;
   };
 
-  security.pam.services.hyprlock = {};
+  security.pam.services.hyprlock = { };
+
+  virtualisation.spiceUSBRedirection.enable = true;
+
+  nixpkgs.overlays = [
+    # SeeAlso: https://github.com/nixos/nixpkgs/issues/471331
+    # Remove when https://github.com/NixOS/nixpkgs/pull/472163 is avaiable in unstable
+    (final: prev: {
+      xow_dongle-firmware = prev.xow_dongle-firmware.overrideAttrs (old: {
+        installPhase = ''
+          # Create the firmware directory
+          mkdir -p $out/lib/firmware
+
+          # Install the standard bin file (just in case)
+          install -Dm644 xow_dongle.bin $out/lib/firmware/xow_dongle.bin
+
+          ln -s $out/lib/firmware/xow_dongle.bin $out/lib/firmware/xone_dongle_02fe.bin
+
+          # Handle the other model mentioned in the bug report (optional, but safe to keep)
+          if [ -f xow_dongle_045e_02e6.bin ]; then
+            install -Dm644 xow_dongle_045e_02e6.bin $out/lib/firmware/xone_dongle_02e6.bin
+          fi
+        '';
+      });
+    })
+  ];
 }

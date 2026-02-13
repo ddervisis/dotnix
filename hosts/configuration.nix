@@ -15,6 +15,7 @@
       "kvm"
       "multimedia"
       "polkituser"
+      "adbusers"
     ];
     shell = pkgs.zsh;
     initialPassword = vars.user;
@@ -108,7 +109,7 @@
     };
     gc = {
       automatic = true;
-      dates = "weekly";
+      randomizedDelaySec = "15m";
       options = "--delete-older-than 7d";
     };
     package = pkgs.nixVersions.stable;
