@@ -200,6 +200,7 @@ in {
         # "stayfocused, title:^()$,class:^(steam)$"
         # "minsize 1 1, title:^()$,class:^(steam)$"
         # "forceinput, class:^(discord)$, xwayland:0"
+        "match:class steam, match:initial_title Steam, match:float 1, float off, maximize on"
       ];
     };
   };

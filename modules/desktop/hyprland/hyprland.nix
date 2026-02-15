@@ -2,8 +2,7 @@
   config,
   pkgs,
   ...
-}:
-{
+}: {
   hardware = {
     graphics = {
       enable = true;
@@ -41,7 +40,7 @@
     };
   };
 
-  services.xserver.videoDrivers = [ "nvidia" ];
+  services.xserver.videoDrivers = ["nvidia"];
 
   environment.systemPackages = with pkgs; [
     hypridle
