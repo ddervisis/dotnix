@@ -4,6 +4,10 @@
     enableZshIntegration = true;
     installVimSyntax = true;
     settings = {
+      shell-integration-features = [
+        "ssh-env"
+        "ssh-terminfo"
+      ];
       background-blur-radius = 20;
       background-opacity = 0.95;
       font-size = 12;

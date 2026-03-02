@@ -90,16 +90,18 @@ in {
       brave
       awscli
       cifs-utils
-      darktable
+      deploy-rs
       discord
       godot
       goverlay
+      hakuneko
       jellyfin-media-player
       jq
       libresprite
       lm_sensors
       lutris
       mangohud
+      nvtopPackages.nvidia
       opencode
       parted
       piper
@@ -107,7 +109,6 @@ in {
       prismlauncher
       protonup-qt
       quickemu
-      rawtherapee
       r2modman
       ripgrep
       sops
@@ -118,7 +119,6 @@ in {
       teamviewer
       tree
       unzip
-      via
       wineWowPackages.waylandFull
       yubikey-manager
       zen-browser.packages."${system}".default

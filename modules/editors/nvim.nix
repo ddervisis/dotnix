@@ -1,4 +1,16 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+let
+  _99 = pkgs.vimUtils.buildVimPlugin {
+    name = "99";
+    src = pkgs.fetchFromGitHub {
+      owner = "ThePrimeagen";
+      repo = "99";
+      rev = "6a64e0b2f4c7f1e3911db1f8318e5d7c68cb8dff";
+      hash = "sha256-OOj2bnhxn3Ou7VQOmi3RVPcVs+CqolnJzEgfkXk2p5Q=";
+    };
+  };
+in
+{
   programs = {
     nixvim = {
       enable = true;
@@ -110,10 +122,10 @@
               "<Tab>" = "cmp.mapping(cmp.mapping.select_next_item(), {'i', 's'})";
             };
             sources = [
-              {name = "nvim_lsp";}
-              {name = "luasnip";}
-              {name = "path";}
-              {name = "buffer";}
+              { name = "nvim_lsp"; }
+              { name = "luasnip"; }
+              { name = "path"; }
+              { name = "buffer"; }
             ];
             snippet.expand = ''
               function(args)
@@ -133,12 +145,12 @@
         fugitive.enable = true;
         gitblame.enable = true;
         gitsigns.enable = true;
-        hardtime = {
-          enable = true;
-          settings = {
-            disable_mouse = true;
-          };
-        };
+        # hardtime = {
+        #   enable = true;
+        #   settings = {
+        #     disable_mouse = true;
+        #   };
+        # };
         hmts = {
           enable = true;
         };
@@ -153,13 +165,13 @@
         lint = {
           enable = true;
           lintersByFt = {
-            text = ["vale"];
-            json = ["jsonlint"];
-            markdown = ["vale"];
-            rst = ["vale"];
-            dockerfile = ["hadolint"];
-            terraform = ["tflint"];
-            typscriptreact = ["prettier_eslint"];
+            text = [ "vale" ];
+            json = [ "jsonlint" ];
+            markdown = [ "vale" ];
+            rst = [ "vale" ];
+            dockerfile = [ "hadolint" ];
+            terraform = [ "tflint" ];
+            typscriptreact = [ "prettier_eslint" ];
           };
         };
         lsp = {
@@ -242,15 +254,15 @@
               };
             };
             inactive_sections = {
-              lualine_a = [];
-              lualine_b = [];
-              lualine_c = ["filename"];
-              lualine_x = ["location"];
-              lualine_y = [];
-              lualine_z = [];
+              lualine_a = [ ];
+              lualine_b = [ ];
+              lualine_c = [ "filename" ];
+              lualine_x = [ "location" ];
+              lualine_y = [ ];
+              lualine_z = [ ];
             };
             sections = {
-              lualine_a = ["mode"];
+              lualine_a = [ "mode" ];
               lualine_b = [
                 "branch"
                 "diff"
@@ -290,8 +302,8 @@
                 "fileformat"
                 "filetype"
               ];
-              lualine_y = ["progress"];
-              lualine_z = ["location"];
+              lualine_y = [ "progress" ];
+              lualine_z = [ "location" ];
             };
           };
         };
@@ -332,7 +344,11 @@
         zig.enable = true;
       };
 
-      extraPlugins = with pkgs.vimPlugins; [neoformat nvim-treesitter-parsers.templ];
+      extraPlugins = with pkgs.vimPlugins; [
+        neoformat
+        nvim-treesitter-parsers.templ
+        _99
+      ];
 
       keymaps = [
         {
@@ -348,13 +364,13 @@
         {
           key = "<";
           action = "< gv";
-          mode = ["v"];
+          mode = [ "v" ];
           options.silent = true;
         }
         {
           key = ">";
           action = "> gv";
-          mode = ["v"];
+          mode = [ "v" ];
           options.silent = true;
         }
         {
@@ -418,13 +434,13 @@
         }
         {
           key = "<A-j>";
-          mode = ["v"];
+          mode = [ "v" ];
           action = ":m '>+1<CR>gv=gv";
           options.silent = true;
         }
         {
           key = "<C-k>";
-          mode = ["v"];
+          mode = [ "v" ];
           action = ":m '<-2<CR>gv==gv";
           options.silent = true;
         }
@@ -473,7 +489,40 @@
           key = "<C-;>";
           action.__raw = "function() require'harpoon':list():select(4) end";
         }
+        {
+          mode = "v";
+          key = "<leader>9v";
+          action.__raw = "function() require('99').visual() end";
+        }
+        {
+          mode = "n";
+          key = "<leader>9x";
+          action.__raw = "function() require('99').stop_all_requests() end";
+        }
+        {
+          mode = "n";
+          key = "<leader>9s";
+          action.__raw = "function() require('99').search() end";
+        }
+        {
+          mode = "n";
+          key = "<leader>9m";
+          action.__raw = "function() require('99.extensions.telescope').select_model() end";
+        }
+        {
+          mode = "n";
+          key = "<leader>9p";
+          action.__raw = "function() require('99.extensions.telescope').select_provider() end";
+        }
+        {
+          mode = "n";
+          key = "<leader>9l";
+          action.__raw = "function() require('99').view_logs() end";
+        }
       ];
+      extraConfigLuaPre = ''
+        require("99").setup({})
+      '';
     };
   };
 }
