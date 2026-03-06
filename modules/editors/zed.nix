@@ -10,6 +10,7 @@
       "basher"
       "catppuccin"
       "catppuccin-icons"
+      "csharp"
       "csv"
       "dart"
       "docker-compose"

@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-let
+{pkgs, ...}: let
   _99 = pkgs.vimUtils.buildVimPlugin {
     name = "99";
     src = pkgs.fetchFromGitHub {
@@ -9,8 +8,7 @@ let
       hash = "sha256-OOj2bnhxn3Ou7VQOmi3RVPcVs+CqolnJzEgfkXk2p5Q=";
     };
   };
-in
-{
+in {
   programs = {
     nixvim = {
       enable = true;
@@ -122,10 +120,10 @@ in
               "<Tab>" = "cmp.mapping(cmp.mapping.select_next_item(), {'i', 's'})";
             };
             sources = [
-              { name = "nvim_lsp"; }
-              { name = "luasnip"; }
-              { name = "path"; }
-              { name = "buffer"; }
+              {name = "nvim_lsp";}
+              {name = "luasnip";}
+              {name = "path";}
+              {name = "buffer";}
             ];
             snippet.expand = ''
               function(args)
@@ -165,13 +163,13 @@ in
         lint = {
           enable = true;
           lintersByFt = {
-            text = [ "vale" ];
-            json = [ "jsonlint" ];
-            markdown = [ "vale" ];
-            rst = [ "vale" ];
-            dockerfile = [ "hadolint" ];
-            terraform = [ "tflint" ];
-            typscriptreact = [ "prettier_eslint" ];
+            text = ["vale"];
+            json = ["jsonlint"];
+            markdown = ["vale"];
+            rst = ["vale"];
+            dockerfile = ["hadolint"];
+            terraform = ["tflint"];
+            typscriptreact = ["prettier_eslint"];
           };
         };
         lsp = {
@@ -254,15 +252,15 @@ in
               };
             };
             inactive_sections = {
-              lualine_a = [ ];
-              lualine_b = [ ];
-              lualine_c = [ "filename" ];
-              lualine_x = [ "location" ];
-              lualine_y = [ ];
-              lualine_z = [ ];
+              lualine_a = [];
+              lualine_b = [];
+              lualine_c = ["filename"];
+              lualine_x = ["location"];
+              lualine_y = [];
+              lualine_z = [];
             };
             sections = {
-              lualine_a = [ "mode" ];
+              lualine_a = ["mode"];
               lualine_b = [
                 "branch"
                 "diff"
@@ -302,8 +300,8 @@ in
                 "fileformat"
                 "filetype"
               ];
-              lualine_y = [ "progress" ];
-              lualine_z = [ "location" ];
+              lualine_y = ["progress"];
+              lualine_z = ["location"];
             };
           };
         };
@@ -364,13 +362,13 @@ in
         {
           key = "<";
           action = "< gv";
-          mode = [ "v" ];
+          mode = ["v"];
           options.silent = true;
         }
         {
           key = ">";
           action = "> gv";
-          mode = [ "v" ];
+          mode = ["v"];
           options.silent = true;
         }
         {
@@ -434,13 +432,13 @@ in
         }
         {
           key = "<A-j>";
-          mode = [ "v" ];
+          mode = ["v"];
           action = ":m '>+1<CR>gv=gv";
           options.silent = true;
         }
         {
           key = "<C-k>";
-          mode = [ "v" ];
+          mode = ["v"];
           action = ":m '<-2<CR>gv==gv";
           options.silent = true;
         }

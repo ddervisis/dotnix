@@ -225,6 +225,7 @@
           "extensions.experimental.affinity" = {
             "vscodevim.vim" = 1;
           };
+          "github.copilot.chat.ollama.ollamaEndpoint" = "http://host.docker.internal:11434";
         };
         keybindings = [
           {

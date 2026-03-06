@@ -119,7 +119,7 @@ in {
       teamviewer
       tree
       unzip
-      wineWowPackages.waylandFull
+      wineWow64Packages.waylandFull
       yubikey-manager
       zen-browser.packages."${system}".default
       zip
